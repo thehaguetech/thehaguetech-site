@@ -1,0 +1,32 @@
+{
+  "name": "thehaguetech-site",
+  "version": "0.1.0",
+  "description": "The Hague Tech on the Web",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "next build && next export"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bartwr/thehaguetech-site.git"
+  },
+  "keywords": [
+    "thehaguetech"
+  ],
+  "author": "bartwr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bartwr/thehaguetech-site/issues"
+  },
+  "homepage": "https://github.com/bartwr/thehaguetech-site#readme",
+  "dependencies": {
+    "next": "^8.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-jsx": "^3.2.1"
+  }
+}

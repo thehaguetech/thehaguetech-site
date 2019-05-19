@@ -10,6 +10,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "next build && next export"
   },
+  "plugins": [
+    [
+      "styled-jsx/babel",
+      {
+        "optimizeForSpeed": true
+      }
+    ]
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bartwr/thehaguetech-site.git"
@@ -25,6 +33,7 @@
   "homepage": "https://github.com/bartwr/thehaguetech-site#readme",
   "dependencies": {
     "next": "^8.1.0",
+    "ramda": "^0.26.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "styled-jsx": "^3.2.1"

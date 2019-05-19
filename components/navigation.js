@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 function Navigation() {
   return <div className="Navigation">
     <div>
-      <img src="/static/components/navigation/tht-logo.svg" />
+      <img src="/static/components/navigation/tht-logo.svg" className="logo" />
     </div>
     <nav>
       <ul>
@@ -26,12 +26,26 @@ function Navigation() {
     </nav>
     <style jsx>{`
       .Navigation {
-        min-height: 122px;
-        background: #fff;
-        padding: 30px 56px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 8px 24px;
 
         display: flex;
         justify-content: space-between;
+        z-index: 10;
+      }
+      @media (min-width: 480px) {
+        .Navigation {
+          padding: 30px 56px;
+        }
+      }
+      .logo {
+        width: 50px;
+        height: 50px;
+        display: block;
       }
       nav {
         display: none;

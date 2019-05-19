@@ -3,31 +3,27 @@ import dynamic from 'next/dynamic';
 // Load components
 const Title = dynamic(() => import('../components/title.js'));
 const Button = dynamic(() => import('../components/button.js'));
+const SmallCapsTitle = dynamic(() => import('../components/small-caps-title.js'));
 
-function VideoBanner() {
-  return <div className="VideoBanner">
-    <video className="video" autoPlay loop muted poster="static/components/video-banner/madagascar3.jpg" src="static/components/video-banner/madagascar3.mp4">
-      <source src="static/components/video-banner/madagascar3.mp4" type="video/mp4" />
-      {/*<source src="static/components/video-banner/madagascar3.webm" type="video/webm" />*/}
-      {/*<source src="static/components/video-banner/madagascar3.ogv" type="video/ogg" />*/}
-    </video>
-    <div className="overlay">
-      <Title color="#fff">
-        Innovate faster. Better. Together.
-      </Title>
-      <div className="subtitle">
-        Collaborate with our community to bring your tech ideas to life.
-      </div>
-      <Button>
-        Book a tour
-      </Button>
-    </div>
+function BookATourBanner() {
+  return <div className="BookATourBanner">
+    <Title color="#fff">
+      "The Hague Tech is a place for everyone. Book a tour with me and find out yourself."
+    </Title>
+    <SmallCapsTitle>
+      Olga Wilders | Community Manager
+    </SmallCapsTitle>
+    <br /><br />
+    <Button>
+      Book a tour
+    </Button>
     <style jsx>{`
-      .VideoBanner {
+      .BookATourBanner {
+        background: #000 center left no-repeat;
+        background-size: cover;
         position: relative;
         color: #fff;
-        width: 100%;
-        height: 100%;
+        padding: 2rem 24px;
       }
       .video {
         width: 100%;
@@ -88,4 +84,4 @@ function VideoBanner() {
   </div>
 }
 
-export default VideoBanner;
+export default BookATourBanner;

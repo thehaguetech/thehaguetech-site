@@ -2,7 +2,7 @@
 
 ## First time use
 
-    git clone ...
+    git clone git@github.com:bartwr/thehaguetech-site.git
     cd thehaguetech-site
     npm install
 
@@ -34,3 +34,16 @@ Hooray! Emoji intentions in front of your commit message.
 
 - [bartwr](https://github.com/bartwr/) (Code)
 - Hans (Graphic Design)
+
+## Configuring Netlify
+
+- Create a new site at Netlify
+- As build command, use `npm run deploy`
+- As publish directory, use `out`
+
+That's it.
+
+## NOTES on Design
+
+- 12px grid horizontally
+-  8px grid vertically

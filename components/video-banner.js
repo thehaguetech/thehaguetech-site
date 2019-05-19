@@ -18,9 +18,11 @@ function VideoBanner() {
       <div className="subtitle">
         Collaborate with our community to bring your tech ideas to life.
       </div>
-      <Button>
-        Book a tour
-      </Button>
+      <div className="button-wrapper">
+        <Button>
+          Book a tour
+        </Button>
+      </div>
     </div>
     <style jsx>{`
       .VideoBanner {
@@ -53,19 +55,8 @@ function VideoBanner() {
       }
       @media (min-width: 480px) {
         .overlay {
-          padding: 0 20%;
-          font-size: 2.1em;
-        }
-      }
-      @media (min-width: 640px) {
-        .overlay {
-          padding: 0 15%;
-          font-size: 3em;
-        }
-      }
-      @media (min-width: 720px) {
-        .overlay {
-          font-size: 4em;
+          justify-content: center;
+          padding-top: 102px 10% 0 10%;
         }
       }
       .subtitle {
@@ -75,14 +66,10 @@ function VideoBanner() {
         font-weight: 500;
         font-size: 0.4em;
         line-height: 1.5em;
-        margin: 0.7em 0;
         padding: 0 10%;
       }
-      @media (min-width: 720px) {
-        .subtitle {
-          font-size: 0.34375em;
-          line-height: 2em;
-        }
+      .button-wrapper {
+        margin-top: 1rem;
       }
     `}</style>
   </div>

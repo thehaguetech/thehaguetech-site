@@ -7,7 +7,7 @@ class IntroText extends Component {
       <style jsx>{`
         .IntroText {
           margin: 3rem auto;
-          width: 649px;
+          width: 32rem;
           max-width: 100%;
           color: #0F2247;
           font-family: "Maison Neue", sans-serif;

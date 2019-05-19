@@ -7,78 +7,47 @@ const SmallCapsTitle = dynamic(() => import('../components/small-caps-title.js')
 
 function BookATourBanner() {
   return <div className="BookATourBanner">
-    <Title color="#fff">
-      "The Hague Tech is a place for everyone. Book a tour with me and find out yourself."
-    </Title>
-    <SmallCapsTitle>
-      Olga Wilders | Community Manager
-    </SmallCapsTitle>
-    <br /><br />
-    <Button>
-      Book a tour
-    </Button>
+    <div className="placeholder">
+      &nbsp;
+    </div>
+    <div className="text-wrapper">
+      <Title color="#fff">
+        "The Hague Tech is a place for everyone. Book a tour with me and find out yourself."
+      </Title>
+      <SmallCapsTitle>
+        Olga Wilders | Community Manager
+      </SmallCapsTitle>
+      <br /><br />
+      <Button>
+        Book a tour
+      </Button>
+    </div>
     <style jsx>{`
       .BookATourBanner {
         background: #000 center left no-repeat;
+        background-image: url('/static/components/book-a-tour-banner/olga.jpg');
         background-size: cover;
         position: relative;
         color: #fff;
         padding: 2rem 24px;
-      }
-      .video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        min-height: 100vh;
-      }
-      .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        padding: 71px 10% 0 10%;
         display: flex;
         justify-content: space-around;
-        flex-direction: column;
-        background: rgba(0,0,0,0.4);
-        text-align: center;
-        font-size: 3rem;
+        margin-bottom: 1rem;
       }
       @media (min-width: 480px) {
-        .overlay {
-          padding: 0 20%;
-          font-size: 2.1em;
+        .BookATourBanner {
+          margin-bottom: 0;
+          min-height: 821px;
         }
       }
-      @media (min-width: 640px) {
-        .overlay {
-          padding: 0 15%;
-          font-size: 3em;
-        }
+      .placeholder {
+        flex: 6;
       }
-      @media (min-width: 720px) {
-        .overlay {
-          font-size: 4em;
-        }
-      }
-      .subtitle {
-        min-height: 26px;
-        color: #FFFFFF;
-        font-family: "Maison Neue", sans-serif;
-        font-weight: 500;
-        font-size: 0.4em;
-        line-height: 1.5em;
-        margin: 0.7em 0;
-        padding: 0 10%;
-      }
-      @media (min-width: 720px) {
-        .subtitle {
-          font-size: 0.34375em;
-          line-height: 2em;
-        }
+      .text-wrapper {
+        flex: 4;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
       }
     `}</style>
   </div>

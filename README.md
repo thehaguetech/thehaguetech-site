@@ -30,6 +30,8 @@ From now, always git commit from your CLI. In example:
 
 Hooray! Emoji intentions in front of your commit message.
 
+_Inspired by [OpenBook](https://github.com/OpenbookOrg/openbook-app#git-commit-message-conventions)._
+
 ## Contributors
 
 - [bartwr](https://github.com/bartwr/) (Code)

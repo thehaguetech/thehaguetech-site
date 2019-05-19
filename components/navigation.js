@@ -1,8 +1,3 @@
-import dynamic from 'next/dynamic';
-
-// Load components
-// const Navigation = dynamic(() => import('../components/navigation'));
-
 function Navigation() {
   return <div className="Navigation">
     <div>
@@ -39,7 +34,7 @@ function Navigation() {
       }
       @media (min-width: 480px) {
         .Navigation {
-          padding: 30px 56px;
+          padding: 24px 32px;
         }
       }
       .logo {

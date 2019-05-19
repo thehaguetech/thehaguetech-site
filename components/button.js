@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import Link from 'next/link';
 
 class Button extends Component {
   render() {
     return <div>
-      <a href="#" className="Button">
-        {this.props.children}
-      </a>
+      <Link href={this.props.buttonLink || 'https://www.bartroorda.nl'}>
+        <a className="Button" style={this.props.style}>
+          {this.props.children}
+        </a>
+      </Link>
       <style jsx>{`
         .Button {
           display: inline-block;

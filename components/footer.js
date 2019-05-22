@@ -24,13 +24,19 @@ class Footer extends Component {
       <style jsx>{`
         .Footer {
           padding: 3rem 1rem;
-          background-color: #071124;
+          background-color: #000;
           color: #fff;
           font-size: 1rem;
         }
+        .flex {
+          display: block;
+        }
+        .social-icons {
+          justify-content: space-between;
+        }
         @media(min-width: 480px) {
           .Footer {
-            background-color: #000000;
+            background-color: #000;
             padding: 1rem 1rem;
           }
           .flex {
@@ -47,17 +53,8 @@ class Footer extends Component {
           }
         }
         .social-icons {
-          justify-content: space-around;
           display: flex;
           max-width: 8rem;
-        }
-        @media(min-width: 480px) {
-          .footer-nav {
-            display: flex;
-            justify-content: space-around;
-            padding: 0 10%;
-            margin: 0 auto;
-          }
         }
         nav a {
           font-family: "Maison Neue", sans-serif;
@@ -66,10 +63,21 @@ class Footer extends Component {
           color: #fff;
           margin: 2rem 0;
         }
-        .max-width {
-          margin: 0 auto;
-          width: 80%;
-          max-width: 100%;
+        @media(min-width: 480px) {
+          .footer-nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 0 10%;
+            margin: 0 auto;
+          }
+          .social-icons {
+            justify-content: space-around;
+          }
+          .max-width {
+            margin: 0 auto;
+            width: 80%;
+            max-width: 100%;
+          }
         }
       `}</style>
     </div>

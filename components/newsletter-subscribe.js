@@ -51,7 +51,11 @@ class NewsletterSubscribe extends Component {
           }
         }
         .logo-wrapper {
+          width: 7rem;
           margin: 3rem 0;
+        }
+        .flex {
+          display: block;
         }
         @media(min-width: 480px) {
           .max-width {
@@ -63,6 +67,7 @@ class NewsletterSubscribe extends Component {
             justify-content: space-between;
           }
           .logo-wrapper {
+            width: auto;
             margin: 0 120px 0 0;
           }
         }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 
 // Load components
 const Logo = dynamic(() => import('../components/logo.js'));
@@ -14,11 +15,19 @@ class Navigation extends Component {
   }
   render() {
     return <div className={'Navigation' + (this.state.showNav ? ' is-active' : '')}>
-      <Logo />
+      <Link href="/index">
+        <div>
+          <Logo />
+        </div>
+      </Link>
       <nav className="main-nav">
         <ul>
           <li>
-            <a>How</a>
+            <Link href="/events">
+              <a>
+                How
+              </a>
+            </Link>
             <nav>
               <ul>
                 <li className="icon-international-business">
@@ -40,13 +49,19 @@ class Navigation extends Component {
             </nav>
           </li>
           <li>
-            <a>What</a>
+            <Link href="/">
+              <a>What</a>
+            </Link>
           </li>
           <li>
-            <a>Act</a>
+            <Link href="/">
+              <a>Act</a>
+            </Link>
           </li>
           <li>
-            <a>Contact</a>
+            <Link href="/">
+              <a>Contact</a>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -82,6 +97,7 @@ class Navigation extends Component {
 
         a {
           cursor: pointer;
+          text-decoration: none;
         }
 
         .logo {

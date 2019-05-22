@@ -103,6 +103,12 @@ function App() {
       img {
         max-width: 100%;
       }
+      .flex {
+        display: flex;
+        justify-content: space-between;
+      }
+      .flex-1 { flex: 1 } 
+      .flex-column { flex-direction: column; }
       /* Noe Display */
       @font-face {
           font-family: 'Noe Display';

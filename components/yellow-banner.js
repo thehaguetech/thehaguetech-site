@@ -15,7 +15,8 @@ class YellowBanner extends Component {
         <Button style={{
           marginTop: '36px',
           background: '#071124',
-          color: '#fff'
+          borderColor: '#071124',
+          color: '#fff',
         }}>
           {this.props.buttonText}
         </Button>
@@ -34,9 +35,6 @@ class YellowBanner extends Component {
           width: 36rem;
           max-width: 100%;
           padding: 0 1rem;
-        }
-        .button {
-          background: #f00;
         }
       `}</style>
     </div>

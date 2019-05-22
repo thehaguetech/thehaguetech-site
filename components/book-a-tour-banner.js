@@ -42,8 +42,8 @@ function BookATourBanner() {
           margin-bottom: 0;
           min-height: 821px;
 
-          background-size: cover%;
-          background-position: auto auto%;
+          background-size: cover;
+          background-position: unset;
         }
       }
       .placeholder {

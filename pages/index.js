@@ -11,6 +11,7 @@ const TextAndImage = dynamic(() => import('../components/text-and-image.js'));
 const BookATourBanner = dynamic(() => import('../components/book-a-tour-banner.js'));
 const YellowBanner = dynamic(() => import('../components/yellow-banner.js'));
 const Footer = dynamic(() => import('../components/footer.js'));
+const NewsletterSubscribe = dynamic(() => import('../components/newsletter-subscribe.js'));
 
 // Define Carousel slides
 const slides = [
@@ -83,6 +84,7 @@ function App() {
       buttonText="book a tour"
       buttonLink="https://www.bartroorda.nl"
       />
+    <NewsletterSubscribe />
     <Footer />
     <style jsx global>{`
       * {

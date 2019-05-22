@@ -54,10 +54,10 @@ class TextAndImage extends Component {
           display: block;
         }
         .text-wrapper {
-          padding: 2rem 2rem 6rem;
+          padding: 2rem 1rem 6rem;
         }
         .text {
-          margin: 3rem 0;
+          margin: 2rem 0;
         }
         /* On desktop: show full size image */
         @media (min-width: 480px) {

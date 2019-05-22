@@ -45,7 +45,7 @@ function VideoBanner() {
         width: 100%;
         height: 100%;
         overflow: hidden;
-        padding: 71px 10% 0 10%;
+        padding: calc(112px + 1rem) 10% 1rem 10%;
         display: flex;
         justify-content: space-around;
         flex-direction: column;

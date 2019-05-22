@@ -6,7 +6,7 @@ class IntroText extends Component {
       {this.props.children}
       <style jsx>{`
         .IntroText {
-          margin: 3rem auto;
+          margin: 4rem auto;
           width: 32rem;
           max-width: 100%;
           color: #0F2247;

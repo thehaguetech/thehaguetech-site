@@ -14,9 +14,11 @@ function BookATourBanner() {
       <Title color="#fff">
         "The Hague Tech is a place for everyone. Book a tour with me and find out yourself."
       </Title>
-      <SmallCapsTitle>
-        Olga Wilders | Community Manager
-      </SmallCapsTitle>
+      <div style={{ margin: '1rem 0' }}>
+        <SmallCapsTitle>
+          Olga Wielders | Community Manager
+        </SmallCapsTitle>
+      </div>
       <br /><br />
       <Button>
         Book a tour
@@ -26,18 +28,22 @@ function BookATourBanner() {
       .BookATourBanner {
         background: #000 center left no-repeat;
         background-image: url('/static/components/book-a-tour-banner/olga.jpg');
-        background-size: cover;
+        background-size: auto 100%;
+        background-position: -270px 50%;
         position: relative;
         color: #fff;
-        padding: 2rem 24px;
+        padding: 3rem 1rem;
         display: flex;
         justify-content: space-around;
-        margin-bottom: 1rem;
+        margin-bottom: 3rem;
       }
       @media (min-width: 480px) {
         .BookATourBanner {
           margin-bottom: 0;
           min-height: 821px;
+
+          background-size: cover%;
+          background-position: auto auto%;
         }
       }
       .placeholder {

@@ -3,37 +3,36 @@ import React, { Component } from 'react';
 
 // Load components
 const Title = dynamic(() => import('./title.js'));
+const SmallCapsTitle = dynamic(() => import('./small-caps-title.js'));
 const Button = dynamic(() => import('./button.js'));
 
-class YellowBanner extends Component {
+class PageHeader extends Component {
   render() {
-    return <div className="YellowBanner">
+    return <div className="PageHeader">
       <div className="max-width">
-        <Title size="large">
+        <SmallCapsTitle>
+          {this.props.smallCapsTitle}
+        </SmallCapsTitle>
+        <Title color="#fff">
           {this.props.title}
         </Title>
-        <Button style={{
-          marginTop: '36px',
-          background: '#071124',
-          color: '#fff'
-        }}>
-          {this.props.buttonText}
-        </Button>
       </div>
       <style jsx>{`
-        .YellowBanner {
-          text-align: left;
-          background-color: #fff000;
-          min-height: 624px;
+        .PageHeader {
+          text-align: center;
+          background-color: #666;
+          min-height: 36rem;
           display: flex;
+          padding-top: 10rem;
           justify-content: center;
           flex-direction: column;
+          color: #fff;
         }
         .max-width {
           margin: 0 auto;
           width: 36rem;
           max-width: 100%;
-          padding: 0 1rem;
+          padding: 0 3rem;
         }
         .button {
           background: #f00;
@@ -43,4 +42,4 @@ class YellowBanner extends Component {
   }
 }
 
-export default YellowBanner;
+export default PageHeader;

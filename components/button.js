@@ -15,7 +15,7 @@ class Button extends Component {
           min-width: 164px;
           max-width: 100%;
           line-height: 56px;
-          background-color: #FEFF3E;
+          background-color: #feef00;
           box-shadow: 0 2px 6px 0 rgba(0,0,0,0.25);
           cursor: pointer;
 

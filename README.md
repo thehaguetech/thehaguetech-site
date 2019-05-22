@@ -48,4 +48,4 @@ That's it.
 ## NOTES on Design
 
 - 12px grid horizontally
--  8px grid vertically
+-  8px grid vertically (1rem - 8px)

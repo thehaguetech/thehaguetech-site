@@ -1,8 +1,11 @@
+import dynamic from 'next/dynamic';
+
+// Load components
+const Logo = dynamic(() => import('../components/logo.js'));
+
 function Navigation() {
   return <div className="Navigation">
-    <div>
-      <img src="/static/components/navigation/tht-logo.svg" className="logo" />
-    </div>
+    <Logo />
     <nav>
       <ul>
         <li>
@@ -26,7 +29,7 @@ function Navigation() {
         left: 0;
         width: 100%;
         background: rgba(255, 255, 255, 0.95);
-        padding: 8px 24px;
+        padding: 1rem 1rem;
 
         display: flex;
         justify-content: space-between;
@@ -38,13 +41,13 @@ function Navigation() {
         }
       }
       .logo {
-        width: 50px;
-        height: 50px;
+        width: 5rem;
+        height: 5rem;
         display: block;
       }
       nav {
         display: none;
-        margin-top: 34px;
+        margin-top: 22px;
       }
       nav ul {
         display: flex;

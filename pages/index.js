@@ -15,7 +15,26 @@ const NewsletterSubscribe = dynamic(() => import('../components/newsletter-subsc
 
 // Define Carousel slides
 const slides = [
-  {title: 'international business', image: ''}
+  {
+    title:'international business',
+    image: 'https://assets.materialup.com/uploads/30080ad4-97ee-47f7-a98a-c0d2e8d704b2/preview'
+  },
+  {
+    title:'co-creation',
+    image: 'https://assets.materialup.com/uploads/30080ad4-97ee-47f7-a98a-c0d2e8d704b2/preview'
+  },
+  {
+    title:'community',
+    image: 'https://assets.materialup.com/uploads/30080ad4-97ee-47f7-a98a-c0d2e8d704b2/preview'
+  },
+  {
+    title:'events & labs',
+    image: 'https://assets.materialup.com/uploads/30080ad4-97ee-47f7-a98a-c0d2e8d704b2/preview'
+  },
+  {
+    title:'co-working',
+    image: 'https://assets.materialup.com/uploads/30080ad4-97ee-47f7-a98a-c0d2e8d704b2/preview'
+  }
 ]
 
 function App() {

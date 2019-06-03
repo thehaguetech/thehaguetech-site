@@ -16,7 +16,7 @@ class Navigation extends Component {
   render() {
     return <div className={'Navigation' + (this.state.showNav ? ' is-active' : '')}>
       <Link href="/index">
-        <div>
+        <div style={{cursor: 'pointer'}}>
           <Logo />
         </div>
       </Link>

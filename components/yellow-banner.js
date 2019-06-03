@@ -24,7 +24,8 @@ class YellowBanner extends Component {
       <style jsx>{`
         .YellowBanner {
           text-align: left;
-          background-color: #fff000;
+          background: #fff000 url('/static/components/yellow-banner/yellow-background-image.jpg') center top no-repeat;
+          background-size: cover;
           min-height: 624px;
           display: flex;
           justify-content: center;

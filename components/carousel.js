@@ -95,7 +95,8 @@ class Carousel extends Component {
           <Slide
             key={idx}
             data={data} />
-          , this.props.slides)}
+          , this.props.slides)
+        }
         <div className="Carousel-nav">
           {mapIndexed((d, idx) =>
             <NavItem
@@ -104,7 +105,8 @@ class Carousel extends Component {
               isActive={this.state.activeSlide == idx}
               toSlide={this.toSlide.bind(this)}
               />
-          , this.props.slides)}
+            , this.props.slides)
+          }
         </div>
         <style jsx>{`
           .Carousel {

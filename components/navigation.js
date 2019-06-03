@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Router from 'next/router'
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import $ from 'jquery';
@@ -15,6 +16,10 @@ class Navigation extends Component {
     }
 
     this.TO_interval;
+
+    Router.events.on('routeChangeComplete', (url) => {
+      $('body').css('overflow-y', 'unset')
+    });
   }
   componentDidMount() {
     this.autoHideNav();
@@ -52,6 +57,11 @@ class Navigation extends Component {
       function hasScrolled() {
         var st = $(window).scrollTop();
 
+        // Don't hide if menu is active
+        if($('.Navigation').hasClass('is-active')) {
+          return false;
+        }
+
         // If current position > last position AND scrolled past navbar...
         if (st > lastScrollTop && st > navbarHeight){
           // Scroll Down
@@ -65,26 +75,33 @@ class Navigation extends Component {
     })
   }
   clickToggleButton() {
-    $('body').css('overflow-y', this.state.showNav ? 'unset' : 'hidden')
+    if(window.innerWidth < 780) {
+      $('body').css('overflow-y', this.state.showNav ? 'unset' : 'hidden')
+    }
     this.setState({
       showNav: ! this.state.showNav
     })
   }
+  toggleDesktopNav() {
+    // Only work on desktop
+    if(window.innerWidth < 780) {
+      return;
+    }
+    this.clickToggleButton(); 
+  }
   render() {
     return <header className={'Navigation' + (this.state.showNav ? ' is-active' : '')}>
       <Link href="/index">
-        <div style={{cursor: 'pointer'}}>
+        <div style={{cursor: 'pointer', display: 'inline-block'}}>
           <Logo />
         </div>
       </Link>
       <nav className="main-nav">
         <ul>
           <li>
-            <Link href="/events">
-              <a>
-                How
-              </a>
-            </Link>
+            <a onClick={() => this.toggleDesktopNav()}>
+              How
+            </a>
             <nav>
               <ul>
                 <li className="icon icon-international-business">
@@ -97,7 +114,9 @@ class Navigation extends Component {
                   <a>Community</a>
                 </li>
                 <li className="icon icon-events">
-                  <a>Events & Labs</a>
+                  <Link href="/events">
+                    <a>Events & Labs</a>
+                  </Link>
                 </li>
                 <li className="icon icon-coworking">
                   <a>Co-working</a>
@@ -106,19 +125,19 @@ class Navigation extends Component {
             </nav>
           </li>
           <li>
-            <Link href="/">
-              <a>What</a>
-            </Link>
+            <a>
+              What
+            </a>
           </li>
           <li>
-            <Link href="/">
-              <a>Act</a>
-            </Link>
+            <a>
+              Act
+            </a>
           </li>
           <li>
-            <Link href="/">
-              <a>Contact</a>
-            </Link>
+            <a>
+              Contact
+            </a>
           </li>
         </ul>
       </nav>
@@ -207,6 +226,7 @@ class Navigation extends Component {
           ul {
             width: auto;
             height: auto;
+            min-height: auto;
           }
         }
         li {
@@ -239,6 +259,7 @@ class Navigation extends Component {
         @media(min-width: 780px) {
           nav a {
             margin-bottom: 0;
+            text-align: center;
           }
         }
 
@@ -247,9 +268,14 @@ class Navigation extends Component {
           left: -1rem;
           width: 100vw;
         }
-
         @media(min-width: 780px) {
           nav > ul > li {
+            left: 0;
+          }
+        }
+
+        @media(min-width: 780px) {
+          header > nav > ul > li {
             position: static;
             left: 0;
             width: auto;
@@ -259,6 +285,7 @@ class Navigation extends Component {
             flex-direction: column;
             top: 10px;
             margin: 0 1rem;
+            height: 71px;
           }
         }
 
@@ -298,7 +325,6 @@ class Navigation extends Component {
         .is-active .toggle-nav {
           font-size: 3rem;
         }
-
         @media(min-width: 780px) {
           .toggle-nav {
             display: none;
@@ -310,12 +336,32 @@ class Navigation extends Component {
             display: flex;
             justify-content: space-between;
           }
+          ul ul {
+            border-left: none;
+            display: block;
+          }
           nav nav {
             display: none;
             position: absolute;
             left: 0;
             top: 4rem;
             padding-left: 0;
+          }
+          .is-active {
+            height: auto;
+            min-height: 400px;
+            display: flex;
+          }
+          .is-active nav nav {
+            display: flex;
+          }
+          nav nav li {
+            margin: 0.5rem 0;
+          }
+          .is-active nav nav a {
+            white-space: nowrap;
+            text-align: left;
+            display: inline-block;
           }
         }
 
@@ -324,6 +370,7 @@ class Navigation extends Component {
           background-size: 40px;
           padding-left: calc(40px + 1rem);
         }
+
       `}</style>
     </header>
   }

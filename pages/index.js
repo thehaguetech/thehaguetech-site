@@ -116,6 +116,10 @@ function App() {
         height: 100%;
         min-height: 100%;
       }
+      html {
+        overflow-x: hidden;
+        overflow: auto;
+      }
       body {
         font-size: 8px;
       }

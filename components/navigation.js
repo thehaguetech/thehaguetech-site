@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import $ from 'jquery';
 
 // Load components
 const Logo = dynamic(() => import('../components/logo.js'));
@@ -12,9 +13,65 @@ class Navigation extends Component {
     this.state = {
       showNav: false
     }
+
+    this.TO_interval;
+  }
+  componentDidMount() {
+    this.autoHideNav();
+  }
+  componentUnMount() {
+    clearTimeout(this.TO_interval);
+  }
+  autoHideNav() {
+    /**
+     * Header scroll
+     * 
+     * https://medium.com/@mariusc23/hide-header-on-scroll-down-show-on-scroll-up-67bbaae9a78c
+     */
+    var self = this;
+    $(function() {
+
+      var didScroll;
+      var lastScrollTop = 0;
+      var delta = 5;
+      var navbarHeight = $('.Navigation').outerHeight();
+
+      // on scroll, let the interval function know the user has scrolled
+      $(window).scroll(function(event){
+        didScroll = true;
+      });
+
+      // run hasScrolled() and reset didScroll status
+      self.TO_interval = setInterval(function() {
+        if (didScroll) {
+          hasScrolled();
+          didScroll = false;
+        }
+      }, 250);
+
+      function hasScrolled() {
+        var st = $(window).scrollTop();
+
+        // If current position > last position AND scrolled past navbar...
+        if (st > lastScrollTop && st > navbarHeight){
+          // Scroll Down
+          $('.Navigation').removeClass('nav-down').addClass('nav-up');
+        } else {
+          // Scroll Up
+          $('.Navigation').removeClass('nav-up').addClass('nav-down');
+        }
+        lastScrollTop = st;
+      }
+    })
+  }
+  clickToggleButton() {
+    $('body').css('overflow-y', this.state.showNav ? 'unset' : 'hidden')
+    this.setState({
+      showNav: ! this.state.showNav
+    })
   }
   render() {
-    return <div className={'Navigation' + (this.state.showNav ? ' is-active' : '')}>
+    return <header className={'Navigation' + (this.state.showNav ? ' is-active' : '')}>
       <Link href="/index">
         <div style={{cursor: 'pointer'}}>
           <Logo />
@@ -30,19 +87,19 @@ class Navigation extends Component {
             </Link>
             <nav>
               <ul>
-                <li className="icon-international-business">
+                <li className="icon icon-international-business">
                   <a>International Business</a>
                 </li>
-                <li className="icon-cocreation">
+                <li className="icon icon-cocreation">
                   <a>Co-creation</a>
                 </li>
-                <li className="icon-community">
+                <li className="icon icon-community">
                   <a>Community</a>
                 </li>
-                <li className="icon-events">
+                <li className="icon icon-events">
                   <a>Events & Labs</a>
                 </li>
-                <li className="icon-coworking">
+                <li className="icon icon-coworking">
                   <a>Co-working</a>
                 </li>
               </ul>
@@ -67,7 +124,7 @@ class Navigation extends Component {
       </nav>
       <div
         className="toggle-nav"
-        onClick={() => this.setState({ showNav: ! this.state.showNav })}
+        onClick={() => this.clickToggleButton()}
         >
         <span>
           {this.state.showNav
@@ -84,14 +141,26 @@ class Navigation extends Component {
           width: 100%;
           background: rgba(255, 255, 255, 0.95);
           padding: 1rem 1rem;
-
           z-index: 10;
         }
-        @media (min-width: 480px) {
+        .Navigation,
+        .Navigation .toggle-nav {
+          transition: top 0.2s ease-in-out;
+        }
+        .Navigation.nav-up,
+        .Navigation.nav-up .toggle-nav {
+          transition: top 0.4s ease-in-out;
+          top: -107px;
+        }
+        .Navigation.is-active,
+        .Navigation.is-active .toggle-nav {
+          transition: top 0s;
+        }
+        @media (min-width: 780px) {
           .Navigation {
             padding: 24px 32px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
           }
         }
 
@@ -114,10 +183,11 @@ class Navigation extends Component {
           padding-top: 3rem;
           margin-top: 22px;
         }
-        @media(min-width: 480px) {
+        @media(min-width: 780px) {
           .main-nav {
             display: flex;
             margin-top: 0;
+            margin-left: 264px;
             padding-top: 0;
           }
         }
@@ -131,9 +201,9 @@ class Navigation extends Component {
         }
         ul {
           width: 5rem;
-          height: 16rem;
+          min-height: 16rem;
         }
-        @media(min-width: 480px) {
+        @media(min-width: 780px) {
           ul {
             width: auto;
             height: auto;
@@ -149,6 +219,11 @@ class Navigation extends Component {
           width: auto;
           height: auto;
         }
+        .main-nav > ul > li {
+          width: 5rem;
+          position: relative;
+          z-index: 1;
+        } 
         nav a {
           line-height: 44px;
           color: #0F2247;
@@ -161,7 +236,7 @@ class Navigation extends Component {
           padding: 0.8rem 1rem;
           margin-bottom: 1rem;
         }
-        @media(min-width: 480px) {
+        @media(min-width: 780px) {
           nav a {
             margin-bottom: 0;
           }
@@ -173,7 +248,7 @@ class Navigation extends Component {
           width: 100vw;
         }
 
-        @media(min-width: 480px) {
+        @media(min-width: 780px) {
           nav > ul > li {
             position: static;
             left: 0;
@@ -188,7 +263,8 @@ class Navigation extends Component {
         }
 
         nav a:hover,
-        nav a:focus {
+        nav a:focus,
+        nav a:active {
           background: #feef00;
         }
         nav nav {
@@ -196,6 +272,7 @@ class Navigation extends Component {
           top: 0;
           left: 0;
           padding-left: 100px;
+          z-index: -1;
         }
 
         /* Toggle Nav */
@@ -222,7 +299,7 @@ class Navigation extends Component {
           font-size: 3rem;
         }
 
-        @media(min-width: 480px) {
+        @media(min-width: 780px) {
           .toggle-nav {
             display: none;
           }
@@ -241,8 +318,14 @@ class Navigation extends Component {
             padding-left: 0;
           }
         }
+
+        .Navigation .icon {
+          background: 1rem 50% no-repeat url('https://assets.materialup.com/uploads/30080ad4-97ee-47f7-a98a-c0d2e8d704b2/preview');
+          background-size: 40px;
+          padding-left: calc(40px + 1rem);
+        }
       `}</style>
-    </div>
+    </header>
   }
 }
 

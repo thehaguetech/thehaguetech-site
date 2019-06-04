@@ -7,6 +7,7 @@ const SmallCapsTitle = dynamic(() => import('../components/small-caps-title.js')
 
 function BookATourBanner() {
   return <div className="BookATourBanner">
+    <div className="black-overlay"></div>
     <div className="placeholder">
       &nbsp;
     </div>
@@ -29,13 +30,21 @@ function BookATourBanner() {
         background: #000 center left no-repeat;
         background-image: url('/static/components/book-a-tour-banner/olga.jpg');
         background-size: auto 100%;
-        background-position: -270px 50%;
+        background-position: -198px 50%;
         position: relative;
         color: #fff;
         padding: 3rem 1rem;
         display: flex;
         justify-content: space-around;
         margin-bottom: 3rem;
+      }
+      .black-overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(81, 81, 81, 0.5);
       }
       @media (min-width: 480px) {
         .BookATourBanner {
@@ -50,6 +59,8 @@ function BookATourBanner() {
         flex: 6;
       }
       .text-wrapper {
+        z-index: 1;
+        position: relative;
         flex: 4;
         display: flex;
         justify-content: center;

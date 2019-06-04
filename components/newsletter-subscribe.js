@@ -12,14 +12,14 @@ class NewsletterSubscribe extends Component {
     return <div className="NewsletterSubscribe">
       <div className="flex max-width">
         <div className="logo-wrapper">
-          <Logo color="white" style={{width: '12rem'}} />
+          <Logo color="white" style={{width: '85px'}} />
         </div>
         <div>
           <Title color="white" style={{
-            fontSize: '1.5rem',
-            lineHeight: '2rem'
+            fontSize: '28px',
+            lineHeight: '32px'
           }}>
-            Subscribe to our community
+            Subscribe to our newsletter
           </Title>
           <div style={{padding: '1rem 0'}}>
             <Text color="white">
@@ -27,7 +27,7 @@ class NewsletterSubscribe extends Component {
             </Text>
           </div>
           <Button style={{
-            margin: '2rem 0 0 0',
+            margin: '1rem 0 0 0',
             textTransform: 'lowercase',
             lineHeight: '3.5rem',
             background: 'transparent',
@@ -52,7 +52,7 @@ class NewsletterSubscribe extends Component {
         }
         .logo-wrapper {
           width: 7rem;
-          margin: 3rem 0;
+          margin: 3rem 0 33px 0;
         }
         .flex {
           display: block;

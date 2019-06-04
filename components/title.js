@@ -30,17 +30,17 @@ class Title extends Component {
           color: #0F2247;
           font-family: "Noe Display",serif;
           font-weight: bold;
-          font-size: 36px;
-          line-height: 40px;
+          font-size: 28px;
+          line-height: 32px;
           margin: 0 0;
-          padding: 0 24px;
+          padding: 0 0;
         }
         .small {
-          font-size: 2rem;
-          line-height: 2.5rem;
+          font-size: 28px;
+          line-height: 32px;
         }
         .xsmall {
-          font-size: 2rem;
+          font-size: 13px;
           line-height: 2.5rem;
         }
       `}</style>

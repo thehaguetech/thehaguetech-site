@@ -9,9 +9,15 @@ class Footer extends Component {
     return <div className="Footer">
       <div className="max-width flex">
         <nav className="social-icons">
-          <a href="https://twitter.com/lifenautjoe/status/1126539431601672193" target="_blank" title="">fb</a>
-          <a href="https://www.twitter.com/The_Hague_Tech" target="_blank">twt</a>
-          <a href="https://www.linkedin.com/company/the-hague-tech/" target="_blank">lin</a>
+          <a href="https://twitter.com/lifenautjoe/status/1126539431601672193" target="_blank" title="">
+            <img src="/static/components/footer/facebook-icon.svg" alt="Facebook" />
+          </a>
+          <a href="https://www.twitter.com/The_Hague_Tech" target="_blank">
+            <img src="/static/components/footer/twitter-icon.svg" alt="Twitter" />
+          </a>
+          <a href="https://www.linkedin.com/company/the-hague-tech/" target="_blank">
+            <img src="/static/components/footer/linkedin-icon.svg" alt="LinkedIn" />
+          </a>
         </nav>
         <nav className="footer-nav">
           <a href="">Contact</a>
@@ -26,7 +32,8 @@ class Footer extends Component {
           padding: 3rem 1rem;
           background-color: #000;
           color: #fff;
-          font-size: 1rem;
+          font-size: 17px;
+          line-height: 48px;
         }
         .flex {
           display: block;
@@ -61,7 +68,7 @@ class Footer extends Component {
           display: block;
           text-decoration: none;
           color: #fff;
-          margin: 2rem 0;
+          margin: 0.5rem 0;
         }
         @media(min-width: 480px) {
           .footer-nav {

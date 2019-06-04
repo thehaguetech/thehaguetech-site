@@ -9,7 +9,10 @@ class YellowBanner extends Component {
   render() {
     return <div className="YellowBanner">
       <div className="max-width">
-        <Title size="large">
+        <Title size="large" style={{
+          fontSize: '36px',
+          lineHeight: '36px'
+        }}>
           {this.props.title}
         </Title>
         <Button style={{

@@ -10,7 +10,7 @@ class SmallCapsTitle extends Component {
           .SmallCapsTitle {
             font-family: "Maison Neue", sans-serif;
             text-transform: uppercase;
-            font-size: 14px;
+            font-size: 15px;
           }
         `}</style>
       </div>

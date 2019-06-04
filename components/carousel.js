@@ -161,7 +161,6 @@ class Slide extends Component {
         }
         .Slide-title {
           margin: 2rem auto;
-          max-width: 214px;
           text-align: center;
           color: #0F2247;
           font-family: "Maison Neue", sans-serif;

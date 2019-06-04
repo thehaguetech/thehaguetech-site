@@ -66,7 +66,7 @@ class Carousel extends Component {
         </div>
         <style jsx>{`
           .Carousel {
-            margin: 3rem 0;
+            margin: 2rem 0 4rem 0;
             color: #0F2247;
             font-family: "Maison Neue", sans-serif;
             font-size: 1.2rem;
@@ -156,19 +156,18 @@ class Slide extends Component {
       <style jsx>{`
         .Slide img {
           display: block;
-          width: 100px;
-          height: 100px;
+          height: 76px;
           margin: 0 auto;
         }
         .Slide-title {
           margin: 2rem auto;
-          max-width: 240px;
+          max-width: 214px;
           text-align: center;
           color: #0F2247;
           font-family: "Maison Neue", sans-serif;
-          font-size: 1.2rem;
+          font-size: 17px;
           font-weight: 500;
-          line-height: 2rem;
+          line-height: 22.4px;
           text-align: center;
           padding: 0 24px;
         }
@@ -196,12 +195,12 @@ class NavItem extends Component {
             height: 10px;
             border-radius: 10px;
             background-color: #fff;
-            border: solid 1px #0F2247;
+            border: solid 1px #1126a9;
             display: block;
-            margin: 0 6px;
+            margin: 0 4px;
           }
           .Carousel-nav-bullet.active {
-            background-color: #0F2247;
+            background-color: #1126a9;
           }
        `}</style>
       </div>

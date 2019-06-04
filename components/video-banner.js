@@ -15,13 +15,15 @@ function VideoBanner() {
       <Title color="#fff">
         Innovate faster. Better. Together.
       </Title>
-      <div className="subtitle">
-        Collaborate with our community to bring your tech ideas to life.
-      </div>
-      <div className="button-wrapper">
-        <Button>
-          Book a tour
-        </Button>
+      <div>
+        <div className="subtitle">
+          Collaborate with our community to bring your tech ideas to life.
+        </div>
+        <div className="button-wrapper">
+          <Button>
+            Book a tour
+          </Button>
+        </div>
       </div>
     </div>
     <style jsx>{`
@@ -47,7 +49,7 @@ function VideoBanner() {
         overflow: hidden;
         padding: calc(112px + 1rem) 10% 1rem 10%;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         flex-direction: column;
         background: rgba(0,0,0,0.4);
         text-align: center;
@@ -60,6 +62,7 @@ function VideoBanner() {
         }
       }
       .subtitle {
+        margin: 24px 0;
         min-height: 26px;
         color: #FFFFFF;
         font-family: "Maison Neue", sans-serif;

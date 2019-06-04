@@ -28,12 +28,12 @@ class Title extends Component {
       <style jsx>{`
         .Title {
           color: #0F2247;
-          font-family: "Noe Display", serif;
+          font-family: "Noe Display",serif;
           font-weight: bold;
-          font-size: 3rem;
-          line-height: 3rem;
-          text-shadow: 0 2px 17px 0 rgba(0,0,0,0.5);
+          font-size: 36px;
+          line-height: 40px;
           margin: 0 0;
+          padding: 0 24px;
         }
         .small {
           font-size: 2rem;

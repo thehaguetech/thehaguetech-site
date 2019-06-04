@@ -17,23 +17,23 @@ const NewsletterSubscribe = dynamic(() => import('../components/newsletter-subsc
 const slides = [
   {
     title:'international business',
-    image: 'https://assets.materialup.com/uploads/30080ad4-97ee-47f7-a98a-c0d2e8d704b2/preview'
+    image: '/static/components/carousel/tht-icon-business.svg'
   },
   {
     title:'co-creation',
-    image: 'https://assets.materialup.com/uploads/30080ad4-97ee-47f7-a98a-c0d2e8d704b2/preview'
+    image: '/static/components/carousel/tht-icon-cocreate.svg'
   },
   {
     title:'community',
-    image: 'https://assets.materialup.com/uploads/30080ad4-97ee-47f7-a98a-c0d2e8d704b2/preview'
+    image: '/static/components/carousel/tht-icon-community.svg'
   },
   {
     title:'events & labs',
-    image: 'https://assets.materialup.com/uploads/30080ad4-97ee-47f7-a98a-c0d2e8d704b2/preview'
+    image: '/static/components/carousel/tht-icon-events.svg'
   },
   {
     title:'co-working',
-    image: 'https://assets.materialup.com/uploads/30080ad4-97ee-47f7-a98a-c0d2e8d704b2/preview'
+    image: '/static/components/carousel/tht-icon-coworking.svg'
   }
 ]
 
@@ -55,7 +55,6 @@ function App() {
       </Title>
       <Carousel slides={slides} />
       <TextAndImage
-        key="1"
         image="/static/pages/index/international-business.jpg"
         category="international business"
         title="Set up your business in the innovative heart of The Netherlands"
@@ -64,7 +63,6 @@ function App() {
         buttonLink="https://www.bartroorda.nl"
         />
       <TextAndImage
-        key="2"
         image="/static/pages/index/cocreation.jpg"
         imagePosition="right"
         category="co-creation"
@@ -74,7 +72,6 @@ function App() {
         buttonLink="https://www.bartroorda.nl"
         />
       <TextAndImage
-        key="3"
         image="/static/pages/index/community.jpg"
         category="community"
         title="Join a vibrant and exciting community of doers"
@@ -85,7 +82,6 @@ function App() {
     </div>
     <BookATourBanner />
     <TextAndImage
-      key="4"
       image="/static/pages/index/meetings.jpg"
       imagePosition="right"
       category="meetings / events / labs"
@@ -95,7 +91,6 @@ function App() {
       buttonLink="https://www.bartroorda.nl"
       />
     <TextAndImage
-      key="5"
       image="/static/pages/index/coworking.jpg"
       category="co-working"
       title="Find your new workspace or office best fit for your needs"

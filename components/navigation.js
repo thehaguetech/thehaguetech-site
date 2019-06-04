@@ -145,12 +145,7 @@ class Navigation extends Component {
         className="toggle-nav"
         onClick={() => this.clickToggleButton()}
         >
-        <span>
-          {this.state.showNav
-            ? '×'
-            : '☰'
-          }
-        </span>
+        <span className={'icon-' + (this.state.showNav ? 'close' : 'hamburger')}></span>
       </div>
       <style jsx>{`
         .Navigation {
@@ -159,7 +154,7 @@ class Navigation extends Component {
           left: 0;
           width: 100%;
           background: rgba(255, 255, 255, 0.95);
-          padding: 1rem 1rem;
+          padding: 1rem 18px;
           z-index: 10;
         }
         .Navigation,
@@ -316,7 +311,19 @@ class Navigation extends Component {
           right: 1rem;
           height: 5rem;
           z-index: 1;
-          width: 30px;
+          width: 18px;
+        }
+        .icon-close,
+        .icon-hamburger {
+          width: 18px;
+          height: 18px;
+          display: block;
+          background: center center no-repeat;
+          background-size: contain;
+        }
+        .icon-hamburger {
+          background-size: 18px;
+          background-image: url(/static/components/navigation/hamburger.svg);
         }
         .is-active {
           display: block;

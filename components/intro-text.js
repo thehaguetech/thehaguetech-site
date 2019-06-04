@@ -6,14 +6,14 @@ class IntroText extends Component {
       {this.props.children}
       <style jsx>{`
         .IntroText {
-          margin: 4rem auto;
+          margin: 3rem auto 4rem auto;
           width: 32rem;
           max-width: 100%;
           color: #0F2247;
-          font-family: "Maison Neue", sans-serif;
-          font-size: 1.2rem;
+          font-family: "Maison Neue",sans-serif;
+          font-size: 17px;
           font-weight: 500;
-          line-height: 2rem;
+          line-height: 24px;
           text-align: center;
           padding: 0 24px;
         }

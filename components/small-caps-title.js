@@ -12,6 +12,12 @@ class SmallCapsTitle extends Component {
             text-transform: uppercase;
             font-size: 15px;
           }
+          @media(min-width: 480px) {
+            .SmallCapsTitle {
+              font-size: 15px;
+              line-height: 24px;
+            }
+          }
         `}</style>
       </div>
     )

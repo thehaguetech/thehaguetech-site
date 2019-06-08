@@ -6,11 +6,8 @@ const Button = dynamic(() => import('../components/button.js'));
 
 function VideoBanner() {
   return <div className="VideoBanner">
-    <video className="video" autoPlay loop muted poster="static/components/video-banner/madagascar3.jpg" src="static/components/video-banner/madagascar3.mp4">
-      <source src="static/components/video-banner/madagascar3.mp4" type="video/mp4" />
-      {/*<source src="static/components/video-banner/madagascar3.webm" type="video/webm" />*/}
-      {/*<source src="static/components/video-banner/madagascar3.ogv" type="video/ogg" />*/}
-    </video>
+    {/*<video className="video" autoPlay loop muted poster="static/components/video-banner/madagascar3.jpg" src="static/components/video-banner/madagascar3.mp4">*/}
+    <video className="video" autoPlay loop muted poster="static/components/video-banner/background.png"></video>
     <div className="overlay">
       <Title color="#fff">
         Innovate faster. Better. Together.
@@ -70,6 +67,15 @@ function VideoBanner() {
         font-size: 0.4em;
         line-height: 1.5em;
         padding: 0 10%;
+      }
+      @media(min-width: 480px) {
+        .Title {
+          text-shadow: 0 2px 17px rgba(0, 0, 0, 0.5);
+        }
+        .subtile {
+          font-size: 11px;
+          line-height: 28pxp;
+        }
       }
       .button-wrapper {
         margin-top: 1rem;

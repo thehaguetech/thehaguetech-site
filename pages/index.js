@@ -50,9 +50,11 @@ function App() {
       The Hague Tech is a hub with a diverse and forward thinking Community and a platform for innovation. Of course this is not all. Charles will write some more interesting stuff here.
     </IntroText>
     <div>
-      <Title align="center">
-        What we can offer you
-      </Title>
+      <div className="show-on-mobile-only">
+        <Title align="center">
+          What we can offer you
+        </Title>
+      </div>
       <Carousel slides={slides} />
       <TextAndImage
         image="/static/pages/index/international-business.jpg"
@@ -132,6 +134,8 @@ function App() {
       }
       .flex-1 { flex: 1 } 
       .flex-column { flex-direction: column; }
+      .show-on-mobile-only { display: block }
+      @media(min-width: 480px) { .show-on-mobile-only { display: none } }
       /* Noe Display */
       @font-face {
           font-family: 'Noe Display';

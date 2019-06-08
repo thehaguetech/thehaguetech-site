@@ -118,7 +118,12 @@ class Carousel extends Component {
             line-height: 2rem;
             text-align: center;
             padding: 0 24px;
-            max-width: 960px;
+            max-width: 1200px;
+          }
+          @media(min-width: 480px) {
+            .Carousel {
+              margin: 89px auto;
+            }
           }
           @media(min-width: 940px) {
             .Carousel {
@@ -173,6 +178,10 @@ class Slide extends Component {
         @media(min-width: 940px) {
           .Slide {
             flex: 1;
+          }
+          .Slide-title {
+            font-size: 24px;
+            line-height: 32px;
           }
         }
       `}</style>

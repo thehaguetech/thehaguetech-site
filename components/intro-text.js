@@ -17,6 +17,15 @@ class IntroText extends Component {
           text-align: center;
           padding: 0 24px;
         }
+        @media(min-width: 480px) {
+          .IntroText {
+            font-size: 24px;
+            line-height: 32px;
+            width: 649px;
+            margin-top: 64px;
+            margin-bottom: 176px;
+          }
+        }
       `}</style>
     </div>
   }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Router from 'next/router'
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import * as R from 'ramda';
 import $ from 'jquery';
 
 // Load components
@@ -82,63 +83,88 @@ class Navigation extends Component {
       showNav: ! this.state.showNav
     })
   }
-  toggleDesktopNav() {
+  clickPrimaryNavLink(e) {
+    // Give is-active class, but only if it didn't have it
+    if( $(e.target).closest('.primary-nav-item').hasClass('is-active') ) {
+      $('.primary-nav-item').removeClass('is-active');
+      this.setState({ showNav: false })
+    } else {
+      $('.primary-nav-item').removeClass('is-active');
+      $(e.target).closest('.primary-nav-item').addClass('is-active');
+      this.setState({ showNav: true })
+    }
+
     // Only work on desktop
     if(window.innerWidth < 780) {
       return;
     }
-    this.clickToggleButton(); 
   }
   render() {
+    let navigation = [
+      {
+        title: 'How',
+        items: [{
+          title: 'International Business',
+          href: '/events',
+          image: '/static/components/carousel/tht-icon-business.svg'
+        }, {
+          title: 'Co-creation',
+          href: '/events',
+          image: '/static/components/carousel/tht-icon-cocreate.svg'
+        }, {
+          title: 'Community',
+          href: '/events',
+          image: '/static/components/carousel/tht-icon-community.svg'
+        }, {
+          title: 'Events & Labs',
+          href: '/events',
+          image: '/static/components/carousel/tht-icon-events.svg'
+        }, {
+          title: 'Co-working',
+          href: '/events',
+          image: '/static/components/carousel/tht-icon-coworking.svg'
+        }]
+      },
+      {
+        title: 'What',
+        items: []
+      },
+      {
+        title: 'Act',
+        items: []
+      },
+      {
+        title: 'Contact',
+        items: []
+      },
+    ]
     return <header className={'Navigation' + (this.state.showNav ? ' is-active' : '')}>
       <Link href="/index">
-        <div style={{cursor: 'pointer', display: 'inline-block'}}>
+        <div style={{cursor: 'pointer'}}>
           <Logo />
         </div>
       </Link>
+      <div className="white-background only-on-desktop"></div>
       <nav className="main-nav">
         <ul>
-          <li>
-            <a onClick={() => this.toggleDesktopNav()}>
-              How
-            </a>
-            <nav>
-              <ul>
-                <li className="icon icon-international-business">
-                  <a>International Business</a>
-                </li>
-                <li className="icon icon-cocreation">
-                  <a>Co-creation</a>
-                </li>
-                <li className="icon icon-community">
-                  <a>Community</a>
-                </li>
-                <li className="icon icon-events">
-                  <Link href="/events">
-                    <a>Events & Labs</a>
-                  </Link>
-                </li>
-                <li className="icon icon-coworking">
-                  <a>Co-working</a>
-                </li>
-              </ul>
-            </nav>
-          </li>
-          <li>
-            <a>
-              What
-            </a>
-          </li>
-          <li>
-            <a>
-              Act
-            </a>
-          </li>
-          <li>
-            <a>
-              Contact
-            </a>
-          </li>
+          {R.map((item) => {
+            return <li key={item.title} className="primary-nav-item">
+              <a onClick={(e) => this.clickPrimaryNavLink(e)} className="primary-nav-link">
+                {item.title}
+              </a>
+              <nav className="secundary-nav">
+                <ul>
+                  {R.map((item) => {
+                    return <li key={item.title} className="icon" style={{backgroundImage: `url(${item.image})`}}>
+                      <Link href={item.href}>
+                        <a className="secundary-nav-link">{item.title}</a>
+                      </Link>
+                    </li>
+                  }, item.items)}
+                </ul>
+              </nav>
+            </li>
+          }, navigation)}
         </ul>
       </nav>
       <div
@@ -166,21 +192,16 @@ class Navigation extends Component {
           transition: top 0.4s ease-in-out;
           top: -107px;
         }
-        .Navigation.is-active,
-        .Navigation.is-active .toggle-nav {
+        .Navigationheader.is-active,
+        .Navigationheader.is-active .toggle-nav {
           transition: top 0s;
         }
         @media (min-width: 780px) {
           .Navigation {
-            padding: 24px 32px;
+            padding: 29px 56px;
             display: flex;
             justify-content: flex-start;
           }
-        }
-
-        a {
-          cursor: pointer;
-          text-decoration: none;
         }
 
         .logo {
@@ -196,16 +217,25 @@ class Navigation extends Component {
           display: none;
           padding-top: 3rem;
           margin-top: 22px;
+          width: 64px;
+          margin-left: -32px;
+        }
+        .secundary-nav {
+          position: static;
+          z-index: 1;
+        }
+        .main-nav > ul {
+          position: relative;
         }
         @media(min-width: 780px) {
           .main-nav {
             display: flex;
             margin-top: 0;
-            margin-left: 264px;
+            margin-left: 269px;
             padding-top: 0;
           }
         }
-        .is-active .main-nav {
+        header.is-active .main-nav {
           display: block;
         }
         ul, li {
@@ -214,18 +244,17 @@ class Navigation extends Component {
           margin: 0;
         }
         ul {
-          width: 5rem;
+          width: 7rem;
           min-height: 16rem;
         }
         @media(min-width: 780px) {
           ul {
-            width: auto;
+            width: 7rem;
             height: auto;
             min-height: auto;
           }
         }
         li {
-          position: relative;
           display: block;
         }
         ul ul {
@@ -234,43 +263,63 @@ class Navigation extends Component {
           width: auto;
           height: auto;
         }
-        .main-nav > ul > li {
-          width: 5rem;
-          position: relative;
+        .primary-nav-item {
           z-index: 1;
         } 
         nav a {
+          text-decoration: none;
           line-height: 44px;
           color: #0F2247;
           font-family: "Maison Neue", sans-serif;
-          font-size: 1rem;
+          font-size: 17px;
+          line-height: 22px;
           font-weight: 300;
-          line-height: 1rem;
-          display: block;
+          display: inline-block;
           position: relative;
-          padding: 0.8rem 1rem;
-          margin-bottom: 1rem;
+          margin-left: 12px;
+          padding: 10px 17px;
+          margin-bottom: 24px;
+          min-width: 84px;
+          cursor: pointer;
+        }
+        @media(min-width: 780px) {
+          nav a {
+            padding: 10px 8px
+          }
+          nav a.primary-nav-link {
+            padding: 10px 0;
+            min-width: 0;
+            border-bottom: solid transparent 9px;
+          }
+        }
+        nav nav a {
+          padding: 0.8rem 8px;
+          margin-left: 10px;
+          margin-right: 10px;
+          display: block;
         }
         @media(min-width: 780px) {
           nav a {
             margin-bottom: 0;
             text-align: center;
           }
+          nav nav a {
+            padding-top: 4px;
+            padding-bottom: 4px;
+          }
         }
 
-        nav > ul > li {
-          position: relative;
+        .primary-nav-item {
           left: -1rem;
-          width: 100vw;
         }
         @media(min-width: 780px) {
-          nav > ul > li {
+          .primary-nav-item {
             left: 0;
           }
         }
 
         @media(min-width: 780px) {
-          header > nav > ul > li {
+          .primary-nav-item {
             position: static;
             left: 0;
             width: auto;
@@ -286,15 +335,33 @@ class Navigation extends Component {
 
         nav a:hover,
         nav a:focus,
-        nav a:active {
+        nav a:active,
+        .primary-nav-item.is-active > a {
           background: #feef00;
         }
+        @media(min-width: 780px) {
+          nav .primary-nav-link:hover,
+          nav .primary-nav-link:focus,
+          nav .primary-nav-link:active,
+          nav .primary-nav-item.is-active > a {
+            background: transparent;
+            border-bottom: solid #feef00 9px;
+          }
+        }
+        nav {
+          width: calc(100vw - 20px);
+        }
         nav nav {
+          display: none;
+          width: calc(100vw - 2px);
           position: absolute;
           top: 0;
           left: 0;
-          padding-left: 100px;
+          padding-left: 113px;
           z-index: -1;
+        }
+        .primary-nav-item.is-active > nav {
+          display: flex;
         }
 
         /* Toggle Nav */
@@ -321,16 +388,18 @@ class Navigation extends Component {
           background: center center no-repeat;
           background-size: contain;
         }
+        .icon-close {
+          background-size: 18px;
+          background-image: url(/static/components/navigation/close.svg);
+        }
         .icon-hamburger {
           background-size: 18px;
           background-image: url(/static/components/navigation/hamburger.svg);
         }
-        .is-active {
+        header.is-active {
           display: block;
           height: 100vh;
-        }
-        .is-active .toggle-nav {
-          font-size: 3rem;
+          overflow-y: auto;
         }
         @media(min-width: 780px) {
           .toggle-nav {
@@ -348,24 +417,35 @@ class Navigation extends Component {
             display: block;
           }
           nav nav {
-            display: none;
+            width: unset;
             position: absolute;
             left: 0;
-            top: 4rem;
+            top: 7rem;
+            margin-left: 24px;
+            padding-left: 8px;
             padding-left: 0;
           }
-          .is-active {
+          header.is-active {
             height: auto;
-            min-height: 400px;
+            min-height: 524px;
             display: flex;
           }
-          .is-active nav nav {
-            display: flex;
+          header.is-active .white-background {
+            position: absolute;
+            height: 405px;
+            background: #fff;
+            width: 100%;
+            left: 0;
+            bottom: 0;
           }
           nav nav li {
-            margin: 0.5rem 0;
+            margin: 8px 0;
+            min-height: 50px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
           }
-          .is-active nav nav a {
+          header.is-active nav nav a {
             white-space: nowrap;
             text-align: left;
             display: inline-block;
@@ -373,9 +453,29 @@ class Navigation extends Component {
         }
 
         .Navigation .icon {
-          background: 1rem 50% no-repeat url('https://assets.materialup.com/uploads/30080ad4-97ee-47f7-a98a-c0d2e8d704b2/preview');
+          background: no-repeat url('https://assets.materialup.com/uploads/30080ad4-97ee-47f7-a98a-c0d2e8d704b2/preview');
           background-size: 40px;
           padding-left: calc(40px + 1rem);
+        }
+        @media(min-width: 480px) {
+          .Navigation .icon:first-child {
+            background-size: 34px;
+            background-position: 15px 50%;
+          }
+          .Navigation .icon {
+            background-size: 42px;
+            background-position: 12px 50%;
+          }
+        }
+
+        @media(min-width: 780px) {
+          .primary-nav-item {
+            margin-right: 48px;
+            margin-left: 48px;
+          }
+          .secundary-nav-link {
+            width: fit-content;
+          }
         }
 
       `}</style>

@@ -40,8 +40,10 @@ class TextAndImage extends Component {
           display: flex;
           justify-content: space-around;
           flex-wrap: wrap;
+          width: 1327px;
+          max-width: 100%;
+          margin: 0 auto;
         }
-        .image-wrapper,
         .text-wrapper {
           width: 100%;
         }
@@ -82,6 +84,10 @@ class TextAndImage extends Component {
           }
           .text-wrapper {
             padding: 5rem 3rem;
+          }
+          .text {
+            font-size: 19px;
+            line-height: 32px;
           }
         }
       `}</style>

@@ -43,6 +43,21 @@ class Title extends Component {
           font-size: 13px;
           line-height: 2.5rem;
         }
+        @media(min-width: 480px) {
+          .Title {
+            font-size: 64px;
+            line-height: 60px;
+            font-weight: 700;
+          }
+          .small {
+            font-size: 48px;
+            line-height: 54px;
+          }
+          .xsmall {
+            font-size: 17px;
+            line-height: 20px;
+          }
+        }
       `}</style>
     </div>
   }

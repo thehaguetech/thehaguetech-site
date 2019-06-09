@@ -8,7 +8,7 @@ class Title extends Component {
     // Set text size
     let size;
     if(this.props.size) {
-      size == this.props.size;
+      size = this.props.size;
     } else {
       size = (lengthOfTitle < 40 ? 'large' : 'small')
     }

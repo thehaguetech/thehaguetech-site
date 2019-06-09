@@ -8,7 +8,8 @@ const Button = dynamic(() => import('./button.js'));
 
 class PageHeader extends Component {
   render() {
-    return <div className="PageHeader">
+    return <div className="PageHeader" style={{backgroundImage: `url("${this.props.image}")`}}>
+      <div className="black-overlay" />
       <div className="max-width">
         <SmallCapsTitle>
           {this.props.smallCapsTitle}
@@ -27,12 +28,24 @@ class PageHeader extends Component {
           justify-content: center;
           flex-direction: column;
           color: #fff;
+          background: center center / cover no-repeat;
+          position: relative;
+          overflow: hidden;
+        }
+        .black-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.2);
         }
         .max-width {
           margin: 0 auto;
           width: 36rem;
           max-width: 100%;
           padding: 0 3rem;
+          position: relative;
         }
         .button {
           background: #f00;

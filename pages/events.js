@@ -22,14 +22,14 @@ function Events() {
     <Navigation />
     <div>
       <PageHeader
-        image=""
+        image="/static/pages/events/page-header.png"
         smallCapsTitle="events"
-        title="Here comes a nice text"
+        title="Join our events"
         />
       <IntroText>
         The Hague Tech is the premier home in The Hague for tech and business related events and meetups.
       </IntroText>
-      <Title align="center">
+      <Title align="center" size="small">
         Events at The Hague Tech
       </Title>
       <EventOverview />

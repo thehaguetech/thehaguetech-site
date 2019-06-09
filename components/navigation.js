@@ -105,15 +105,15 @@ class Navigation extends Component {
         title: 'How',
         items: [{
           title: 'International Business',
-          href: '/events',
+          href: '/international-business',
           image: '/static/components/carousel/tht-icon-business.svg'
         }, {
           title: 'Co-creation',
-          href: '/events',
+          href: '/co-creation',
           image: '/static/components/carousel/tht-icon-cocreate.svg'
         }, {
           title: 'Community',
-          href: '/events',
+          href: '/community',
           image: '/static/components/carousel/tht-icon-community.svg'
         }, {
           title: 'Events & Labs',
@@ -121,7 +121,7 @@ class Navigation extends Component {
           image: '/static/components/carousel/tht-icon-events.svg'
         }, {
           title: 'Co-working',
-          href: '/events',
+          href: '/coworking',
           image: '/static/components/carousel/tht-icon-coworking.svg'
         }]
       },
@@ -140,7 +140,7 @@ class Navigation extends Component {
     ]
     return <header className={'Navigation' + (this.state.showNav ? ' is-active' : '')}>
       <Link href="/index">
-        <div style={{cursor: 'pointer'}}>
+        <div style={{cursor: 'pointer', height: '72px', display: 'inline-block'}} title="Back to home">
           <Logo />
         </div>
       </Link>
@@ -196,7 +196,7 @@ class Navigation extends Component {
         .Navigationheader.is-active .toggle-nav {
           transition: top 0s;
         }
-        @media (min-width: 780px) {
+        @media (min-width: 980px) {
           .Navigation {
             padding: 29px 56px;
             display: flex;
@@ -227,7 +227,7 @@ class Navigation extends Component {
         .main-nav > ul {
           position: relative;
         }
-        @media(min-width: 780px) {
+        @media(min-width: 980px) {
           .main-nav {
             display: flex;
             margin-top: 0;
@@ -247,7 +247,7 @@ class Navigation extends Component {
           width: 7rem;
           min-height: 16rem;
         }
-        @media(min-width: 780px) {
+        @media(min-width: 980px) {
           ul {
             width: 7rem;
             height: auto;
@@ -282,7 +282,10 @@ class Navigation extends Component {
           min-width: 84px;
           cursor: pointer;
         }
-        @media(min-width: 780px) {
+        .primary-nav-link {
+          min-width: 96px;
+        }
+        @media(min-width: 980px) {
           nav a {
             padding: 10px 8px
           }
@@ -293,32 +296,31 @@ class Navigation extends Component {
           }
         }
         nav nav a {
-          padding: 0.8rem 8px;
+          padding: 10px 17px;
           margin-left: 10px;
           margin-right: 10px;
           display: block;
         }
-        @media(min-width: 780px) {
+        @media(min-width: 980px) {
           nav a {
             margin-bottom: 0;
             text-align: center;
           }
           nav nav a {
-            padding-top: 4px;
-            padding-bottom: 4px;
+            padding: 4px 8px;
           }
         }
 
         .primary-nav-item {
           left: -1rem;
         }
-        @media(min-width: 780px) {
+        @media(min-width: 980px) {
           .primary-nav-item {
             left: 0;
           }
         }
 
-        @media(min-width: 780px) {
+        @media(min-width: 980px) {
           .primary-nav-item {
             position: static;
             left: 0;
@@ -339,7 +341,7 @@ class Navigation extends Component {
         .primary-nav-item.is-active > a {
           background: #feef00;
         }
-        @media(min-width: 780px) {
+        @media(min-width: 980px) {
           nav .primary-nav-link:hover,
           nav .primary-nav-link:focus,
           nav .primary-nav-link:active,
@@ -357,7 +359,7 @@ class Navigation extends Component {
           position: absolute;
           top: 0;
           left: 0;
-          padding-left: 113px;
+          padding-left: 125px;
           z-index: -1;
         }
         .primary-nav-item.is-active > nav {
@@ -401,7 +403,7 @@ class Navigation extends Component {
           height: 100vh;
           overflow-y: auto;
         }
-        @media(min-width: 780px) {
+        @media(min-width: 980px) {
           .toggle-nav {
             display: none;
           }
@@ -468,7 +470,7 @@ class Navigation extends Component {
           }
         }
 
-        @media(min-width: 780px) {
+        @media(min-width: 980px) {
           .primary-nav-item {
             margin-right: 48px;
             margin-left: 48px;

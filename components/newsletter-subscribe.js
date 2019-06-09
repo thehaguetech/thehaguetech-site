@@ -12,7 +12,7 @@ class NewsletterSubscribe extends Component {
     return <div className="NewsletterSubscribe">
       <div className="flex max-width">
         <div className="logo-wrapper">
-          <Logo color="white" style={{width: '85px'}} />
+          <Logo color="white" />
         </div>
         <div>
           <Title color="white" style={{

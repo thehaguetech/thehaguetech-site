@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 class Button extends Component {
   render() {
-    return <div>
+    return <div hidden={this.props.hidden}>
       <Link href={this.props.buttonLink || 'https://www.bartroorda.nl'}>
         <a className="Button" style={this.props.style}>
           {this.props.children}

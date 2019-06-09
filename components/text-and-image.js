@@ -22,10 +22,11 @@ class TextAndImage extends Component {
         <Title>
           {this.props.title}
         </Title>
-        <div className="text">
-          {this.props.text}
-        </div>
-        <Button href={this.props.buttonLink || 'https://www.bartroorda.nl'}>
+        <div className="text" dangerouslySetInnerHTML={{__html: this.props.text}} />
+        <Button
+          href={this.props.buttonLink || 'https://www.bartroorda.nl'}
+          hidden={! this.props.buttonText }
+          >
           {this.props.buttonText || 'learn more'}
         </Button>
       </div>

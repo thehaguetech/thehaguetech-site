@@ -20,13 +20,14 @@ class EventOverview extends Component {
     })
   }
   async fetchEvents() {
-    const response = await fetch('/api/events')
+    const response = await fetch('https://thehaguetech-site.herokuapp.com/api/events')
     return await response.json()
   }
   formatEvents(events) {
     return R.map(R.prop('fields'), events)
   }
   render() {
+    console.log(this.state);
     return <div className="EventOverview">
       <nav className="filters">
         Filters
@@ -38,7 +39,10 @@ class EventOverview extends Component {
         }, Object.keys(this.state.events))}
       </div>
       <style jsx>{`
-        .EventOverview {
+        .EventOverview .events {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
         }
       `}</style>
     </div>

@@ -56,7 +56,7 @@ function displayEntries (contentTypes) {
   return Promise.all(contentTypes.map((contentType) => {
     return fetchEntriesForContentType(contentType)
     .then((entries) => {
-      console.log(`\These are the first 100 Entries for Content Type ${chalk.cyan(contentType)}:\n`)
+      console.log(`\These are the first 100 Entries for Content Type ${chalk.cyan(contentType.name)}:\n`)
 
       // Display a table with Entry information
       const table = new Table({
@@ -83,7 +83,9 @@ function fetchContentTypes () {
 // Load all entries for a given Content Type from Contentful
 function fetchEntriesForContentType (contentType) {
   return client.getEntries({
-      content_type: contentType
+      content_type: contentType,
+      limit: 100,
+      order: '-fields.datetime'
     })
   .then((response) => response.items)
   .catch((error) => {

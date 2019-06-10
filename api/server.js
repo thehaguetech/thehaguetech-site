@@ -28,6 +28,7 @@ app.prepare().then(() => {
     else if (pathname === '/api/events') {
       let entries = await fetchEntriesForContentType('event')
       res.setHeader('Content-Type', 'application/json');
+      res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
       res.end(JSON.stringify(entries, null, 3));
     }
     else {

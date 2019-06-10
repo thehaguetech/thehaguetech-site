@@ -34,6 +34,9 @@ class Title extends Component {
           line-height: 32px;
           margin: 0 0;
           padding: 0 0;
+          overflow: ellipsis;
+          overflow-x: hidden;w
+          word-break: break-word;
         }
         .small {
           font-size: 28px;

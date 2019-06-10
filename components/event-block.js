@@ -1,10 +1,11 @@
 import dynamic from 'next/dynamic';
 import { Component } from 'react';
-import moment from 'moment';
+import Link from 'next/link';
 
 // Import components
 const SmallCapsTitle = dynamic(() => import('./small-caps-title.js'));
 const Title = dynamic(() => import('./title.js'));
+const DateCircle = dynamic(() => import('./date-circle.js'));
 
 class EventBlock extends Component {
   render() {
@@ -12,14 +13,7 @@ class EventBlock extends Component {
       <header style={{
         backgroundImage: `url( ${this.props.event.smallImage.fields.file.url} )`
       }} />
-      <div className="date" title={moment(this.props.event.datetime).format('MMMM Do YYYY')}>
-        <div className="date-month">
-          {moment(this.props.event.datetime).format('MMM')}
-        </div>
-        <div className="date-number">
-          {moment(this.props.event.datetime).format('D')}
-        </div>
-      </div>
+      <DateCircle date={this.props.event.datetime} />
       <div className="info">
         <SmallCapsTitle size="small">
           {this.props.event.category || 'design'}
@@ -65,34 +59,6 @@ class EventBlock extends Component {
           height: 60px;
           z-index: 1;
           background-image: linear-gradient(rgba(255, 255, 255, 0.3), #fff);
-        }
-        .date {
-          width: 57px;
-          height: 57px;
-          background-color: #ff3e6c;
-          margin: -28px auto 0;
-          border-radius: 57px;
-          color: #fff;
-          text-align: center;
-          display: flex;
-          justify-content: center;
-          flex-direction: column;
-        }
-        .date-month {
-          height: 14px;
-          color: #ffffff;
-          font-family: "Maison Neue", sans-serif;
-          font-size: 12px;
-          font-weight: 300;
-          text-transform: uppercase;
-          text-align: center;
-        }
-        .date-number {
-          color: #ffffff;
-          font-family: "Maison Neue Bold", sans-serif;
-          font-size: 22px;
-          font-weight: 700;
-          text-transform: uppercase;
         }
       `}</style>
     </div>

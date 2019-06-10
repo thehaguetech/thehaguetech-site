@@ -9,7 +9,7 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-const {fetchEntriesForContentType} = require('./contentful.js');
+const {fetchEntriesForContentType, fetchEntry} = require('./contentful.js');
 
 app.prepare().then(() => {
   createServer(async (req, res) => {
@@ -24,12 +24,28 @@ app.prepare().then(() => {
     else if (pathname === '/b') {
       app.render(req, res, '/a', query);
     }
-    // Get Events
+    // Make it possible to link to events
+    else if (pathname.indexOf('/events/') === 0) {
+      const slug = pathname.split('/events/')[1];
+      app.render(req, res, '/event', { slug: slug });
+    }
+    // API: Events
     else if (pathname === '/api/events') {
       let entries = await fetchEntriesForContentType('event')
       res.setHeader('Content-Type', 'application/json');
       res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
       res.end(JSON.stringify(entries, null, 3));
+    }
+    // API: Event
+    else if (pathname.indexOf('/api/events/') === 0) {
+      let entry = await fetchEntry({
+        content_type: 'event',
+        slug: 'agile-for-social-impact-services',
+        date: '2019-07-04'
+      })
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+      res.end(JSON.stringify(entry, null, 3));
     }
     else {
       handle(req, res, parsedUrl);

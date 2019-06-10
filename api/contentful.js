@@ -94,9 +94,36 @@ function fetchEntriesForContentType (contentType) {
   })
 }
 
+function fetchEntriesForContentType (contentType) {
+  return client.getEntries({
+      content_type: contentType,
+      limit: 100,
+      order: '-fields.datetime'
+    })
+  .then((response) => response.items)
+  .catch((error) => {
+    console.log(chalk.red(`\nError occurred while fetching Entries for ${chalk.cyan(contentType)}:`))
+    console.error(error)
+  })
+}
+
+// Load one specific entry
+function fetchEntry (query) {
+  return client.getEntries({
+    content_type: query.content_type || 'event',
+    'fields.slug': query.slug,
+    // 'fields.datetime': query.date,
+    limit: 1,
+    order: '-fields.datetime'
+  })
+    .then((entry) => entry.items[0])
+    .catch(console.error)
+}
+
 // Start the boilerplate code
 // runBoilerplate()
 
 module.exports = {
-  fetchEntriesForContentType
+  fetchEntriesForContentType,
+  fetchEntry
 }

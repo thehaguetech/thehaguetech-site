@@ -27,7 +27,6 @@ class EventOverview extends Component {
     return R.map(R.prop('fields'), events)
   }
   render() {
-    console.log(this.state);
     return <div className="EventOverview">
       <nav className="filters">
         Filters

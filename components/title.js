@@ -35,7 +35,8 @@ class Title extends Component {
           margin: 0 0;
           padding: 0 0;
           overflow: ellipsis;
-          overflow-x: hidden;w
+          overflow-x: hidden;
+          overflow-y: hidden;
           word-break: break-word;
         }
         .small {

@@ -125,18 +125,22 @@ class Navigation extends Component {
           image: '/static/components/carousel/tht-icon-coworking.svg'
         }]
       },
-      {
-        title: 'What',
-        items: []
-      },
-      {
-        title: 'Act',
-        items: []
-      },
+      // {
+      //   title: 'What',
+      //   items: []
+      // },
+      // {
+      //   title: 'Act',
+      //   items: []
+      // },
       {
         title: 'Contact',
-        items: []
-      },
+        items: [{
+          title: 'Contact',
+          href: '/contact',
+          image: '/static/components/carousel/tht-icon-contact.svg'
+        }]
+      }
     ]
     return <header className={'Navigation' + (this.state.showNav ? ' is-active' : '')}>
       <Link href="/index">
@@ -156,7 +160,7 @@ class Navigation extends Component {
                 <ul>
                   {R.map((item) => {
                     return <li key={item.title} className="icon" style={{backgroundImage: `url(${item.image})`}}>
-                      <Link href={item.href}>
+                      <Link prefetch href={item.href}>
                         <a className="secundary-nav-link">{item.title}</a>
                       </Link>
                     </li>

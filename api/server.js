@@ -3,6 +3,7 @@
 // See https://github.com/zeit/next.js/issues/1245 for discussions on Universal Webpack or universal Babel
 const { createServer } = require('http');
 const { parse } = require('url');
+const express = require('express')
 const next = require('next');
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -10,22 +11,37 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const {fetchEntriesForContentType, fetchEntry} = require('./contentful.js');
+const {sendMail} = require('./email.js');
 
 app.prepare().then(() => {
-  createServer(async (req, res) => {
+  const server = express()
+
+  // Parse URL-encoded bodies (as sent by HTML forms)
+  server.use(express.urlencoded());
+  // Parse JSON bodies (as sent by API clients)
+  server.use(express.json());
+
+  // API: Mail
+  server.post('/api/mail/contact', function(req, res){
+    const mail = sendMail({
+      name: req.body.name,
+      email: req.body.email,
+      tel: req.body.tel,
+      message: req.body.message
+    });
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.end(JSON.stringify(mail, null, 3));
+  });
+
+  server.get('*', async (req, res) => {
     // Be sure to pass `true` as the second argument to `url.parse`.
     // This tells it to parse the query portion of the URL.
     const parsedUrl = parse(req.url, true);
     const { pathname, query } = parsedUrl;
 
-    if (pathname === '/a') {
-      app.render(req, res, '/b', query);
-    }
-    else if (pathname === '/b') {
-      app.render(req, res, '/a', query);
-    }
     // Make it possible to link to events
-    else if (pathname.indexOf('/events/') === 0) {
+    if (pathname.indexOf('/events/') === 0) {
       const slug = pathname.split('/events/')[1];
       app.render(req, res, '/event', { slug: slug });
     }
@@ -53,10 +69,16 @@ app.prepare().then(() => {
       res.end(JSON.stringify(entry, null, 3));
     }
     else {
-      handle(req, res, parsedUrl);
+      return handle(req, res, parsedUrl);
     }
-  }).listen(process.env.PORT || 3000, err => {
-    if (err) throw err;
-    console.log('> Ready on http://localhost:' + process.env.PORT || 3000);
-  });
-});
+  })
+
+  server.listen(3000, (err) => {
+    if (err) throw err
+    console.log('> Ready on http://localhost:3000')
+  })
+})
+.catch((ex) => {
+  console.error(ex.stack)
+  process.exit(1)
+})

@@ -17,9 +17,9 @@ class EventBlock extends Component {
         }} />
         <DateCircle date={this.props.event.datetime} />
         <div className="info">
-          <SmallCapsTitle size="small">
+          {/*<SmallCapsTitle size="small">
             {this.props.event.category || 'design'}
-          </SmallCapsTitle>
+          </SmallCapsTitle>*/}
           <Title size="small" style={{
             fontSize: '30px',
             fontWeight: '700',

@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import { Component } from 'react';
 
 // Load components
@@ -20,10 +21,12 @@ class Footer extends Component {
           </a>
         </nav>
         <nav className="footer-nav">
-          <a href="">Contact</a>
-          <a href="">FAQ</a>
-          <a href="">Jobs</a>
-          <a href="">Privacy Policy</a>
+          <Link prefetch href="/contact">
+            <a href="#">Contact</a>
+          </Link>
+          {/*<a href="">FAQ</a>*/}
+          {/*<a href="">Jobs</a>*/}
+          {/*<a href="">Privacy Policy</a>*/}
         </nav>
         <div />
       </div>

@@ -17,7 +17,7 @@ function VideoBanner() {
           Collaborate with our community to bring your tech ideas to life.
         </div>
         <div className="button-wrapper">
-          <Button>
+          <Button prefetch href="https://outlook.office365.com/owa/calendar/TheHagueTech@jongensvantechniek.nl/bookings/" target="_blank">
             Book a tour
           </Button>
         </div>
@@ -32,10 +32,9 @@ function VideoBanner() {
       }
       .video {
         width: 100%;
-        height: 100%;
+        height: 100vh;
         object-fit: cover;
         display: block;
-        min-height: 100vh;
       }
       .overlay {
         position: absolute;

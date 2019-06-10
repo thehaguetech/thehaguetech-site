@@ -64,7 +64,7 @@ function App() {
         title="Set up your business in the innovative heart of The Netherlands"
         text="Is your business looking to enter the Dutch market or set up a base of operations here in Holland? The Hague Tech is an internationally focused organization with a local presence and knowledge base. With partnerships in Brazil, Silicon Valley, South Africa, and around the world, The Hague Tech is at the heart of globalization and internationalization while still understanding the need for local infrastructure and communities."
         buttonText="learn more"
-        buttonLink="https://www.bartroorda.nl"
+        buttonLink="/international-business"
         />
       <TextAndImage
         image="/static/pages/index/cocreation.jpg"
@@ -73,7 +73,7 @@ function App() {
         title="Co-create and innovate with our multi-talented community"
         text="The Hague Tech is an inspiring place to collaborate with talented individuals and innovative companies. But we strive to be and do more, to nurture an environment of co-creation. Co-creation means working together to create prototypes, products, technological solutions and beyond by activating the talent within The Hague Tech. Our community is filled with talented members looking to work together on new and exciting challenges. "
         buttonText="learn more"
-        buttonLink="https://www.bartroorda.nl"
+        buttonLink="/co-creation"
         />
       <TextAndImage
         image="/static/pages/index/community.jpg"
@@ -81,7 +81,7 @@ function App() {
         title="Join a vibrant and exciting community of doers"
         text="A collection of highly talented people is the indispensable basis of our ecosystem. Passionate and driven individuals should be facilitated in meeting each other easily and frequently. We provide this through the work space in the heart of our ecosystem. Together as a community we welcome in new members based on core values such as proactiveness, professionalism, and an openness to work and achieve together. "
         buttonText="learn more"
-        buttonLink="https://www.bartroorda.nl"
+        buttonLink="/community"
         />
     </div>
     <BookATourBanner />
@@ -92,7 +92,7 @@ function App() {
       title="Book a meetup, host an event, or join one of our cutting edge labs"
       text="Success in business is a combination of hard work and luck. Luck can be engineered and we believe encouraging encounters is the best way to stimulate success and luck. Workshops, Meetups, festivals, and get-togethers around what our members in The Hague Tech are involved with leads to new connections and new entrepreneurial opportunities. "
       buttonText="learn more"
-      buttonLink="https://www.bartroorda.nl"
+      buttonLink="/events"
       />
     <TextAndImage
       image="/static/pages/index/coworking.jpg"
@@ -100,12 +100,12 @@ function App() {
       title="Find your new workspace or office best fit for your needs"
       text="We offer workspaces in fixed or flexible options in the general working areas or in closed areas. Our packages range from 1 day per week up to 24/7 access. Renting a desk will provide you with everything the ecosystem has to offer, our mission to provide hyper-location-as-a-service. "
       buttonText="learn more"
-      buttonLink="https://www.bartroorda.nl"
+      buttonLink="/coworking"
       />
     <YellowBanner
       title="Come and see for your self what The Hague Tech has to offer you!"
       buttonText="book a tour"
-      buttonLink="https://www.bartroorda.nl"
+      buttonLink="/contact"
       />
     <NewsletterSubscribe />
     <Footer />

@@ -143,7 +143,7 @@ class Navigation extends Component {
       }
     ]
     return <header className={'Navigation' + (this.state.showNav ? ' is-active' : '')}>
-      <Link href="/index">
+      <Link prefetch href="/index">
         <div style={{cursor: 'pointer', height: '72px', display: 'inline-block'}} title="Back to home">
           <Logo />
         </div>

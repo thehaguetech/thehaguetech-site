@@ -17,9 +17,9 @@ app.prepare().then(() => {
   const server = express()
 
   // Parse URL-encoded bodies (as sent by HTML forms)
-  server.use(express.urlencoded());
+  // server.use(express.urlencoded());
   // Parse JSON bodies (as sent by API clients)
-  server.use(express.json());
+  // server.use(express.json());
 
   // API: Mail
   server.post('/api/mail/contact', function(req, res){
@@ -73,9 +73,9 @@ app.prepare().then(() => {
     }
   })
 
-  server.listen(3000, (err) => {
+  server.listen(process.env.PORT || 3000, (err) => {
     if (err) throw err
-    console.log('> Ready on http://localhost:3000')
+    console.log('> Ready on http://localhost:' + (process.env.PORT || 3000))
   })
 })
 .catch((ex) => {

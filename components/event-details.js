@@ -103,7 +103,7 @@ class EventDetails extends Component {
           <div style={{width: '57px', margin: '24px 0'}}>
             <DateCircle date={this.state.event.datetime} />
           </div>
-          <SmallCapsTitle>Design</SmallCapsTitle>
+          {/*<SmallCapsTitle></SmallCapsTitle>*/}
           <div style={{marginTop: '12px'}}>
             <Title>{this.state.event.title}</Title>
           </div>

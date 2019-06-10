@@ -26,7 +26,7 @@ class NewsletterSubscribe extends Component {
               Stay up to date with the latest news, events, courses and workshops.
             </Text>
           </div>
-          <Button style={{
+          <Button href="https://www.thehaguetech.com/contact/subscribe/" target="_blank" style={{
             margin: '1rem 0 0 0',
             textTransform: 'lowercase',
             lineHeight: '3.5rem',

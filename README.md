@@ -8,7 +8,9 @@
 
 ## Running the app
 
-    npm run dev 
+1. In `.env`, set Contentful API configuration.
+
+2. `npm run dev`
 
 ## gitmoji
 

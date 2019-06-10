@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev-without-server": "next",
-    "dev": "node api/server.js",
+    "dev": "export $(cat .env | xargs) && node api/server.js",
     "start": "NODE_ENV=production node api/server.js",
     "build": "next build",
     "test": "echo \"Error: no test specified\" && exit 1",

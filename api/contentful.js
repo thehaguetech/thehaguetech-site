@@ -4,13 +4,11 @@ const contentful = require('contentful')
 const chalk = require('chalk')
 const Table = require('cli-table2')
 
-const {SPACE_ID, ACCESS_TOKEN} = require('./config.js')
-
 const client = contentful.createClient({
   // This is the space ID. A space is like a project folder in Contentful terms
-  space: SPACE_ID,
+  space: process.env.CONTENTFUL_SPACE_ID,
   // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
-  accessToken: ACCESS_TOKEN
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 })
 
 // Entry point of the boilerplate, called at the end.

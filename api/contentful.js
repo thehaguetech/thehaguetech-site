@@ -56,7 +56,7 @@ function displayEntries (contentTypes) {
   return Promise.all(contentTypes.map((contentType) => {
     return fetchEntriesForContentType(contentType)
     .then((entries) => {
-      console.log(`\These are the first 100 Entries for Content Type ${chalk.cyan(contentType.name)}:\n`)
+      console.log(`\These are the first 100 Entries for Content Type ${chalk.cyan(contentType)}:\n`)
 
       // Display a table with Entry information
       const table = new Table({
@@ -87,7 +87,7 @@ function fetchEntriesForContentType (contentType) {
     })
   .then((response) => response.items)
   .catch((error) => {
-    console.log(chalk.red(`\nError occurred while fetching Entries for ${chalk.cyan(contentType.name)}:`))
+    console.log(chalk.red(`\nError occurred while fetching Entries for ${chalk.cyan(contentType)}:`))
     console.error(error)
   })
 }

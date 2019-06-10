@@ -6,7 +6,7 @@ const Navigation = dynamic(() => import('../components/navigation.js'));
 const VideoBanner = dynamic(() => import('../components/video-banner.js'));
 const IntroText = dynamic(() => import('../components/intro-text.js'));
 const Title = dynamic(() => import('../components/title.js'));
-const Carousel = dynamic(() => import('../components/carousel.js'));
+const Carousel = dynamic(() => import('../components/carousel/carousel.js'));
 const TextAndImage = dynamic(() => import('../components/text-and-image.js'));
 const BookATourBanner = dynamic(() => import('../components/book-a-tour-banner.js'));
 const YellowBanner = dynamic(() => import('../components/yellow-banner.js'));
@@ -55,9 +55,9 @@ function App() {
           What we can offer you
         </Title>
       </div>
-      <Carousel slides={slides}>
-        
-      </Carousel>
+      <div>
+        <Carousel slides={slides} />
+      </div>
       <TextAndImage
         image="/static/pages/index/international-business.jpg"
         category="international business"

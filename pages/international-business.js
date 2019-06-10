@@ -7,7 +7,6 @@ const ImageBanner = dynamic(() => import('../components/image-banner.js'));
 const PageHeader = dynamic(() => import('../components/page-header.js'));
 const IntroText = dynamic(() => import('../components/intro-text.js'));
 const Title = dynamic(() => import('../components/title.js'));
-const Carousel = dynamic(() => import('../components/carousel.js'));
 const TextAndImage = dynamic(() => import('../components/text-and-image.js'));
 const BookATourBanner = dynamic(() => import('../components/book-a-tour-banner.js'));
 const YellowBanner = dynamic(() => import('../components/yellow-banner.js'));

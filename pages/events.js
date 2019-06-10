@@ -17,7 +17,7 @@ const EventOverview = dynamic(() => import('../components/event-overview.js'));
 function Events() {
   return <div className="EventsPage">
     <Head>
-      <title key="title">The Hague Tech Events</title>
+      <title key="title">Events at The Hague Tech</title>
     </Head>
     <Navigation />
     <div>

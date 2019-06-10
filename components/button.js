@@ -5,7 +5,7 @@ class Button extends Component {
   render() {
     return <div hidden={this.props.hidden}>
       <Link href={this.props.buttonLink || 'https://www.bartroorda.nl'}>
-        <a className="Button" style={this.props.style}>
+        <a target={this.props.target || '_self'} className="Button" style={this.props.style}>
           {this.props.children}
         </a>
       </Link>

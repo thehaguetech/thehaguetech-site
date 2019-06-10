@@ -10,6 +10,7 @@ const Title = dynamic(() => import('../components/title.js'));
 const SmallCapsTitle = dynamic(() => import('../components/small-caps-title.js'));
 const DateCircle = dynamic(() => import('./date-circle.js'));
 const Button = dynamic(() => import('./button.js'));
+const EventOverview = dynamic(() => import('./event-overview.js'));
 
 class EventInfoBlock extends Component {
   render() {
@@ -25,9 +26,13 @@ class EventInfoBlock extends Component {
             {moment(this.props.event.date).format('MMMM Do YYYY')}
           </p>
         </div>
-        <div className="flex-1 button-wrapper">
-          <Button>sign up</Button>
-        </div>
+        {this.props.event.signupUrl &&
+          <div className="flex-1 button-wrapper">
+            <Button target="_blank" buttonLink={this.props.event.signupUrl}>
+              sign up
+            </Button>
+          </div>
+        }
       </div>
       <style jsx>{`
         .EventInfoBlock {
@@ -55,7 +60,7 @@ class EventInfoBlock extends Component {
           flex-direction: column;
           padding-bottom: 17px;
         }
-        @media(max-width: 480px) {
+        @media(max-width: 760px) {
           .EventInfoBlock > .flex {
             display: block;
           }
@@ -76,18 +81,22 @@ class EventDetails extends Component {
     this.state = { event: null }
   }
   async componentDidMount() {
-    const events = await this.fetchEvent()
-    this.setState({ event: this.formatEvent(events) })
+    const event = await this.fetchEvent(this.props.slug)
+    this.setState({ event: this.formatEvent(event) })
   }
-  async fetchEvent() {
-    const response = await fetch(`/api/events/${this.props.slug}`)
+  async componentWillReceiveProps(newProps) {
+    const event = await this.fetchEvent(newProps.slug)
+    this.setState({ event: this.formatEvent(event) })
+  }
+  async fetchEvent(slug) {
+    const response = await fetch(`/api/events/${slug}`)
     return await response.json()
   }
   formatEvent(event) {
     return event.fields
   }
   render() {
-    if(! this.state.event) return <div>Loading event</div>
+    if(! this.state.event) return <div />
     return <div className="EventDetails">
       <div className="flex">
         <div className="flex-1 extra-padding">
@@ -105,7 +114,7 @@ class EventDetails extends Component {
         <div className="flex-1 image-wrapper">
           <img src={this.state.event.smallImage.fields.file.url} alt="" className="image" />
         </div>
-        <div className="flex-1">
+        <div className="flex-1 introTextWrapper">
           <div className="extra-padding">
             <div className="introText">
               {this.state.event.introText}
@@ -115,6 +124,12 @@ class EventDetails extends Component {
           <EventInfoBlock event={this.state.event} />
         </div>
       </div>
+      <Title size="small" align="center" style={{
+        marginTop: 'calc(212px - 50px)'
+      }}>
+        More events
+      </Title>
+      <EventOverview limit="3" />
       <style jsx>{`
         .EventDetails {
           width: 1245px;
@@ -135,21 +150,38 @@ class EventDetails extends Component {
           font-size: 19px;
           font-weight: 300;
           line-height: 32px;
+          overflow-x: hidden;
+          text-overflow: ellipsis;
+          max-width: 100%;
+        }
+        .detailedText a {
+          color: #ff3e6c;
+        }
+        .introTextWrapper {
+          max-width: 100%;
         }
         .image-wrapper {
           margin-top: 18px;
         }
 
-        @media(max-width: 480px) {
+        @media(max-width: 760px) {
           .EventDetails > .flex { display: block }
         }
-        @media(min-width: 480px) {
+        @media(min-width: 760px) {
+          .EventDetails {
+            padding-top: 64px;
+          }
+          .introTextWrapper {
+            max-width: 50%;
+          }
           .image-wrapper {
             margin-top: 0;
             order: 2;
           }
           .image {
+            min-width: 200px;
             margin: 18px 32px;
+            margin-bottom: 50px;
             width: calc(100% - 32px - 32px);
             position: sticky;
             top: 104px;

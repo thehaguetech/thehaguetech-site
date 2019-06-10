@@ -30,18 +30,23 @@ app.prepare().then(() => {
       app.render(req, res, '/event', { slug: slug });
     }
     // API: Events
-    else if (pathname === '/api/events') {
-      let entries = await fetchEntriesForContentType('event')
+    else if (pathname === '/api/events' || pathname.indexOf('/api/events?') === 0 ) {
+      let entries = await fetchEntriesForContentType('event', {
+        query: query
+      })
       res.setHeader('Content-Type', 'application/json');
       res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
       res.end(JSON.stringify(entries, null, 3));
     }
     // API: Event
     else if (pathname.indexOf('/api/events/') === 0) {
+      const slugFullPath = pathname.split('/events/')[1]
+      const date = slugFullPath.split('/')[0]
+      const slug = slugFullPath.split('/')[1]
       let entry = await fetchEntry({
         content_type: 'event',
-        slug: 'agile-for-social-impact-services',
-        date: '2019-07-04'
+        slug: slug,
+        date: date
       })
       res.setHeader('Content-Type', 'application/json');
       res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");

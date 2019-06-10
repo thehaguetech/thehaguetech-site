@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import dynamic from 'next/dynamic';
 import * as R from 'ramda';
+import moment from 'moment';
 
 // Import components
 const EventBlock = dynamic(() => import('./event-block.js'));
@@ -10,25 +11,45 @@ class EventOverview extends Component {
     super(props)
 
     this.state = {
-      events: {}
+      events: null
     }
   }
   async componentDidMount() {
-    const events = await this.fetchEvents()
-    this.setState({
-      events: this.formatEvents(events)
-    })
+    let events;
+    events = await this.fetchEvents()
+    events = this.formatEvents(events)
+    events = this.filterEvents(events)
+    events = this.sortEvents(events)// Order chronologically
+    this.setState({ events: events })
   }
   async fetchEvents() {
-    const response = await fetch('https://thehaguetech-site.herokuapp.com/api/events')
+    const response = await fetch('/api/events')
     return await response.json()
   }
   formatEvents(events) {
     return R.map(R.prop('fields'), events)
   }
+  filterEvents(events) {
+    // Limit amount of events
+    events = R.slice(0, (this.props.limit || 20), events)
+    // Only show events of the future
+    const isFutureEvent = (event) => {
+      const now = moment()
+      const daysToEvent = moment(event.datetime).diff(now, 'days')
+      // If event happens in the future from now, return true
+      return daysToEvent >= 0
+    }
+    events = R.filter(isFutureEvent, events)
+    // Return future events
+    return events;
+  }
+  sortEvents(events) {
+    return events.reverse();
+  }
   render() {
+    if(! this.state.events) return <div />
     return <div className="EventOverview">
-      <nav className="filters">
+      <nav className="filters" hidden>
         Filters
       </nav>
       <div className="events">

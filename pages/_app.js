@@ -20,7 +20,7 @@ class MyApp extends App {
       <Container>
         <Head>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
-          <link href="/static/favicon.ico" rel="icon" type="image/x-icon" />
+          <link href="/static/tht-favicon@2x.png" rel="icon" type="image/x-icon" />
         </Head>
         <Component {...pageProps} />
         <style jsx global>{`

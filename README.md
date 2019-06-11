@@ -1,18 +1,52 @@
 # thehaguetech-site
 
-## First time use
+The website of [The Hague Tech](https://www.thehaguetech.com/).
+
+## Project overview
+
+The website is mostly written in JavaScript.
+
+For frontend development we use [NextJS](https://nextjs.org/), a React framework with native support for Server Side Rendering (SSR).
+
+For backend development we use a simple express server.
+
+## Contributing
+
+Do you have ideas or feedback? Or do you want to contribute to the design, content or code? You are very welcome to contribute!
+
+Examples of contributions you could think of:
+
+- Bug reports
+- UI enhancements
+- General feedback
+- Textual updates
+- Improving this README
+
+An easy way to start contributing is by creating a so called 'issue' with your feature request, idea or bug report. [Start here](https://github.com/thehaguetech/thehaguetech-site/issues/new).
+
+## Getting started
+
+### 1. First time use
 
     git clone git@github.com:bartwr/thehaguetech-site.git
     cd thehaguetech-site
     npm install
 
-## Running the app
+### 2. Running the app
 
-1. In `.env`, set Contentful API configuration.
+1. In `.env`, set Contentful API configuration. It should look something like this:
+
+```
+CONTENTFUL_SPACE_ID=YOURID
+CONTENTFUL_ACCESS_TOKEN=YOURTOKEN
+SENDGRID_API_KEY='SENDGRIDAPIKEY'
+```
 
 2. `npm run dev`
 
-## gitmoji
+Need help? [Create an issue](https://github.com/thehaguetech/thehaguetech-site/issues).
+
+### 3. gitmoji for git commits
 
 Want to make use of [gitmoji](https://gitmoji.carloscuesta.me/)?
 
@@ -34,18 +68,25 @@ Hooray! Emoji intentions in front of your commit message.
 
 _Inspired by [OpenBook](https://github.com/OpenbookOrg/openbook-app#git-commit-message-conventions)._
 
+### 4. Deploying the app
+
+Heroku?
+
+- In settings tab, set config vars:
+  - CONTENTFUL_ACCESS_TOKEN
+  - CONTENTFUL_SPACE_ID
+  - SENDGRID_API_KEY
+
+Netlify?
+
+- Build command: `npm run deploy`
+- Publish directory: `out`
+
 ## Contributors
 
 - [bartwr](https://github.com/bartwr/) (Code)
 - Hans (Graphic Design)
-
-## Configuring Netlify
-
-- Create a new site at Netlify
-- As build command, use `npm run deploy`
-- As publish directory, use `out`
-
-That's it.
+- Peter Hofman (Server Management)
 
 ## NOTES on Design
 

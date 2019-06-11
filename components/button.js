@@ -28,11 +28,11 @@ class Button extends Component {
             text-align: center;
             text-decoration: none;
             text-transform: lowercase;
+            transition: all 0.2s;
           }
           .Button:hover {
-            background: #fff000 !important;
-            border: solid #071124 1px !important;
-            color: #071124 !important;
+            box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.19);
+            transition: all 0.2s;
           }
         `}</style>
       </div>

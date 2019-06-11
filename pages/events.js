@@ -3,11 +3,8 @@ import Head from 'next/head';
 
 // Load components
 const Navigation = dynamic(() => import('../components/navigation.js'));
-// const VideoBanner = dynamic(() => import('../components/video-banner.js'));
 const IntroText = dynamic(() => import('../components/intro-text.js'));
 const Title = dynamic(() => import('../components/title.js'));
-// const TextAndImage = dynamic(() => import('../components/text-and-image.js'));
-// const BookATourBanner = dynamic(() => import('../components/book-a-tour-banner.js'));
 const YellowBanner = dynamic(() => import('../components/yellow-banner.js'));
 const PageHeader = dynamic(() => import('../components/page-header.js'));
 const Footer = dynamic(() => import('../components/footer.js'));
@@ -21,7 +18,7 @@ function Events() {
     <Navigation />
     <div>
       <PageHeader
-        image="/static/pages/events/page-header.png"
+        image="/static/pages/events/page-header.jpg"
         smallCapsTitle="events"
         title="Join our events"
         />
@@ -36,7 +33,8 @@ function Events() {
     <YellowBanner
       title="Come and see for your self what The Hague Tech has to offer you!"
       buttonText="book a tour"
-      buttonLink="https://www.bartroorda.nl"
+      buttonLink="https://outlook.office365.com/owa/calendar/TheHagueTech@jongensvantechniek.nl/bookings/"
+      target="_blank"
       />
     <Footer />
     <style jsx global>{`

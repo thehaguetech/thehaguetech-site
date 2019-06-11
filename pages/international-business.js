@@ -22,7 +22,7 @@ function InternationalBusiness() {
     <PageHeader
       smallCapsTitle="International Business"
       title="Set up your business in The Hague"
-      image="/static/pages/international-business/page-header.png"
+      image="/static/pages/international-business/page-header.jpg"
       />
     <IntroText>
       Is your business looking to enter the Dutch market or set up a base of operations here in Holland? The Hague Tech is an internationally focused organization with a local presence and knowledge base. 
@@ -57,7 +57,8 @@ function InternationalBusiness() {
     <YellowBanner
       title="Come and see for your self what The Hague Tech has to offer you!"
       buttonText="book a tour"
-      buttonLink="https://www.bartroorda.nl"
+      buttonLink="https://outlook.office365.com/owa/calendar/TheHagueTech@jongensvantechniek.nl/bookings/"
+      target="_blank"
       />
     <NewsletterSubscribe />
     <Footer />

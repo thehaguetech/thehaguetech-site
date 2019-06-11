@@ -21,16 +21,27 @@ function Community() {
     <Navigation />
     <PageHeader
       smallCapsTitle="Community"
-      title="Membership has really boosted my career"
-      image="/static/pages/community/page-header.png"
+      title="Join a vibrant and exciting community of doers"
+      image="/static/pages/community/page-header.jpg"
       />
     <IntroText>
-      The Hague Tech is the premier home in The Hague for tech and business related events and meetups.
+      <p>
+        A collection of highly talented people is the indispensable basis of our ecosystem. Passionate and driven individuals should be facilitated in meeting each other easily and frequently. We provide this through the work space in the heart of our ecosystem.
+      </p>
+      <p>
+        Together as a community we welcome in new members based on core values such as proactiveness, professionalism, and an openness to work and achieve together. Those who believe in doing well are who drive our responsibility to make sure talented people meet each other.
+      </p>
     </IntroText>
+    {/*
+    (Community Statistics Needed) - Main Point of Focus
+    (Company Statistics Needed) - Profiles
+    (People) -Profiles, show off our best (i.e. most interesting 
+    */}
     <YellowBanner
       title="Come and see for your self what The Hague Tech has to offer you!"
       buttonText="book a tour"
-      buttonLink="https://www.bartroorda.nl"
+      buttonLink="https://outlook.office365.com/owa/calendar/TheHagueTech@jongensvantechniek.nl/bookings/"
+      target="_blank"
       />
     <NewsletterSubscribe />
     <Footer />

@@ -68,7 +68,8 @@ class TextAndImage extends Component {
         @media (min-width: 480px) {
           .TextAndImage {
             flex-wrap: nowrap;
-            padding: 5rem 24px;
+            padding: 0 24px;
+            margin: 128px auto;
           }
           .image-wrapper,
           .text-wrapper {
@@ -84,7 +85,7 @@ class TextAndImage extends Component {
             display: none;
           }
           .text-wrapper {
-            padding: 5rem 3rem;
+            padding: 0 114px;
           }
           .text {
             font-size: 19px;

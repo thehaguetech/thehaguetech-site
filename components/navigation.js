@@ -24,6 +24,10 @@ class Navigation extends Component {
   }
   componentDidMount() {
     this.autoHideNav();
+
+    this.setState({
+      activePrimaryNav: window.innerWidth < 780 ? 'How' : null
+    })
   }
   componentUnMount() {
     clearTimeout(this.TO_interval);
@@ -79,24 +83,20 @@ class Navigation extends Component {
     if(window.innerWidth < 780) {
       $('body').css('overflow-y', this.state.showNav ? 'unset' : 'hidden')
     }
+    // On open: Set active nav item on 'How'
+    this.setState({
+      activePrimaryNav: this.state.showNav ? null : 'How'
+    })
     this.setState({
       showNav: ! this.state.showNav
     })
   }
-  clickPrimaryNavLink(e) {
+  clickPrimaryNavLink(name) {
     // Give is-active class, but only if it didn't have it
-    if( $(e.target).closest('.primary-nav-item').hasClass('is-active') ) {
-      $('.primary-nav-item').removeClass('is-active');
-      this.setState({ showNav: false })
+    if(this.state.activePrimaryNav == name) {
+      this.setState({ activePrimaryNav: null, showNav: false })
     } else {
-      $('.primary-nav-item').removeClass('is-active');
-      $(e.target).closest('.primary-nav-item').addClass('is-active');
-      this.setState({ showNav: true })
-    }
-
-    // Only work on desktop
-    if(window.innerWidth < 780) {
-      return;
+      this.setState({ activePrimaryNav: name, showNav: true })
     }
   }
   render() {
@@ -117,7 +117,7 @@ class Navigation extends Component {
           image: '/static/components/carousel/tht-icon-community.svg'
         }, {
           title: 'Events & Labs',
-          href: '/events',
+          href: '/meetings-events-labs',
           image: '/static/components/carousel/tht-icon-events.svg'
         }, {
           title: 'Co-working',
@@ -125,21 +125,17 @@ class Navigation extends Component {
           image: '/static/components/carousel/tht-icon-coworking.svg'
         }]
       },
-      // {
-      //   title: 'What',
-      //   items: []
-      // },
-      // {
-      //   title: 'Act',
-      //   items: []
-      // },
+      {
+        title: 'What',
+        href: '/events'
+      },
+      {
+        title: 'Act',
+        href: '/become-a-member'
+      },
       {
         title: 'Contact',
-        items: [{
-          title: 'Contact',
-          href: '/contact',
-          image: '/static/components/carousel/tht-icon-contact.svg'
-        }]
+        href: '/contact'
       }
     ]
     return <header className={'Navigation' + (this.state.showNav ? ' is-active' : '')}>
@@ -152,13 +148,20 @@ class Navigation extends Component {
       <nav className="main-nav">
         <ul>
           {R.map((item) => {
-            return <li key={item.title} className="primary-nav-item">
-              <a onClick={(e) => this.clickPrimaryNavLink(e)} className="primary-nav-link">
-                {item.title}
-              </a>
+            return <li key={item.title} className={'primary-nav-item' + (this.state.activePrimaryNav == item.title ? ' is-active' : '')}>
+              {item.href
+                ? <Link href={item.href}>
+                    <a onClick={() => this.clickPrimaryNavLink(item.title)} className="primary-nav-link">
+                      {item.title}
+                    </a>
+                  </Link>
+                : <a onClick={() => this.clickPrimaryNavLink(item.title)} className="primary-nav-link">
+                    {item.title}
+                  </a>
+              }
               <nav className="secundary-nav">
                 <ul>
-                  {R.map((item) => {
+                  {item.items && R.map((item) => {
                     return <li key={item.title} className="icon" style={{backgroundImage: `url(${item.image})`}}>
                       <Link prefetch href={item.href}>
                         <a className="secundary-nav-link">{item.title}</a>

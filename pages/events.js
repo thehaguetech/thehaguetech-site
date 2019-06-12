@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
 // Load components
-const Navigation = dynamic(() => import('../components/navigation.js'));
+const Navigation = dynamic(() => import('../components/navigation.jsx'));
 const IntroText = dynamic(() => import('../components/intro-text.js'));
 const Title = dynamic(() => import('../components/title.js'));
 const YellowBanner = dynamic(() => import('../components/yellow-banner.js'));

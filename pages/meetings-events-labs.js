@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
 // Load components
-const Navigation = dynamic(() => import('../components/navigation.js'));
+const Navigation = dynamic(() => import('../components/navigation.jsx'));
 const ImageBanner = dynamic(() => import('../components/image-banner.js'));
 const PageHeader = dynamic(() => import('../components/page-header.js'));
 const IntroText = dynamic(() => import('../components/intro-text.js'));
@@ -61,7 +61,7 @@ function EventsAndLabs() {
       text="<p>The <a href='https://www.hackathonforgood.org/' target='_blank'>Hackathon for Good</a> organized by the Data Science Initiative of The Hague brought together teams from around the world to work on unique challenges provided by international organizations and NGOs. The Red Cross, the NATO Communications and Information Agency, the ICC, World Vision, and Asser Institute issued challenges to the more than 35 teams competing in the first annual hackathon. </p>"
       />
     <IntroText>
-      <iframe title="vimeo-player" src="https://player.vimeo.com/video/303223371" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+      <iframe title="vimeo-player" src="https://player.vimeo.com/video/303223371" width="640" height="360" frameBorder="0" allowFullScreen></iframe>
     </IntroText>
     <IntroText>
       <p>

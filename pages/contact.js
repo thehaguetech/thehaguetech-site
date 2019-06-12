@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
 // Load components
-const Navigation = dynamic(() => import('../components/navigation.js'));
+const Navigation = dynamic(() => import('../components/navigation.jsx'));
 const ImageBanner = dynamic(() => import('../components/image-banner.js'));
 const PageHeader = dynamic(() => import('../components/page-header.js'));
 const IntroText = dynamic(() => import('../components/intro-text.js'));
@@ -37,7 +37,6 @@ function Contact() {
     <Footer />
     <style jsx>{`
       .Contact {
-        padding: 0 18px;
       }
       .contact-wrapper {
         width: 1245px;

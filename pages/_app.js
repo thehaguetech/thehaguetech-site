@@ -21,11 +21,23 @@ class MyApp extends App {
         <Head>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
           <link href="/static/tht-favicon@2x.png" rel="icon" type="image/x-icon" />
+          <script dangerouslySetInnerHTML={{
+          __html: `(function(h,o,t,j,a,r){
+              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+              h._hjSettings={hjid:1360764,hjsv:6};
+              a=o.getElementsByTagName('head')[0];
+              r=o.createElement('script');r.async=1;
+              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+              a.appendChild(r);
+          })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=')`}} />
         </Head>
         <Component {...pageProps} />
         <style jsx global>{`
           * {
             box-sizing: border-box;
+          }
+          video, iframe {
+            max-width: 100%;
           }
           html, body {
             margin: 0;

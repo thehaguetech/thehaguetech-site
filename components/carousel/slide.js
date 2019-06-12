@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
+import Link from 'next/link';
 import * as R from 'ramda';
 
 class Slide extends Component {
   render() {
     return <div className="Slide">
-      <div>
-        <img src={this.props.data.image} />
-      </div>
-      <div className="Slide-title">
-        {this.props.data.title}
-      </div>
+      <Link prefetch href={this.props.data.href}>
+        <div>
+          <div>
+            <img src={this.props.data.image} />
+          </div>
+          <div className="Slide-title">
+            {this.props.data.title}
+          </div>
+        </div>
+      </Link>
       <style jsx>{`
         .Slide img {
           display: block;

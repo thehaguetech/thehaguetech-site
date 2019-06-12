@@ -17,22 +17,27 @@ const NewsletterSubscribe = dynamic(() => import('../components/newsletter-subsc
 const slides = [
   {
     title: 'international business',
+    href: '/international-business',
     image: '/static/components/carousel/tht-icon-business.svg'
   },
   {
     title: 'co-creation',
+    href: '/co-creation',
     image: '/static/components/carousel/tht-icon-cocreate.svg'
   },
   {
     title: 'community',
+    href: '/community',
     image: '/static/components/carousel/tht-icon-community.svg'
   },
   {
     title: 'events & labs',
+    href: '/meetings-events-labs',
     image: '/static/components/carousel/tht-icon-events.svg'
   },
   {
     title: 'co-working',
+    href: '/coworking',
     image: '/static/components/carousel/tht-icon-coworking.svg'
   }
 ]

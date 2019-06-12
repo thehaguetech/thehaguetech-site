@@ -129,10 +129,10 @@ class Navigation extends Component {
         title: 'What',
         href: '/events'
       },
-      {
-        title: 'Act',
-        href: '/become-a-member'
-      },
+      // {
+      //   title: 'Act',
+      //   href: '/become-a-member'
+      // },
       {
         title: 'Contact',
         href: '/contact'

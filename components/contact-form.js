@@ -1,7 +1,8 @@
 import dynamic from 'next/dynamic';
 import React, { Component } from 'react';
 
-const Button = dynamic(() => import('../components/button.js'));
+const Button = dynamic(() => import('./button.js'));
+const Map = dynamic(() => import('./map.js'));
 
 class ContactForm extends Component {
   constructor(props) {
@@ -51,7 +52,7 @@ class ContactForm extends Component {
       </div>
       <div className="flex-1 address">
         <p>
-          <img src="/static/components/contact-form/map.png" alt="Map of The Hague, including a pointer at The Hague Tech" />
+          {/*<Map />*/}
         </p>
         <p>
           The Hague Tech<br />

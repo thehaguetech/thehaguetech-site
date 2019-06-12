@@ -21,7 +21,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bartwr/thehaguetech-site.git"
+    "url": "git+https://github.com/thehaguetech/thehaguetech-site.git"
   },
   "keywords": [
     "thehaguetech"
@@ -29,9 +29,9 @@
   "author": "bartwr",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bartwr/thehaguetech-site/issues"
+    "url": "https://github.com/thehaguetech/thehaguetech-site/issues"
   },
-  "homepage": "https://github.com/bartwr/thehaguetech-site#readme",
+  "homepage": "https://github.com/thehaguetech/thehaguetech-site#readme",
   "dependencies": {
     "@sendgrid/mail": "^6.4.0",
     "chalk": "^1.1.3",
@@ -49,5 +49,8 @@
     "react-swipe": "^6.0.4",
     "styled-jsx": "^3.2.1",
     "swipe-js-iso": "^2.1.5"
+  },
+  "engines": {
+    "node": ">= 8.0.0"
   }
 }

@@ -82,6 +82,14 @@ Netlify?
 - Build command: `npm run deploy`
 - Publish directory: `out`
 
+Running production on Windows?
+
+    SET CONTENTFUL_ACCESS_TOKEN=token
+    SET CONTENTFUL_SPACE_ID=id
+    SET SENDGRID_API_KEY=apikey
+    SET NODE_ENV=production
+    node api/server.js
+
 ## Contributors
 
 - [bartwr](https://github.com/bartwr/) (Code)

@@ -97,7 +97,7 @@ function App() {
       title="Book a meetup, host an event, or join one of our cutting edge labs"
       text="Success in business is a combination of hard work and luck. Luck can be engineered and we believe encouraging encounters is the best way to stimulate success and luck. Workshops, Meetups, festivals, and get-togethers around what our members in The Hague Tech are involved with leads to new connections and new entrepreneurial opportunities. "
       buttonText="learn more"
-      buttonLink="/events"
+      buttonLink="/meetings-events-labs"
       />
     <TextAndImage
       image="/static/pages/index/coworking.jpg"

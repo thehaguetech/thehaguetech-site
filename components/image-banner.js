@@ -25,7 +25,7 @@ class ImageBanner extends Component {
           </SmallCapsTitle>
         </div>
         <br /><br />
-        <Button>
+        <Button href={this.props.buttonLink}>
           {this.props.buttonText}
         </Button>
       </div>

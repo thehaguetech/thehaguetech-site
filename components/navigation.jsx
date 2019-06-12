@@ -83,11 +83,10 @@ class Navigation extends Component {
     if(window.innerWidth < 780) {
       $('body').css('overflow-y', this.state.showNav ? 'unset' : 'hidden')
     }
-    // On open: Set active nav item on 'How'
     this.setState({
-      activePrimaryNav: this.state.showNav ? null : 'How'
-    })
-    this.setState({
+      // On open: Set active nav item on 'How'
+      activePrimaryNav: this.state.showNav ? null : 'How',
+      // Toggle nav
       showNav: ! this.state.showNav
     })
   }
@@ -151,7 +150,7 @@ class Navigation extends Component {
             return <li key={item.title} className={'primary-nav-item' + (this.state.activePrimaryNav == item.title ? ' is-active' : '')}>
               {item.href
                 ? <Link href={item.href}>
-                    <a onClick={() => this.clickPrimaryNavLink(item.title)} className="primary-nav-link">
+                    <a onClick={() => this.setState({ showNav: false, activePrimaryNav: item.title })} className="primary-nav-link">
                       {item.title}
                     </a>
                   </Link>

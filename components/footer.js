@@ -22,7 +22,10 @@ class Footer extends Component {
         </nav>
         <nav className="footer-nav">
           <Link prefetch href="/contact">
-            <a href="#">Contact</a>
+            <a>Contact</a>
+          </Link>
+          <Link href="https://github.com/thehaguetech/thehaguetech-site#thehaguetech-site">
+            <a target="_blank">GitHub</a>
           </Link>
           {/*<a href="">FAQ</a>*/}
           {/*<a href="">Jobs</a>*/}
@@ -65,6 +68,12 @@ class Footer extends Component {
         .social-icons {
           display: flex;
           max-width: 8rem;
+        }
+        .social-icons a {
+          padding: 0 12px;
+        }
+        .social-icons a:hover {
+          opacity: 0.8;
         }
         nav a {
           font-family: "Maison Neue", sans-serif;

@@ -7,19 +7,19 @@ class Marker extends Component {
   render() {
     return (
       <div>
-        THT
+        <img src="/static/components/navigation/tht-logo.svg" />
       </div>
     )
   }
 }
 
-class ContactForm extends Component {
+class Map extends Component {
   static defaultProps = {
     center: {
-      lat: 59.95,
-      lng: 30.33
+      lat: 52.0792334,
+      lng: 4.3418724
     },
-    zoom: 11
+    zoom: 14
   };
 
   render() {
@@ -27,7 +27,7 @@ class ContactForm extends Component {
       // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: 'AIzaSyACidWak1Kx5T0BoGooZLiFmv6tJoacXYw' }}
+          bootstrapURLKeys={{ key: 'AIzaSyDq4VqDgO9x6HIO5kEYez4LiCKfbsKgLF8' }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
@@ -42,4 +42,4 @@ class ContactForm extends Component {
   }
 }
 
-export default ContactForm;
+export default Map;

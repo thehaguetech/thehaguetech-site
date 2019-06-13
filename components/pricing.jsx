@@ -20,8 +20,11 @@ class PricingBlock extends Component {
   render() {
     const mapIndexed = R.addIndex(R.map);
     const data = this.props.data;
-    return <div className="PricingBlock">
+    return <div className={`PricingBlock ${data.name}`}>
       <div className="boxed">
+        <div className="triangle">
+          <span>Popular</span>103
+        </div>
         <div className="heading">
           <b>Membership</b>
           <span className="extra-benefit">
@@ -72,9 +75,41 @@ class PricingBlock extends Component {
           }
         }
         .PricingBlock .boxed {
+          position: relative;
           padding: 24px 16px;
           box-shadow: 0 2px 13px rgba(0, 0, 0, 0.2);
           background-color: #ffffff;
+        }
+        .PricingBlock.coworking .boxed {
+          background: #feef00;
+        }
+        .PricingBlock .triangle {
+          display: none;
+          position: absolute;
+          top: 0;
+          right: 0;
+          color: #fff;
+          width: 0;
+          height: 0;
+          border-top: solid 103px #1126a9;
+          border-bottom: solid 103px transparent;
+          border-left: solid 103px transparent;
+          z-index: 1;
+        }
+        .PricingBlock .triangle span {
+          display: inline-block;
+          color: #ffffff;
+          font-family: "Maison Neue",sans-serif;
+          font-size: 17px;
+          font-weight: 300;
+          text-transform: uppercase;
+          top: -71px;
+          right: 0;
+          position: absolute;
+          transform: rotate(45deg);
+        }
+        .PricingBlock.coworking .triangle {
+          display: block;
         }
         .heading b {
           display: block;

@@ -7,9 +7,6 @@ const sendMail = function(from) {
     from: `${from.name} <${from.email}>`,
     subject: 'Email from thehaguetech.nl',
     html: from.message.replace("\n", '<br/>') + "<br /><br />"
-          + (from.name ? `Name: ${from.name}` + "<br />" : '')
-          + (from.email ? `Email: ${from.email}` + "<br />" : '')
-          + (from.tel ? `Phone number: ${from.tel}` + "<br />" : '')
   };
   sgMail.send(msg);
 }

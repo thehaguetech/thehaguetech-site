@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import React, { Component } from 'react';
+import * as R from 'ramda';
 
 const Button = dynamic(() => import('./button.js'));
 const Map = dynamic(() => import('./map.js'));
@@ -15,7 +16,10 @@ class ContactForm extends Component {
     this.state[e.target.name] = e.target.value;
     this.forceUpdate();
   }
-  submitForm() {
+  submitForm(e) {
+    const self = this;
+    if(e) e.preventDefault();
+
     fetch('/api/mail/contact', {
       method: 'POST',
       headers: {
@@ -23,26 +27,90 @@ class ContactForm extends Component {
       },
       body: JSON.stringify({
         name: this.state.name,
+        company: this.state.company,
         email: this.state.email,
         tel: this.state.tel,
+        website: this.state.website,
+        type: this.state.type,
+        eventDate: this.state.eventDate,
+        eventExpectedRsvps: this.state.eventExpectedRsvps,
         message: this.state.message
       })
     }).then(function() {
       alert('Thank you for your email!')
+      self.refs.form.reset()
     });
-
+    return false;
   }
   render() {
+    let enabledFields;
+    switch(this.props.type) {
+      case 'join-community':
+        enabledFields = [
+          'name',
+          'company',
+          'email',
+          'tel',
+          'website',
+          'type',
+          'message'
+        ]
+        break;
+      case 'host-event':
+        enabledFields = [
+          'name',
+          'company',
+          'email',
+          'tel',
+          'eventDate',
+          'eventExpectedRsvps',
+          'message'
+        ]
+        break;
+      default:
+        enabledFields = [
+          'name',
+          'email',
+          'tel',
+          'message'
+        ]
+    }
     return <div className="ContactForm flex">
       <div className="flex-1 form">
-        <p>
-          The Hague Tech is growing fast. Are you ready to join us? Just book a tour and you will be delighted!
-        </p>
-        <form onSubmit={() => this.submitForm()}>
-          <input required type="text" name="name" placeholder="Name" onChange={this.handleChange} />
-          <input required type="email" name="email" placeholder="Email" onChange={this.handleChange} />
-          <input type="tel" name="tel" placeholder="Phone number" onChange={this.handleChange} />
-          <textarea name="message" placeholder="Message" onChange={this.handleChange}></textarea>
+        <form onSubmit={(e) => this.submitForm(e)} ref="form">
+          {enabledFields.indexOf('type') >= 0 && <div>
+            <label>I'm interested in joining the community by </label>
+            <select name="type" onChange={this.handleChange}>
+              {R.map((type) => {
+                return <option key={type} value={type}>{type}</option>
+              }, [
+                '',
+                'becoming a member',
+                'using a workspace',
+                'hosting an event',
+                'working on a co-create project',
+                'other',
+              ])}
+            </select>
+          </div>}
+          {enabledFields.indexOf('name') >= 0 && <input required type="text" name="name" placeholder="Name" onChange={this.handleChange} />}
+          {enabledFields.indexOf('company') >= 0 && <input type="text" name="company" placeholder="Company" onChange={this.handleChange} />}
+          {enabledFields.indexOf('email') >= 0 && <input required type="email" name="email" placeholder="Email" onChange={this.handleChange} />}
+          {enabledFields.indexOf('tel') >= 0 && <input type="tel" name="tel" placeholder="Phone number" onChange={this.handleChange} />}
+          {enabledFields.indexOf('website') >= 0 && <input type="text" name="website" placeholder="Your website" onChange={this.handleChange} />}
+          {enabledFields.indexOf('eventDate') >= 0 && <input type="date" name="eventDate" placeholder="Date of event" onChange={this.handleChange} />}
+          {enabledFields.indexOf('eventExpectedRsvps') >= 0 && <select>
+            {R.map((rsvpRange) => {
+              return <option key={rsvpRange} value={rsvpRange}>{rsvpRange}</option>
+            }, [
+              '10-50',
+              '50-100',
+              '100-200',
+              '200-500',
+              'other',
+            ])}
+          </select>}
+          {enabledFields.indexOf('message') >= 0 && <textarea name="message" placeholder="Message" onChange={this.handleChange}></textarea>}
           <div align="right">
             <Button type="submit">
               send message
@@ -52,13 +120,13 @@ class ContactForm extends Component {
       </div>
       <div className="flex-1 address">
         <p>
-          {/*<Map />*/}
+          <Map />
         </p>
-        <p>
+        <p className="paragraph">
           The Hague Tech<br />
           The Netherlands
         </p>
-        <p>
+        <p className="paragraph">
           <a href="tel:+31702060030">+31 (0)70 206 00 30</a>
         </p>
       </div>
@@ -85,9 +153,18 @@ class ContactForm extends Component {
         .form {
           margin-bottom: 26px;
         }
+        .form label {
+          color: #0f2247;
+          font-family: "Maison Neue", sans-serif;
+          font-size: 19px;
+          font-weight: 300;
+          line-height: 32px;
+        }
         .ContactForm input[type="text"],
         .ContactForm input[type="email"],
+        .ContactForm input[type="date"],
         .ContactForm input[type="tel"],
+        .ContactForm select,
         .ContactForm textarea {
           color: #0f2247;
           font-family: "Maison Neue", sans-serif;
@@ -106,7 +183,7 @@ class ContactForm extends Component {
           padding: 6px 8px;
           height: 200px;
         }
-        .address p {
+        .address .paragraph {
           color: #0f2247;
           font-family: "Maison Neue", sans-serif;
           font-size: 19px;

@@ -19,15 +19,23 @@ app.prepare().then(() => {
   // Parse URL-encoded bodies (as sent by HTML forms)
   // server.use(express.urlencoded());
   // Parse JSON bodies (as sent by API clients)
-  // server.use(express.json());
+  server.use(express.json());
 
   // API: Mail
   server.post('/api/mail/contact', function(req, res){
+    let message = req.body.message + '<br /><br /><hr /><br />'
+    // Add extra fields, like company name, website, etc)
+    if(req.body.name) message += '' + req.body.name + '<br />'
+    if(req.body.company) message += '' + req.body.company + '<br />'
+    if(req.body.tel) message += '' + req.body.tel + '<br />'
+    if(req.body.website) message += '' + req.body.website + '<br />'
+    if(req.body.type) message += '<br />💬 I\'m interested in joining the community by ' + req.body.type + '<br />'
+
     const mail = sendMail({
       name: req.body.name,
       email: req.body.email,
       tel: req.body.tel,
-      message: req.body.message
+      message: message
     });
     res.setHeader('Content-Type', 'application/json');
     res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");

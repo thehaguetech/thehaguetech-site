@@ -20,6 +20,7 @@ class EventOverview extends Component {
     events = this.formatEvents(events)
     events = this.filterEvents(events)
     events = this.sortEvents(events)// Order chronologically
+    events = this.removeDuplicates(events)
     this.setState({ events: events })
   }
   async fetchEvents() {
@@ -46,6 +47,16 @@ class EventOverview extends Component {
   sortEvents(events) {
     return events.reverse();
   }
+  removeDuplicates(events) {
+    // Don't show duplicates (2 events with the same title)
+    let newEvents = [], uniqueEventTitles = []
+    for(let idx in events) {
+      if(uniqueEventTitles.indexOf(events[idx].title) > -1) continue;
+      uniqueEventTitles.push(events[idx].title)
+      newEvents.push(events[idx])
+    }
+    return newEvents;
+  }
   render() {
     if(! this.state.events) return <div style={{minHeight: '800px'}} />
     return <div className="EventOverview">
@@ -62,7 +73,7 @@ class EventOverview extends Component {
         .EventOverview {
           width: 1000px;
           max-width: 100%;
-          margin: 0 auto;
+          margin: 0 auto 48px;
         }
         .EventOverview .events {
           display: flex;

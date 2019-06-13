@@ -21,48 +21,58 @@ class PricingBlock extends Component {
     const mapIndexed = R.addIndex(R.map);
     const data = this.props.data;
     return <div className="PricingBlock">
-      <div className="heading">
-        <b>Membership</b>
-        <span className="extra-benefit">
-          {data.extraBenefit}
-        </span>
-      </div>
-      <div className="pricing-wrapper">
-        <div className="price-in-euros">
-          <sup>&euro;</sup> {data.price}
+      <div className="boxed">
+        <div className="heading">
+          <b>Membership</b>
+          <span className="extra-benefit">
+            {data.extraBenefit}
+          </span>
         </div>
-        <small>
-          per month excl. 21% vat
-        </small>
-      </div>
-      <hr />
-      <h1>
-        {data.title}
-      </h1>
-      <div className={'features' + (this.state.isActive ? ' is-active' : '')}>
-        {mapIndexed((feature, idx) => {
-          return <div key={idx} className="feature">
-            {feature}
-            {idx === 0 &&
-              <div className={'arrow' + (this.state.isActive ? ' down' : '')}
-                   onClick={() => this.setState({ isActive: ! this.state.isActive })}
-                   />
-            }
+        <div className="pricing-wrapper">
+          <div className="price-in-euros">
+            <sup>&euro;</sup> {data.price}
           </div>
-        }, data.features)}
+          <small>
+            per month excl. 21% vat
+          </small>
+        </div>
+        <hr />
+        <h1>
+          {data.title}
+        </h1>
+        <div className={'features' + (this.state.isActive ? ' is-active' : '')}>
+          {mapIndexed((feature, idx) => {
+            return <div key={idx} className="feature">
+              {feature}
+              {idx === 0 &&
+                <div className={'arrow' + (this.state.isActive ? ' down' : '')}
+                     onClick={() => this.setState({ isActive: ! this.state.isActive })}
+                     />
+              }
+            </div>
+          }, data.features)}
+        </div>
+        <Link href="/contact">
+          <a className="button">
+            sign up
+          </a>
+        </Link>
       </div>
-      <Link href="/contact">
-        <a className="button">
-          sign up
-        </a>
-      </Link>
       <div className="tagline">
-
+        {data.tagline}
       </div>
       <style jsx>{`
         .PricingBlock {
-          padding: 24px 16px;
+          text-align: left;
           margin: 32px 12px;
+        }
+        @media(min-width: 480px) {
+          .PricingBlock {
+            margin: 32px 16px;
+          }
+        }
+        .PricingBlock .boxed {
+          padding: 24px 16px;
           box-shadow: 0 2px 13px rgba(0, 0, 0, 0.2);
           background-color: #ffffff;
         }
@@ -149,7 +159,7 @@ class PricingBlock extends Component {
         }
         @media(min-width: 480px) {
           .features {
-            max-height: auto;
+            max-height: 9999px;
           }
         }
         .feature {
@@ -172,6 +182,7 @@ class PricingBlock extends Component {
         }
 
         .arrow {
+          width: 100%;
           transition: transform 0.4s 0.2s;
           transform: rotate(180deg);
           background: top left no-repeat url('/static/components/pricing/arrow-top.svg');
@@ -192,11 +203,22 @@ class PricingBlock extends Component {
           }
         }
         .tagline {
+          padding: 18px 0;
+          margin: 50px 0;
           color: #1126a9;
           font-family: "Maison Neue", sans-serif;
           font-size: 16px;
           font-weight: 300;
           line-height: 24px;
+          background: left top url('/static/yellow-sign.png') no-repeat;
+        }
+
+        @media(min-width: 480px) {
+          .PricingBlock {
+            display: inline-block;
+            vertical-align: top;
+            width: 306px;
+          }
         }
       `}</style>
     </div>
@@ -222,7 +244,7 @@ function Pricing() {
       tagline: 'A great way to access the power of our community.'
     },
     {
-      name: 'membership',
+      name: 'coworking',
       extraBenefit: '+ flex co-working',
       price: 180,
       title: 'Flexible workplace starting from 1 day a week.',
@@ -242,7 +264,7 @@ function Pricing() {
       tagline: 'An incredible way to work in our co-working space and with our community.'
     },
     {
-      name: 'membership',
+      name: 'dedicated',
       extraBenefit: '+ flex dedicated',
       price: 255,
       title: 'Fixed workplace in co-working space.',
@@ -263,7 +285,7 @@ function Pricing() {
       tagline: 'The perfect way to set up shop right in the heart of our community.'
     },
     {
-      name: 'membership',
+      name: 'office',
       extraBenefit: '+ office',
       price: 525,
       title: 'Use of workplace in enclosed space.',
@@ -289,7 +311,21 @@ function Pricing() {
     <IntroText>
       The Hague Tech offers the space you need right now, and in the future. Our dynamic building can fulfill all your needs.
     </IntroText>
-    {R.map((membership) => <PricingBlock key={membership.name} data={membership} />, memberships)}
+    <div className="pricing-blocks-wrapper">
+      {R.map((membership) => <PricingBlock key={membership.name} data={membership} />, memberships)}
+    </div>
+    <style jsx>{`
+      .pricing-blocks-wrapper {
+        text-align: center;
+      }
+      @media(max-width: 1340px) {
+        .pricing-blocks-wrapper {
+          width: 1000px;
+          max-width: 100%;
+          margin: 0 auto;
+        }
+      }
+    `}</style>
   </div>
 }
 

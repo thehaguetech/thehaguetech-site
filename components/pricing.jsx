@@ -26,7 +26,9 @@ class PricingBlock extends Component {
           <span>Popular</span>103
         </div>
         <div className="heading">
-          <b>Membership</b>
+          <Link href="/join-community">
+            <b>Membership</b>
+          </Link>
           <span className="extra-benefit">
             {data.extraBenefit}
           </span>
@@ -45,17 +47,17 @@ class PricingBlock extends Component {
         </h1>
         <div className={'features' + (this.state.isActive ? ' is-active' : '')}>
           {mapIndexed((feature, idx) => {
-            return <div key={idx} className="feature">
+            return <div key={idx} className="feature"
+              onClick={() => idx === 0 && this.setState({ isActive: ! this.state.isActive })}
+              >
               {feature}
               {idx === 0 &&
-                <div className={'arrow' + (this.state.isActive ? ' down' : '')}
-                     onClick={() => this.setState({ isActive: ! this.state.isActive })}
-                     />
+                <div className={'arrow' + (this.state.isActive ? ' down' : '')} />
               }
             </div>
           }, data.features)}
         </div>
-        <Link href="/contact">
+        <Link href="/join-community">
           <a className="button">
             sign up
           </a>
@@ -112,6 +114,7 @@ class PricingBlock extends Component {
           display: block;
         }
         .heading b {
+          cursor: copy;
           display: block;
           min-height: 48px;
           background-color: #071124;
@@ -214,6 +217,10 @@ class PricingBlock extends Component {
           color: #0f2247;
           font-family: "Open Sans", sans-serif;
           font-size: 18px;
+        }
+        .coworking .button {
+          background: #fff;
+          color: #0f2247;
         }
 
         .arrow {

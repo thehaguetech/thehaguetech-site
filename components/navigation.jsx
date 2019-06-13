@@ -130,7 +130,7 @@ class Navigation extends Component {
       },
       {
         title: 'Act',
-        href: '/become-a-member'
+        href: '/members'
       },
       {
         title: 'Contact',

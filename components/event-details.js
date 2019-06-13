@@ -96,7 +96,7 @@ class EventDetails extends Component {
     return event.fields
   }
   render() {
-    if(! this.state.event) return <div />
+    if(! this.state.event) return <div style={{minHeight: '800px'}} />
     return <div className="EventDetails">
       <div className="flex">
         <div className="flex-1 extra-padding">

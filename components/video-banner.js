@@ -17,7 +17,7 @@ function VideoBanner() {
           Collaborate with our community to bring your tech ideas to life.
         </div>
         <div className="button-wrapper">
-          <Button prefetch href="https://outlook.office365.com/owa/calendar/TheHagueTech@jongensvantechniek.nl/bookings/" target="_blank">
+          <Button href="https://outlook.office365.com/owa/calendar/TheHagueTech@jongensvantechniek.nl/bookings/" target="_blank">
             Book a tour
           </Button>
         </div>

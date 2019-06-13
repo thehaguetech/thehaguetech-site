@@ -16,6 +16,14 @@ class Slide extends Component {
         </div>
       </Link>
       <style jsx>{`
+        .Slide {
+          cursor: pointer;
+          transition: transform 0.3s;
+        }
+        .Slide:hover {
+          transform: scale(1.05);
+          transition: transform 0.2s;
+        }
         .Slide img {
           display: block;
           height: 76px;

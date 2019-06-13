@@ -5,7 +5,7 @@ class Logo extends Component {
     return <div>
       <img
         src={this.props.color == 'white'
-          ? '/static/components/footer/tht-logo-wit.png'
+          ? '/static/components/footer/tht-logo-wit.svg'
           : '/static/components/navigation/tht-logo.svg'}
         className="logo"
         width={this.props.width}

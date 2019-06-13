@@ -15,7 +15,7 @@ class YellowBanner extends Component {
         }}>
           {this.props.title}
         </Title>
-        <Button href="/contact" style={{
+        <Button href={this.props.buttonLink || '/contact'} target={this.props.target} style={{
           marginTop: '36px',
           background: '#071124',
           borderColor: '#071124',

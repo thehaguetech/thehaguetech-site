@@ -47,7 +47,7 @@ class EventOverview extends Component {
     return events.reverse();
   }
   render() {
-    if(! this.state.events) return <div />
+    if(! this.state.events) return <div style={{minHeight: '800px'}} />
     return <div className="EventOverview">
       <nav className="filters" hidden>
         Filters
@@ -59,6 +59,11 @@ class EventOverview extends Component {
         }, Object.keys(this.state.events))}
       </div>
       <style jsx>{`
+        .EventOverview {
+          width: 1000px;
+          max-width: 100%;
+          margin: 0 auto;
+        }
         .EventOverview .events {
           display: flex;
           justify-content: center;

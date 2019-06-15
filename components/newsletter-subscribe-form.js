@@ -19,111 +19,50 @@ class ContactForm extends Component {
   submitForm(e) {
     const self = this;
     if(e) e.preventDefault();
-
-    fetch('/api/mail/contact', {
+    fetch('/api/newsletter/add', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name: this.state.name,
-        company: this.state.company,
-        email: this.state.email,
-        tel: this.state.tel,
-        website: this.state.website,
-        type: this.state.type,
-        eventDate: this.state.eventDate,
-        eventExpectedRsvps: this.state.eventExpectedRsvps,
-        message: this.state.message
+        email: this.state.EMAIL,
+        fname: this.state.FNAME,
+        lname: this.state.LNAME,
+        cname: this.state.CNAME
       })
-    }).then(function() {
-      alert('Thank you for your email!')
+    }).then(function(data) {
+      alert('Done! See you soon at The Hague Tech.')
       self.refs.form.reset()
+    }).catch(function(error) {
+      console.log('Something went wrong while subscribing.')
     });
     return false;
   }
   render() {
-    let enabledFields;
-    switch(this.props.type) {
-      case 'join-community':
-        enabledFields = [
-          'name',
-          'company',
-          'email',
-          'tel',
-          'website',
-          'type',
-          'message'
-        ]
-        break;
-      case 'host-event':
-        enabledFields = [
-          'name',
-          'company',
-          'email',
-          'tel',
-          'eventDate',
-          'eventExpectedRsvps',
-          'message'
-        ]
-        break;
-      default:
-        enabledFields = [
-          'name',
-          'email',
-          'tel',
-          'message'
-        ]
-    }
+    let enabledFields = [
+      'EMAIL',
+      'FNAME',
+      'LNAME',
+      'CNAME'
+    ];
     return <div className="ContactForm flex">
       <div className="flex-1 form">
         <p className="intro-text">
           {this.props.introText}
         </p>
         <form onSubmit={(e) => this.submitForm(e)} ref="form">
-          {enabledFields.indexOf('type') >= 0 && <div>
-            <label>I'm interested in joining the community by </label>
-            <select name="type" onChange={this.handleChange}>
-              {R.map((type) => {
-                return <option key={type} value={type}>{type}</option>
-              }, [
-                '',
-                'becoming a member',
-                'using a workspace',
-                'hosting an event',
-                'working on a co-create project',
-                'other',
-              ])}
-            </select>
-          </div>}
-          {enabledFields.indexOf('name') >= 0 && <input required type="text" name="name" placeholder="Name" onChange={this.handleChange} />}
-          {enabledFields.indexOf('company') >= 0 && <input type="text" name="company" placeholder="Company" onChange={this.handleChange} />}
-          {enabledFields.indexOf('email') >= 0 && <input required type="email" name="email" placeholder="Email" onChange={this.handleChange} />}
-          {enabledFields.indexOf('tel') >= 0 && <input type="tel" name="tel" placeholder="Phone number" onChange={this.handleChange} />}
-          {enabledFields.indexOf('website') >= 0 && <input type="text" name="website" placeholder="Your website" onChange={this.handleChange} />}
-          {enabledFields.indexOf('eventDate') >= 0 && <input type="date" name="eventDate" placeholder="Date of event" onChange={this.handleChange} />}
-          {enabledFields.indexOf('eventExpectedRsvps') >= 0 && <select>
-            {R.map((rsvpRange) => {
-              return <option key={rsvpRange} value={rsvpRange}>{rsvpRange}</option>
-            }, [
-              '10-50',
-              '50-100',
-              '100-200',
-              '200-500',
-              'other',
-            ])}
-          </select>}
-          {enabledFields.indexOf('message') >= 0 && <textarea name="message" placeholder="Message" onChange={this.handleChange}></textarea>}
+          {enabledFields.indexOf('EMAIL') >= 0 && <input required type="email" name="EMAIL" placeholder="Email" onChange={this.handleChange} />}
+          {enabledFields.indexOf('FNAME') >= 0 && <input required type="text" name="FNAME" placeholder="First name" onChange={this.handleChange} />}
+          {enabledFields.indexOf('LNAME') >= 0 && <input type="text" name="LNAME" placeholder="Surname" onChange={this.handleChange} />}
+          {enabledFields.indexOf('CNAME') >= 0 && <input type="text" name="CNAME" placeholder="Company" onChange={this.handleChange} />}
           <div align="right">
             <Button type="submit">
-              send message
+              subscribe
             </Button>
           </div>
         </form>
       </div>
       <div className="flex-1 address">
         <p>
-          <Map />
+          <img src="/static/pages/newsletter/main-image.jpg" alt="Photo of HubFest 2018" />
         </p>
         <p className="paragraph">
           The Hague Tech<br />
@@ -136,14 +75,16 @@ class ContactForm extends Component {
         </p>
       </div>
       <style jsx>{`
-        .ContactForm {
-        }
         .ContactForm p {
           color: #0f2247;
           font-family: "Maison Neue", sans-serif;
           font-size: 24px;
           font-weight: 500;
           line-height: 32px;
+        }
+        img {
+          display: block;
+          max-width: 100%;
         }
         .intro-text {
           color: #0f2247;
@@ -210,7 +151,7 @@ class ContactForm extends Component {
           font-weight: 300;
           line-height: 32px;
         }
-        @media(min-width: 600px) {
+        @media(min-width: 480px) {
           .address {
             margin: 0 0 0 34px;
           }

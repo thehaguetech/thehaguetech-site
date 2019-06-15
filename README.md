@@ -40,6 +40,7 @@ An easy way to start contributing is by creating a so called 'issue' with your f
 CONTENTFUL_SPACE_ID=YOURID
 CONTENTFUL_ACCESS_TOKEN=YOURTOKEN
 SENDGRID_API_KEY='SENDGRIDAPIKEY'
+MAILCHIMP_ID='XXXX-us15'
 ```
 
 2. `npm run dev`

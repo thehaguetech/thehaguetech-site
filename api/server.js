@@ -12,6 +12,7 @@ const handle = app.getRequestHandler();
 
 const {fetchEntriesForContentType, fetchEntry} = require('./contentful.js');
 const {sendMail} = require('./email.js');
+const {newsletterAdd} = require('./newsletter.js');
 
 app.prepare().then(() => {
   const server = express()
@@ -40,6 +41,19 @@ app.prepare().then(() => {
     res.setHeader('Content-Type', 'application/json');
     res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
     res.end(JSON.stringify(mail, null, 3));
+  });
+
+  // API: Newsletter
+  server.post('/api/newsletter/add', function(req, res){
+    const callback = function(data) {
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+      res.end(JSON.stringify({
+        title: data.title,
+        status: data.status
+      }, null, 3));
+    }
+    newsletterAdd(req.body, callback);
   });
 
   server.get('*', async (req, res) => {

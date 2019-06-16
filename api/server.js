@@ -68,6 +68,10 @@ app.prepare().then(() => {
       res.setHeader('content-type', 'text/javascript');
       createReadStream('./offline/serviceWorker.js').pipe(res);
     }
+    // Redirect old newsletter subscribe URL
+    if (pathname === '/contact/subscribe/') {
+      res.redirect('/newsletter');
+    }
     // Make it possible to link to events
     else if (pathname.indexOf('/events/') === 0) {
       const slug = pathname.split('/events/')[1];

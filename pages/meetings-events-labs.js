@@ -92,7 +92,7 @@ function EventsAndLabs() {
       imagePosition="right"
       category=""
       title="Open Blockchain Lab The Hague"
-      text="<p>Ever wondered what the future of value looks like? Value like internet transactions, personal identity, cars, truthful journalistic works.. Blockchain offered a new way to secure data, and makes collaboration easier. At <a href='https://www.meetup.com/blockbar/' target='_blank'>Blockbar</a> we work on projects, discuss developments and exchange knowledge by doing talks and workshops. If you want to learn or create related to blockchain & decentralized systems around it, join on Fridays. Blockbar is the The Hague based space where you cowork with likeminded people and develop your dApps.</p>"
+      text="<p>Ever wondered what the future of value looks like? Value like internet transactions, personal identity, car data sharing, truthful journalistic works.. Blockchain offered a new way to secure data, and makes collaboration easier. At <a href='https://www.meetup.com/blockbar/' target='_blank'>Blockbar</a> we work on projects, discuss developments and exchange knowledge by doing talks and workshops. If you want to learn or create related to blockchain & decentralized systems around it, join on Fridays. Blockbar is the The Hague based space where you cowork with likeminded people and develop your dApps.</p>"
       />
     <NewsletterSubscribe />
     <Footer />

@@ -122,9 +122,9 @@ class ContactForm extends Component {
         </form>
       </div>
       <div className="flex-1 address">
-        <p>
+        <div style={{margin: '24px 0'}}>
           <Map />
-        </p>
+        </div>
         <p className="paragraph">
           The Hague Tech<br />
           Anna van Hannoverstraat 4 <br />

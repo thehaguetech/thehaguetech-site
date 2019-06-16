@@ -50,7 +50,7 @@ class Navigation extends Component {
       $(window).scroll(function(event){
         didScroll = true;
         self.setState({ activePrimaryNav: null, showNav: false })
-      }, {passive: true});
+      });
 
       // run hasScrolled() and reset didScroll status
       self.TO_interval = setInterval(function() {

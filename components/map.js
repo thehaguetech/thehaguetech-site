@@ -31,9 +31,9 @@ class Map extends Component {
           defaultZoom={this.props.zoom}
         >
           <Marker
-            lat={59.955413}
-            lng={30.337844}
-            text="My Marker"
+            lat={52.079164}
+            lng={4.3418480}
+            text="The Hague Tech"
           />
         </GoogleMapReact>
       </div>

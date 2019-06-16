@@ -13,6 +13,15 @@ class MyApp extends App {
     return { pageProps };
   }
 
+  componentDidMount() {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js")
+        .catch(err => console.error("Service worker registration failed", err));
+    } else {
+      console.log("Service worker not supported");
+    }
+  }
+
   render() {
     const { Component, pageProps } = this.props;
 
@@ -35,7 +44,7 @@ class MyApp extends App {
           <meta property="og:description" content="Innovate faster. Better. Together. Collaborate with our community to bring your tech ideas to life." />
           <meta property="og:title" content="Join the The Hague Tech community" />
           <meta property="og:url" content="https://www.thehaguetech.com/" />
-          <meta property="og:image" content="https://www.thehaguetech.com/static/og-image.jpg" />
+          <meta property="og:image" content="https://thehaguetech-site.netlify.com/static/og-image.jpg" />
 
           <link href="/static/tht-favicon@2x.png" rel="icon" type="image/x-icon" />
           <script dangerouslySetInnerHTML={{

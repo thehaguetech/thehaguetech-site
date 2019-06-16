@@ -3,6 +3,7 @@
 // See https://github.com/zeit/next.js/issues/1245 for discussions on Universal Webpack or universal Babel
 const { createServer } = require('http');
 const { parse } = require('url');
+const { createReadStream } = require('fs');
 const express = require('express')
 const next = require('next');
 
@@ -62,8 +63,13 @@ app.prepare().then(() => {
     const parsedUrl = parse(req.url, true);
     const { pathname, query } = parsedUrl;
 
+    // Make sw.js available (service worker)
+    if (pathname === '/sw.js') {
+      res.setHeader('content-type', 'text/javascript');
+      createReadStream('./offline/serviceWorker.js').pipe(res);
+    }
     // Make it possible to link to events
-    if (pathname.indexOf('/events/') === 0) {
+    else if (pathname.indexOf('/events/') === 0) {
       const slug = pathname.split('/events/')[1];
       app.render(req, res, '/event', { slug: slug });
     }

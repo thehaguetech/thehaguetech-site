@@ -49,6 +49,7 @@ class Navigation extends Component {
       // on scroll, let the interval function know the user has scrolled
       $(window).scroll(function(event){
         didScroll = true;
+        self.setState({ activePrimaryNav: null, showNav: false })
       });
 
       // run hasScrolled() and reset didScroll status

@@ -99,12 +99,14 @@ class MyApp extends App {
               src: url("/static/fonts/noe-display/noe-display-regular.ttf") format("opentype");
               font-weight: normal;
               font-style: normal;
+              font-display: swap;
           }
           @font-face {
               font-family: 'Noe Display';
               src: url("/static/fonts/noe-display/noe-display-bold.ttf") format("opentype");
               font-weight: bold;
               font-style: normal;
+              font-display: swap;
           }
           /* Maison Mono */
           @font-face {
@@ -113,6 +115,7 @@ class MyApp extends App {
                    url('/static/fonts/maison-mono/maison_mono_bold-webfont.woff') format('woff');
               font-weight: normal;
               font-style: normal;
+              font-display: swap;
           }
           @font-face {
               font-family: 'maison_monoitalic';
@@ -120,6 +123,7 @@ class MyApp extends App {
                    url('/static/fonts/maison-mono/maison_mono_italic-webfont.woff') format('woff');
               font-weight: normal;
               font-style: normal;
+              font-display: swap;
           }
           @font-face {
               font-family: 'maison_monolight';
@@ -127,6 +131,7 @@ class MyApp extends App {
                    url('/static/fonts/maison-mono/maison_mono_light-webfont.woff') format('woff');
               font-weight: normal;
               font-style: normal;
+              font-display: swap;
           }
           @font-face {
               font-family: 'maison_monoregular';
@@ -134,6 +139,7 @@ class MyApp extends App {
                    url('/static/fonts/maison-mono/maison_mono_regular-webfont.woff') format('woff');
               font-weight: normal;
               font-style: normal;
+              font-display: swap;
           }
           /* Maison Neue */
           @font-face {
@@ -142,6 +148,7 @@ class MyApp extends App {
                    url('/static/fonts/maison-neue/maisonneuebookitalic-webfont.woff') format('woff');
               font-weight: normal;
               font-style: normal;
+              font-display: swap;
           }
           @font-face {
               font-family: 'maison_neuebold_italic';
@@ -149,6 +156,7 @@ class MyApp extends App {
                    url('/static/fonts/maison-neue/maisonneuebolditalic_1-webfont.woff') format('woff');
               font-weight: normal;
               font-style: normal;
+              font-display: swap;
           }
           @font-face {
               font-family: 'maison_neuebold';
@@ -156,6 +164,7 @@ class MyApp extends App {
                    url('/static/fonts/maison-neue/maisonneuebold-webfont.woff') format('woff');
               font-weight: normal;
               font-style: normal;
+              font-display: swap;
           }
           @font-face {
               font-family: 'Maison Neue';
@@ -163,6 +172,7 @@ class MyApp extends App {
                    url('/static/fonts/maison-neue/maisonneuebook-webfont.woff') format('woff');
               font-weight: normal;
               font-style: normal;
+              font-display: swap;
           }
           @font-face {
               font-family: 'maison_neuebold_italic';
@@ -170,6 +180,7 @@ class MyApp extends App {
                    url('/static/fonts/maison-neue/maisonneuebolditalic-webfont.woff') format('woff');
               font-weight: normal;
               font-style: normal;
+              font-display: swap;
           }
 
         `}</style>

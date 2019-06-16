@@ -20,6 +20,23 @@ class MyApp extends App {
       <Container>
         <Head>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
+          <meta name="description" content="The Tech Community and Workspace in the heart of the city where creative talent, businesses, government and research institutions come together." />
+
+          <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png" />
+          <link rel="manifest" href="/static/site.webmanifest" />
+          <link rel="mask-icon" href="/static/safari-pinned-tab.svg" color="#0f2247" />
+          <meta name="msapplication-TileColor" content="#ffffff" />
+          <meta name="theme-color" content="#ffffff" />
+
+          <meta property="og:image:width" content="1024" />
+          <meta property="og:image:height" content="536" />
+          <meta property="og:description" content="Innovate faster. Better. Together. Collaborate with our community to bring your tech ideas to life." />
+          <meta property="og:title" content="Join the The Hague Tech community" />
+          <meta property="og:url" content="https://www.thehaguetech.com/" />
+          <meta property="og:image" content="https://www.thehaguetech.com/static/og-image.jpg" />
+
           <link href="/static/tht-favicon@2x.png" rel="icon" type="image/x-icon" />
           <script dangerouslySetInnerHTML={{
           __html: `(function(h,o,t,j,a,r){

@@ -17,6 +17,7 @@ class Logo extends Component {
           width: 70px;
           height: 70px;
           max-width: unset;
+          position: relative;
         }
       `}</style>
     </div>

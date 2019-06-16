@@ -140,10 +140,14 @@ class Navigation extends Component {
     return <header className={'Navigation' + (this.state.showNav ? ' is-active' : '')}>
       <Link prefetch href="/index">
         <div style={{cursor: 'pointer', height: '72px', display: 'inline-block'}} title="Back to home">
-          <Logo />
+          <Logo style={{
+            zIndex: 1
+          }} />
         </div>
       </Link>
-      <div className="white-background only-on-desktop"></div>
+      <div className="white-background main only-on-desktop"></div>
+      <div className="white-background sub only-on-desktop"></div>
+      <div className="black-background only-on-desktop"></div>
       <nav className="main-nav">
         <ul>
           {R.map((item) => {
@@ -198,8 +202,8 @@ class Navigation extends Component {
           transition: top 0.4s ease-in-out;
           top: -107px;
         }
-        .Navigationheader.is-active,
-        .Navigationheader.is-active .toggle-nav {
+        .Navigation.is-active,
+        .Navigation.is-active .toggle-nav {
           transition: top 0s;
         }
         @media (min-width: 980px) {
@@ -208,12 +212,6 @@ class Navigation extends Component {
             display: flex;
             justify-content: flex-start;
           }
-        }
-
-        .logo {
-          width: 5rem;
-          height: 5rem;
-          display: block;
         }
 
         /*
@@ -438,13 +436,41 @@ class Navigation extends Component {
             min-height: 524px;
             display: flex;
           }
-          header.is-active .white-background {
+          header.is-active .white-background.main {
+            width: 100%;
+            height: 130px;
+            position: absolute;
+            background: rgba(255,255,255,0.95);
+            width: 100%;
+            left: 0;
+            top: 0;
+          }
+          header.is-active .white-background.sub {
             position: absolute;
             height: 405px;
             background: #fff;
             width: 100%;
             left: 0;
             bottom: 0;
+          }
+          @keyframes fadein {
+              from { opacity: 0; }
+              to   { opacity: 1; }
+          }
+          @keyframes fadeout {
+              from { opacity: 1; }
+              to   { opacity: 0; }
+          }
+
+          header.is-active .black-background {
+            animation: fadein 0.4s;
+            background: rgba(0,0,0,0.8);
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
           }
           nav nav li {
             margin: 8px 0;

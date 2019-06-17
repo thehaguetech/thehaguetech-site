@@ -106,7 +106,6 @@ class MyApp extends App {
           }
           p {
             font-family: "Maison Neue", sans-serif;
-            width: 600px;
             max-width: 100%;
             font-size: 17px;
             line-height: 24px;

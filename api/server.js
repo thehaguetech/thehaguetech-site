@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 // This file doesn't go through babel or webpack transformation.
 // Make sure the syntax and sources this file requires are compatible with the current node version you are running
 // See https://github.com/zeit/next.js/issues/1245 for discussions on Universal Webpack or universal Babel
@@ -105,7 +106,7 @@ app.prepare().then(() => {
     }
   })
 
-  server.listen(process.env.PORT || 3000, (err) => {
+  server.listen(process.env.PORT || 443, (err) => {
     if (err) throw err
     console.log('> Ready on http://localhost:' + (process.env.PORT || 3000))
   })

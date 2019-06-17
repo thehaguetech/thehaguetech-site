@@ -12,6 +12,7 @@ const BookATourBanner = dynamic(() => import('../components/book-a-tour-banner.j
 const YellowBanner = dynamic(() => import('../components/yellow-banner.js'));
 const Footer = dynamic(() => import('../components/footer.js'));
 const NewsletterSubscribe = dynamic(() => import('../components/newsletter-subscribe.js'));
+const EventOverview = dynamic(() => import('../components/event-overview.js'));
 
 function EventsAndLabs() {
   return <div className="root">
@@ -94,6 +95,10 @@ function EventsAndLabs() {
       title="Open Blockchain Lab The Hague"
       text="<p>Ever wondered what the future of value looks like? Value like internet transactions, personal identity, car data sharing, truthful journalistic works.. Blockchain offered a new way to secure data, and makes collaboration easier. At <a href='https://www.meetup.com/blockbar/' target='_blank'>Blockbar</a> we work on projects, discuss developments and exchange knowledge by doing talks and workshops. If you want to learn or create related to blockchain & decentralized systems around it, join on Fridays. Blockbar is the The Hague based space where you cowork with likeminded people and develop your dApps.</p>"
       />
+    <Title align="center">
+      Our upcoming events
+    </Title>
+    <EventOverview limit="3" />
     <NewsletterSubscribe />
     <Footer />
   </div>

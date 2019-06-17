@@ -12,7 +12,7 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-const {fetchEntriesForContentType, fetchEntry} = require('./contentful.js');
+const {fetchEntriesForContentType, fetchEntry, fetchStories, fetchStory} = require('./contentful.js');
 const {sendMail} = require('./email.js');
 const {newsletterAdd} = require('./newsletter.js');
 
@@ -77,6 +77,21 @@ app.prepare().then(() => {
     else if (pathname.indexOf('/events/') === 0) {
       const slug = pathname.split('/events/')[1];
       app.render(req, res, '/event', { slug: slug });
+    }
+    // API: Stories
+    else if (pathname === '/api/stories' || pathname.indexOf('/api/stories?') === 0 ) {
+      let stories = await fetchStories()
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+      res.end(JSON.stringify(stories, null, 3));
+    }
+    // API: Story
+    else if (pathname.indexOf('/api/stories/') === 0) {
+      const slug = pathname.split('/stories/')[1]
+      let story = await fetchStory({ slug: slug })
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+      res.end(JSON.stringify(story, null, 3));
     }
     // API: Events
     else if (pathname === '/api/events' || pathname.indexOf('/api/events?') === 0 ) {

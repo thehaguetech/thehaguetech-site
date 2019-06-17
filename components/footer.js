@@ -10,7 +10,7 @@ class Footer extends Component {
     return <div className="Footer">
       <div className="max-width flex">
         <nav className="social-icons">
-          <a href="https://twitter.com/lifenautjoe/status/1126539431601672193" target="_blank" title="">
+          <a href="https://www.facebook.com/thehaguetech/" target="_blank" title="">
             <img src="/static/components/footer/facebook-icon.svg" alt="Facebook" />
           </a>
           <a href="https://www.twitter.com/The_Hague_Tech" target="_blank">

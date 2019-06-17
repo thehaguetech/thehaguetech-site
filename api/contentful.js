@@ -94,19 +94,6 @@ function fetchEntriesForContentType (contentType) {
   })
 }
 
-function fetchEntriesForContentType (contentType) {
-  return client.getEntries({
-      content_type: contentType,
-      limit: 100,
-      order: '-fields.datetime'
-    })
-  .then((response) => response.items)
-  .catch((error) => {
-    console.log(chalk.red(`\nError occurred while fetching Entries for ${chalk.cyan(contentType)}:`))
-    console.error(error)
-  })
-}
-
 // Load one specific entry
 function fetchEntry (query) {
   return client.getEntries({
@@ -120,10 +107,33 @@ function fetchEntry (query) {
     .catch(console.error)
 }
 
-// Start the boilerplate code
-// runBoilerplate()
+// Load all entries for a given Content Type from Contentful
+function fetchStories () {
+  return client.getEntries({
+      content_type: 'story',
+      limit: 100
+    })
+  .then((response) => response.items)
+  .catch((error) => {
+    console.log(chalk.red(`\nError occurred while fetching Entries for story:`))
+    console.error(error)
+  })
+}
+
+// Load one specific story
+function fetchStory (query) {
+  return client.getEntries({
+    content_type: query.content_type || 'story',
+    'fields.slug': query.slug,
+    limit: 1
+  })
+    .then((entry) => entry.items[0])
+    .catch(console.error)
+}
 
 module.exports = {
   fetchEntriesForContentType,
-  fetchEntry
+  fetchEntry,
+  fetchStories,
+  fetchStory
 }

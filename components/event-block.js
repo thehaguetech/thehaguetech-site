@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import { Component } from 'react';
 import Link from 'next/link';
+import marked from 'marked';
 
 // Import components
 const SmallCapsTitle = dynamic(() => import('./small-caps-title.js'));
@@ -9,7 +10,9 @@ const DateCircle = dynamic(() => import('./date-circle.js'));
 
 class EventBlock extends Component {
   render() {
+    console.log(this.props.event)
     const slug = this.props.event.datetime.split('T')[0] + '/' + this.props.event.slug
+    const introText = this.props.event.introText.length <= 10 ? marked(this.props.event.detailedText).replace(/<\/?[^>]+(>|$)/g, '').substring(0, 200) : this.props.event.introText;
     return <Link prefetch href={`/event?slug=${slug}`} as={`/events/${slug}`}>
       <div className="EventBlock">
         <header style={{
@@ -28,7 +31,7 @@ class EventBlock extends Component {
             {this.props.event.title}
           </Title>
           <p>
-            {this.props.event.introText}        
+            {introText}        
           </p>
         </div>
         <div className="gradient" />

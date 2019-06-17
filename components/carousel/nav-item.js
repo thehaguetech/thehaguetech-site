@@ -13,6 +13,7 @@ class NavItem extends Component {
             width: 10px;
             height: 10px;
             border-radius: 10px;
+            cursor: pointer;
             background-color: #fff;
             border: solid 1px #1126a9;
             display: block;

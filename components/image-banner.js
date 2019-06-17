@@ -47,7 +47,7 @@ class ImageBanner extends Component {
           left: 0;
           background-color: rgba(81, 81, 81, 0.5);
         }
-        @media (min-width: 480px) {
+        @media (min-width: 900px) {
           .ImageBanner {
             margin-bottom: 0;
             min-height: 821px;

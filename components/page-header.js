@@ -23,14 +23,13 @@ class PageHeader extends Component {
       <style jsx>{`
         .PageHeader {
           text-align: center;
-          background-color: #666;
           min-height: 36rem;
           display: flex;
           padding-top: 10rem;
           justify-content: center;
           flex-direction: column;
           color: #fff;
-          background: center center / cover no-repeat;
+          background: #1126a9 center center / cover no-repeat;
           position: relative;
           overflow: hidden;
         }

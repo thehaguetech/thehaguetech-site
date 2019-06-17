@@ -48,7 +48,7 @@ class TextAndImage extends Component {
         .text-wrapper {
           width: 100%;
         }
-        @media (max-width: 480px) {
+        @media (max-width: 960px) {
           .image-wrapper {
             order: 0 !important;
           }
@@ -65,7 +65,7 @@ class TextAndImage extends Component {
           line-height: 24px;
         }
         /* On desktop: show full size image */
-        @media (min-width: 480px) {
+        @media (min-width: 960px) {
           .TextAndImage {
             flex-wrap: nowrap;
             padding: 0 24px;

@@ -22,10 +22,10 @@ class Footer extends Component {
         </nav>
         <nav className="footer-nav">
           <Link prefetch href="/contact">
-            <a>Contact</a>
+            <a className="nav-link">Contact</a>
           </Link>
           <Link href="https://github.com/thehaguetech/thehaguetech-site#thehaguetech-site">
-            <a target="_blank">GitHub</a>
+            <a className="nav-link" target="_blank">GitHub</a>
           </Link>
           {/*<a href="">FAQ</a>*/}
           {/*<a href="">Jobs</a>*/}
@@ -97,6 +97,12 @@ class Footer extends Component {
             width: 80%;
             max-width: 100%;
           }
+        }
+        .nav-link {
+          
+        }
+        .nav-link:hover {
+          
         }
       `}</style>
     </div>

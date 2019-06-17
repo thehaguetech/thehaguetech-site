@@ -12,8 +12,11 @@ class Navigation extends Component {
   constructor(props) {
     super(props)
 
+    const isClient = typeof document !== 'undefined'
+
     this.state = {
-      showNav: false
+      showNav: false,
+      path: isClient && Router.pathname
     }
 
     this.TO_interval;
@@ -139,7 +142,7 @@ class Navigation extends Component {
       }
     ]
     return <header className={'Navigation' + (this.state.showNav ? ' is-active' : '')}>
-      <Link prefetch href="/index">
+      <Link prefetch href="/">
         <div style={{cursor: 'pointer', height: '72px', display: 'inline-block'}} title="Back to home">
           <Logo style={{
             zIndex: 1
@@ -155,7 +158,10 @@ class Navigation extends Component {
             return <li key={item.title} className={'primary-nav-item' + (this.state.activePrimaryNav == item.title ? ' is-active' : '')}>
               {item.href
                 ? <Link href={item.href}>
-                    <a onClick={() => this.setState({ showNav: false, activePrimaryNav: item.title })} className="primary-nav-link">
+                    <a
+                      onClick={() => this.setState({ showNav: false, activePrimaryNav: item.title })}
+                      className={'primary-nav-link' + (this.state.path == item.href ? ' is-active' : '')}
+                      >
                       {item.title}
                     </a>
                   </Link>
@@ -166,9 +172,10 @@ class Navigation extends Component {
               <nav className="secundary-nav">
                 <ul>
                   {item.items && R.map((item) => {
+                    console.log(this.state.path, item.href)
                     return <li key={item.title} className="icon" style={{backgroundImage: `url(${item.image})`}}>
                       <Link prefetch href={item.href}>
-                        <a className="secundary-nav-link">{item.title}</a>
+                        <a className={'secundary-nav-link' + (this.state.path == item.href ? ' is-active' : '')}>{item.title}</a>
                       </Link>
                     </li>
                   }, item.items)}
@@ -343,7 +350,8 @@ class Navigation extends Component {
         nav a:hover,
         nav a:focus,
         nav a:active,
-        .primary-nav-item.is-active > a {
+        .primary-nav-item.is-active > a,
+        .secundary-nav-link.is-active {
           background: #feef00;
         }
         @media(min-width: 980px) {
@@ -382,10 +390,10 @@ class Navigation extends Component {
 
           position: fixed;
           top: 10px;
-          right: 1rem;
+          right: 0;
           height: 5rem;
           z-index: 1;
-          width: 18px;
+          padding: 0 18px;
         }
         .icon-close,
         .icon-hamburger {

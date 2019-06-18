@@ -17,7 +17,7 @@ class CarouselDesktop extends Component {
       }
       <style jsx>{`
         .Carousel {
-          margin: 3rem auto;
+          margin: 4rem auto;
           color: #0F2247;
           font-family: "Maison Neue", sans-serif;
           font-size: 1.2rem;

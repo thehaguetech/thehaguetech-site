@@ -55,8 +55,8 @@ function App() {
       The Hague Tech is a hub with a diverse and forward thinking Community and a platform for innovation.
     </IntroText>
     <div>
-      <div className="show-on-mobile-only">
-        <Title align="center">
+      <div>
+        <Title align="center" size="small">
           What we can offer you
         </Title>
       </div>

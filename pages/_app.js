@@ -110,6 +110,9 @@ class MyApp extends App {
             font-size: 17px;
             line-height: 24px;
           }
+          p > :global(a) {
+            color: #1126a9;
+          }
           .flex {
             display: flex;
             justify-content: space-between;

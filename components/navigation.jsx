@@ -130,11 +130,19 @@ class Navigation extends Component {
       },
       {
         title: 'What',
-        href: '/events'
+        items: [{
+          title: 'Events',
+          href: '/events',
+          image: '/static/components/carousel/tht-icon-coworking.svg'
+        }, {
+          title: 'Stories',
+          href: '/stories',
+          image: '/static/components/carousel/tht-icon-coworking.svg'
+        }]
       },
       {
-        title: 'Act',
-        href: '/members'
+        title: 'Pricing',
+        href: '/pricing'
       },
       {
         title: 'Contact',
@@ -142,54 +150,56 @@ class Navigation extends Component {
       }
     ]
     return <header className={'Navigation' + (this.state.showNav ? ' is-active' : '')}>
-      <Link prefetch href="/">
-        <div style={{cursor: 'pointer', height: '72px', display: 'inline-block'}} title="Back to home">
-          <Logo style={{
-            zIndex: 1
-          }} />
-        </div>
-      </Link>
-      <div className="white-background main only-on-desktop"></div>
-      <div className="white-background sub only-on-desktop"></div>
-      <div className="black-background only-on-desktop"></div>
-      <nav className="main-nav">
-        <ul>
-          {R.map((item) => {
-            return <li key={item.title} className={'primary-nav-item' + (this.state.activePrimaryNav == item.title ? ' is-active' : '')}>
-              {item.href
-                ? <Link href={item.href}>
-                    <a
-                      onClick={() => this.setState({ showNav: false, activePrimaryNav: item.title })}
-                      className={'primary-nav-link' + (this.state.path == item.href ? ' is-active' : '')}
-                      >
+      <div className="max-width">
+        <Link prefetch href="/">
+          <div style={{cursor: 'pointer', height: '72px', display: 'inline-block'}} title="Back to home">
+            <Logo style={{
+              zIndex: 1
+            }} />
+          </div>
+        </Link>
+        <div className="white-background main only-on-desktop"></div>
+        <div className="white-background sub only-on-desktop"></div>
+        <div className="black-background only-on-desktop"></div>
+        <nav className="main-nav">
+          <ul>
+            {R.map((item) => {
+              return <li key={item.title} className={'primary-nav-item' + (this.state.activePrimaryNav == item.title ? ' is-active' : '')}>
+                {item.href
+                  ? <Link href={item.href}>
+                      <a
+                        onClick={() => this.setState({ showNav: false, activePrimaryNav: item.title })}
+                        className={'primary-nav-link' + (this.state.path == item.href ? ' is-active' : '')}
+                        >
+                        {item.title}
+                      </a>
+                    </Link>
+                  : <a onClick={() => this.clickPrimaryNavLink(item.title)} className="primary-nav-link">
                       {item.title}
                     </a>
-                  </Link>
-                : <a onClick={() => this.clickPrimaryNavLink(item.title)} className="primary-nav-link">
-                    {item.title}
-                  </a>
-              }
-              <nav className="secundary-nav">
-                <ul>
-                  {item.items && R.map((item) => {
-                    console.log(this.state.path, item.href)
-                    return <li key={item.title} className="icon" style={{backgroundImage: `url(${item.image})`}}>
-                      <Link prefetch href={item.href}>
-                        <a className={'secundary-nav-link' + (this.state.path == item.href ? ' is-active' : '')}>{item.title}</a>
-                      </Link>
-                    </li>
-                  }, item.items)}
-                </ul>
-              </nav>
-            </li>
-          }, navigation)}
-        </ul>
-      </nav>
-      <div
-        className="toggle-nav"
-        onClick={() => this.clickToggleButton()}
-        >
-        <span className={'icon-' + (this.state.showNav ? 'close' : 'hamburger')}></span>
+                }
+                <nav className="secundary-nav">
+                  <ul>
+                    {item.items && R.map((item) => {
+                      console.log(this.state.path, item.href)
+                      return <li key={item.title} className="icon" style={{backgroundImage: `url(${item.image})`}}>
+                        <Link prefetch href={item.href}>
+                          <a className={'secundary-nav-link' + (this.state.path == item.href ? ' is-active' : '')}>{item.title}</a>
+                        </Link>
+                      </li>
+                    }, item.items)}
+                  </ul>
+                </nav>
+              </li>
+            }, navigation)}
+          </ul>
+        </nav>
+        <div
+          className="toggle-nav"
+          onClick={() => this.clickToggleButton()}
+          >
+          <span className={'icon-' + (this.state.showNav ? 'close' : 'hamburger')}></span>
+        </div>
       </div>
       <style jsx>{`
         .Navigation {
@@ -216,7 +226,13 @@ class Navigation extends Component {
         }
         @media (min-width: 980px) {
           .Navigation {
-            padding: 29px 56px;
+            padding: 0;
+          }
+          .max-width {
+            width: 1327px;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 29px 24px;
             display: flex;
             justify-content: flex-start;
           }

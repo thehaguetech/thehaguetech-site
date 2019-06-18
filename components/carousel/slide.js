@@ -18,11 +18,6 @@ class Slide extends Component {
       <style jsx>{`
         .Slide {
           cursor: pointer;
-          transition: transform 0.3s;
-        }
-        .Slide:hover {
-          transform: scale(1.05);
-          transition: transform 0.2s;
         }
         .Slide img {
           display: block;
@@ -31,6 +26,7 @@ class Slide extends Component {
         }
         .Slide-title {
           margin: 2rem auto;
+          transition: transform 0.3s;
           text-align: center;
           color: #0F2247;
           font-family: "Maison Neue", sans-serif;
@@ -47,6 +43,13 @@ class Slide extends Component {
           .Slide-title {
             font-size: 24px;
             line-height: 32px;
+          }
+          .Slide img {
+            transition: transform 0.3s;
+          }
+          .Slide:hover img {
+            transform: scale(1.05);
+            transition: transform 0.2s;
           }
         }
       `}</style>

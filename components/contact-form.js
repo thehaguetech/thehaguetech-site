@@ -43,7 +43,10 @@ class ContactForm extends Component {
     return false;
   }
   render() {
-    let enabledFields;
+    let enabledFields, pageConfig = {
+      showMap: true,
+      showAddress: true
+    }
     switch(this.props.type) {
       case 'join-community':
         enabledFields = [
@@ -55,6 +58,8 @@ class ContactForm extends Component {
           'type',
           'message'
         ]
+        pageConfig.showMap = false;
+        pageConfig.showAdress = false;
         break;
       case 'host-event':
         enabledFields = [
@@ -122,18 +127,20 @@ class ContactForm extends Component {
         </form>
       </div>
       <div className="flex-1 address">
-        <div style={{margin: '24px 0'}}>
+        {pageConfig.showMap && <div style={{margin: '24px 0'}}>
           <Map />
-        </div>
-        <p className="paragraph">
-          The Hague Tech<br />
-          Anna van Hannoverstraat 4 <br />
-          2595 BJ The Hague<br />
-          The Netherlands
-        </p>
-        <p className="paragraph">
-          <a href="tel:+31702060030">+31 (0)70 206 00 30</a>
-        </p>
+        </div>}
+        {pageConfig.showMap && <div>
+          <p className="paragraph">
+            The Hague Tech<br />
+            Anna van Hannoverstraat 4 <br />
+            2595 BJ The Hague<br />
+            The Netherlands
+          </p>
+          <p className="paragraph">
+            <a href="tel:+31702060030">+31 (0)70 206 00 30</a>
+          </p>
+        </div>}
       </div>
       <style jsx>{`
         .ContactForm {

@@ -7,6 +7,7 @@ import $ from 'jquery';
 
 // Load components
 const Logo = dynamic(() => import('../components/logo.js'));
+const NextEvent = dynamic(() => import('../components/next-event.js'));
 
 class Navigation extends Component {
   constructor(props) {
@@ -184,6 +185,7 @@ class Navigation extends Component {
                       </li>
                     }, item.items)}
                   </ul>
+                  <NextEvent />
                 </nav>
               </li>
             }, navigation)}
@@ -227,7 +229,7 @@ class Navigation extends Component {
             width: 1327px;
             max-width: 100%;
             margin: 0 auto;
-            padding: 29px 24px;
+            padding: 18px 24px;
             display: flex;
             justify-content: flex-start;
           }

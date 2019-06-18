@@ -162,7 +162,7 @@ class Navigation extends Component {
             {R.map((item) => {
               return <li key={item.title} className={'primary-nav-item' + (this.state.activePrimaryNav == item.title ? ' is-active' : '')}>
                 {item.href
-                  ? <Link href={item.href}>
+                  ? <Link prefetch href={item.href}>
                       <a
                         onClick={() => this.setState({ showNav: false, activePrimaryNav: item.title })}
                         className={'primary-nav-link' + (this.state.path == item.href ? ' is-active' : '')}
@@ -177,7 +177,6 @@ class Navigation extends Component {
                 <nav className="secundary-nav">
                   <ul>
                     {item.items && R.map((item) => {
-                      console.log(this.state.path, item.href)
                       return <li key={item.title} className="icon" style={{backgroundImage: `url(${item.image})`}}>
                         <Link prefetch href={item.href}>
                           <a className={'secundary-nav-link' + (this.state.path == item.href ? ' is-active' : '')}>{item.title}</a>

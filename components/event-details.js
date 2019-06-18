@@ -164,19 +164,6 @@ class EventDetails extends Component {
         }
         .image-wrapper {
           margin-top: 18px;
-          max-height: 729px;
-
-          width: 50%;
-          padding-bottom: 50%;
-          margin: 10% auto;
-          position: relative;
-          overflow: hidden;
-        }
-        .image-wrapper img {
-          background: center center no-repeat;
-          object-fit: cover;
-          position: absolute;
-          height: 100%;          
         }
         @media(max-width: 760px) {
           .EventDetails > .flex { display: block }
@@ -188,16 +175,22 @@ class EventDetails extends Component {
           .introTextWrapper {
           }
           .image-wrapper {
-            margin-top: 0;
             order: 2;
-          }
-          .image {
-            min-width: 200px;
-            margin: 18px 32px;
-            margin-bottom: 50px;
-            width: calc(100% - 32px - 32px);
+            margin-top: 18px;
+            max-height: 729px;
             position: sticky;
             top: 104px;
+
+            height:0;
+            width:50%;
+            padding-bottom:50%;
+            overflow: hidden;
+          }
+          .image-wrapper img {
+            background: center center no-repeat;
+            object-fit: cover;
+            position: absolute;
+            height: 100%;          
           }
           .extra-padding {
             padding: 0 30px;

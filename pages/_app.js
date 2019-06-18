@@ -101,6 +101,9 @@ class MyApp extends App {
           body {
             font-size: 8px;
           }
+          .root {
+            overflow: hidden;
+          }
           img {
             max-width: 100%;
           }

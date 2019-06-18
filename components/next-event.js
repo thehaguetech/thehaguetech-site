@@ -5,6 +5,9 @@ import * as R from 'ramda'
 import moment from 'moment'
 import marked from 'marked'
 
+// Import helpers
+import {getEvents} from '../helpers/localStorage.js'
+
 // Import components
 const SmallCapsTitle = dynamic(() => import('./small-caps-title.js'));
 const Title = dynamic(() => import('./title.js'));
@@ -20,15 +23,11 @@ class NextEvent extends Component {
   }
   async componentDidMount() {
     let events;
-    events = await this.fetchEvents()
+    events = await getEvents()
     events = this.formatEvents(events)
     events = this.filterEvents(events)
     events = this.sortEvents(events)// Order chronologically
     this.setState({ event: events[0] })
-  }
-  async fetchEvents() {
-    const response = await fetch('/api/events')
-    return await response.json()
   }
   formatEvents(events) {
     return R.map(R.prop('fields'), events)
@@ -90,6 +89,12 @@ class NextEvent extends Component {
             height: 269px;
             border-left: 1px solid #979797;
             padding: 0 32px;
+            display: none;
+          }
+          @media(min-width: 1300px) {
+            .NextEvent {
+              display: block;
+            }
           }
           h1 {
             width: 242px;

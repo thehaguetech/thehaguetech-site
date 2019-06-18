@@ -8,7 +8,7 @@ class Marker extends Component {
     return (
       <div>
         <img src="/static/components/map/tht-marker.svg" style={{
-          marginLeft: '-12px',
+          marginLeft: '-34px',
           marginTop: '-100px',
           height: '100px'
         }} />
@@ -35,8 +35,8 @@ class Map extends Component {
           defaultZoom={this.props.zoom}
         >
           <Marker
-            lat={52.079164}
-            lng={4.3418480}
+            lat={52.079144}
+            lng={4.3418880}
             text="The Hague Tech"
           />
         </GoogleMapReact>

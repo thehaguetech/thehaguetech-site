@@ -3,6 +3,9 @@ import dynamic from 'next/dynamic';
 import * as R from 'ramda';
 import moment from 'moment';
 
+// Import helpers
+import {getStories} from '../helpers/localStorage.js';
+
 // Import components
 const StoryBlock = dynamic(() => import('./story-block.jsx'));
 
@@ -16,7 +19,7 @@ class StoryOverview extends Component {
   }
   async componentDidMount() {
     let stories;
-    stories = await this.fetchStories()
+    stories = await getStories()
     stories = this.formatStories(stories)
     stories = this.filterStories(stories)
     stories = this.sortStories(stories)// Order a-chronologically

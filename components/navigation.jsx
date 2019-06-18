@@ -135,6 +135,10 @@ class Navigation extends Component {
           title: 'Events',
           href: '/events',
           image: '/static/components/navigation/tht-icon-events.svg'///tht-icon-stories.svg
+        }, {
+          title: 'Stories',
+          href: '/stories',
+          image: '/static/components/navigation/tht-icon-stories.svg'
         }]
       },
       {
@@ -157,7 +161,7 @@ class Navigation extends Component {
         </Link>
         <div className="white-background main only-on-desktop"></div>
         <div className="white-background sub only-on-desktop"></div>
-        <div className="black-background only-on-desktop"></div>
+        <div className="black-background only-on-desktop" onClick={() => this.setState({ showNav: false, activePrimaryNav: null })}></div>
         <nav className="main-nav">
           <ul>
             {R.map((item) => {
@@ -175,7 +179,7 @@ class Navigation extends Component {
                       {item.title}
                     </a>
                 }
-                <nav className="secundary-nav">
+                <nav className={'secundary-nav' + (item.items ? ' has-subnav' : '')}>
                   <ul>
                     {item.items && R.map((item) => {
                       return <li key={item.title} className="icon" style={{backgroundImage: `url(${item.image})`}}>
@@ -360,6 +364,9 @@ class Navigation extends Component {
             margin: 0 1rem;
             height: 71px;
           }
+          .secundary-nav > ul {
+            min-width: 284px;
+          }
         }
 
         nav a:hover,
@@ -390,7 +397,7 @@ class Navigation extends Component {
           padding-left: 125px;
           z-index: -1;
         }
-        .primary-nav-item.is-active > nav {
+        .primary-nav-item.is-active > nav.has-subnav {
           display: flex;
         }
 

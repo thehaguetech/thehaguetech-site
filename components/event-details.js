@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import { Component } from 'react';
+import Link from 'next/link';
 import Head from 'next/head';
 import * as R from 'ramda';
 import marked from 'marked';
@@ -23,7 +24,7 @@ class EventInfoBlock extends Component {
           </p>
           <h2>Date & time</h2>
           <p>
-            {moment(this.props.event.date).format('MMMM Do YYYY')}
+            {moment(this.props.event.datetime).format('MMMM D, YYYY / H:mm A')}
           </p>
         </div>
         {this.props.event.signupUrl &&
@@ -128,7 +129,9 @@ class EventDetails extends Component {
         <Title size="small" align="center" style={{
           marginTop: 'calc(212px - 50px)'
         }}>
-          More events
+          <Link href="/events">
+            More events
+          </Link>
         </Title>
       </div>
       <EventOverview limit="3" />
@@ -177,6 +180,8 @@ class EventDetails extends Component {
           .image-wrapper {
             order: 2;
             margin-top: 18px;
+            margin-left: 24px;
+            margin-bottom: 50px;
             max-height: 729px;
             position: sticky;
             top: 104px;

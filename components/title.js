@@ -40,7 +40,13 @@ class Title extends Component {
           word-break: break-word;
 
           font-size: 11vw;
-          line-height: 10vw;
+          line-height: 11vw;
+        }
+        .Title > :global(a),
+        .Title > :global(a:visited) {
+          color: #0F2247;
+          border-bottom: none;
+          text-decoration: none;
         }
         .small {
           font-size: 28px;

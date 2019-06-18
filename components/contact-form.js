@@ -133,7 +133,7 @@ class ContactForm extends Component {
         {pageConfig.showMap && <div>
           <p className="paragraph">
             The Hague Tech<br />
-            Anna van Hannoverstraat 4 <br />
+            <a href="https://goo.gl/maps/ZRQgWox2CKuWvuYV8" target="_blank" rel="external noopener">Anna van Hannoverstraat 4</a><br />
             2595 BJ The Hague<br />
             The Netherlands
           </p>

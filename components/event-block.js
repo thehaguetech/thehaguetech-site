@@ -85,7 +85,6 @@ class EventBlock extends Component {
             z-index: 1;
             background-image: linear-gradient(rgba(255, 255, 255, 0.3), #fff);
           }
-
         `}</style>
       </div>
     </Link>

@@ -95,6 +95,8 @@ function App() {
         />
     </div>
     <BookATourBanner />
+    <br />
+    <br />
     <TextAndImage
       image="/static/pages/index/meetings.jpg"
       imagePosition="right"

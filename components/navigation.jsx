@@ -259,7 +259,7 @@ class Navigation extends Component {
           .main-nav {
             display: flex;
             margin-top: 0;
-            margin-left: 269px;
+            margin-left: 238px;
             padding-top: 0;
           }
         }

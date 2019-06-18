@@ -18,27 +18,32 @@ const slides = [
   {
     title: 'international business',
     href: '/international-business',
-    image: '/static/components/carousel/tht-icon-business.svg'
+    image: '/static/components/carousel/tht-icon-business.svg',
+    imageHeight: 108
   },
   {
     title: 'co-creation',
     href: '/co-creation',
-    image: '/static/components/carousel/tht-icon-cocreate.svg'
+    image: '/static/components/carousel/tht-icon-cocreate.svg',
+    imageHeight: 118
   },
   {
     title: 'community',
     href: '/community',
-    image: '/static/components/carousel/tht-icon-community.svg'
+    image: '/static/components/carousel/tht-icon-community.svg',
+    imageHeight: 106
   },
   {
     title: 'events & labs',
     href: '/meetings-events-labs',
-    image: '/static/components/carousel/tht-icon-events.svg'
+    image: '/static/components/carousel/tht-icon-events.svg',
+    imageHeight: 90
   },
   {
     title: 'co-working',
     href: '/coworking',
-    image: '/static/components/carousel/tht-icon-coworking.svg'
+    image: '/static/components/carousel/tht-icon-coworking.svg',
+    imageHeight: 104
   }
 ]
 

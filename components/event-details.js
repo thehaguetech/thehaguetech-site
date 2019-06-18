@@ -111,8 +111,8 @@ class EventDetails extends Component {
         <div className="flex-1" />
       </div>
       <div className="flex">
-        <div className="flex-1 image-wrapper">
-          <img src={this.state.event.smallImage.fields.file.url} alt="" className="image" />
+        <div className="image-wrapper">
+          <img src={this.state.event.smallImage.fields.file.url} />
         </div>
         <div className="flex-1 introTextWrapper">
           <div className="extra-padding">
@@ -124,11 +124,13 @@ class EventDetails extends Component {
           <EventInfoBlock event={this.state.event} />
         </div>
       </div>
-      <Title size="small" align="center" style={{
-        marginTop: 'calc(212px - 50px)'
-      }}>
-        More events
-      </Title>
+      <div style={{marginBottom: '2rem'}}>
+        <Title size="small" align="center" style={{
+          marginTop: 'calc(212px - 50px)'
+        }}>
+          More events
+        </Title>
+      </div>
       <EventOverview limit="3" />
       <style jsx>{`
         .EventDetails {
@@ -162,8 +164,20 @@ class EventDetails extends Component {
         }
         .image-wrapper {
           margin-top: 18px;
-        }
+          max-height: 729px;
 
+          width: 50%;
+          padding-bottom: 50%;
+          margin: 10% auto;
+          position: relative;
+          overflow: hidden;
+        }
+        .image-wrapper img {
+          background: center center no-repeat;
+          object-fit: cover;
+          position: absolute;
+          height: 100%;          
+        }
         @media(max-width: 760px) {
           .EventDetails > .flex { display: block }
         }
@@ -172,7 +186,6 @@ class EventDetails extends Component {
             padding-top: 64px;
           }
           .introTextWrapper {
-            max-width: 50%;
           }
           .image-wrapper {
             margin-top: 0;

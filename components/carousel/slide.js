@@ -7,8 +7,11 @@ class Slide extends Component {
     return <div className="Slide">
       <Link prefetch href={this.props.data.href}>
         <div>
-          <div>
-            <img src={this.props.data.image} />
+          <div className="image-wrapper">
+            <img height={this.props.data.imageHeight} src={this.props.data.image} style={{
+              position: 'relative',
+              top: (this.props.data.title == 'co-creation' ? '5px' : 0)
+            }}/>
           </div>
           <div className="Slide-title">
             {this.props.data.title}
@@ -19,10 +22,17 @@ class Slide extends Component {
         .Slide {
           cursor: pointer;
         }
+        .Slide .image-wrapper {
+          height: 118px;
+          vertical-align: baseline;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+        }
         .Slide img {
           display: block;
-          height: 76px;
           margin: 0 auto;
+          vertical-align: middle;
         }
         .Slide-title {
           margin: 2rem auto;

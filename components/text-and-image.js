@@ -67,6 +67,7 @@ class TextAndImage extends Component {
         /* On desktop: show full size image */
         @media (min-width: 960px) {
           .TextAndImage {
+            min-height: 480px;
             flex-wrap: nowrap;
             padding: 0 24px;
             margin: 128px auto;

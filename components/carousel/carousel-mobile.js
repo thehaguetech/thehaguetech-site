@@ -46,6 +46,8 @@ class CarouselMobile extends Component {
         swipeOptions={{
           continuous: true,
           startSlide: this.state.activeSlide,
+          auto: 1000,
+          speed: 1000,
           transitionEnd: this.slideCallback.bind(this)
         }}
         ref={el => (reactSwipeEl = el)}

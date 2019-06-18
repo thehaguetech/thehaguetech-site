@@ -48,6 +48,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-swipe": "^6.0.4",
+    "sitemap": "^2.2.0",
     "styled-jsx": "^3.2.1",
     "swipe-js-iso": "^2.1.5"
   },

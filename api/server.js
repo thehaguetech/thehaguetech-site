@@ -5,6 +5,7 @@
 const { createServer } = require('http');
 const { parse } = require('url');
 const { createReadStream } = require('fs');
+const sm = require('sitemap');
 const express = require('express')
 const next = require('next');
 
@@ -15,6 +16,7 @@ const handle = app.getRequestHandler();
 const {fetchEntriesForContentType, fetchEntry, fetchStories, fetchStory} = require('./contentful.js');
 const {sendMail} = require('./email.js');
 const {newsletterAdd} = require('./newsletter.js');
+const {populateSitemap} = require('./sitemap.js');
 
 app.prepare().then(() => {
   const server = express()
@@ -23,6 +25,21 @@ app.prepare().then(() => {
   // server.use(express.urlencoded());
   // Parse JSON bodies (as sent by API clients)
   server.use(express.json());
+
+  // Sitemap
+  server.get('/sitemap.xml', async function(req, res){
+    // Populate urls
+    const urls = await populateSitemap()
+    // Create sitemap
+    const sitemap = sm.createSitemap({
+      hostname: 'https://www.thehaguetech.com',
+      cacheTime: 600000,// 600 sec - cache purge period
+      urls: urls
+    });
+    // Return
+    res.header('Content-Type', 'application/xml');
+    res.send( sitemap.toString() );
+  });
 
   // API: Mail
   server.post('/api/mail/contact', function(req, res){

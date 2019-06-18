@@ -133,11 +133,7 @@ class Navigation extends Component {
         items: [{
           title: 'Events',
           href: '/events',
-          image: '/static/components/carousel/tht-icon-coworking.svg'
-        }, {
-          title: 'Stories',
-          href: '/stories',
-          image: '/static/components/carousel/tht-icon-coworking.svg'
+          image: '/static/components/navigation/tht-icon-events.svg'///tht-icon-stories.svg
         }]
       },
       {
@@ -247,6 +243,8 @@ class Navigation extends Component {
           margin-top: 22px;
           width: 64px;
           margin-left: -32px;
+          position: relative;
+          z-index: 2;
         }
         .secundary-nav {
           position: static;

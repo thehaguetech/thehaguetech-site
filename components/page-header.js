@@ -12,7 +12,7 @@ class PageHeader extends Component {
       <div>
         <div className="black-overlay" />
       </div>
-      <div className="max-width">
+      <div className="max-width" style={{marginTop: '4rem'}}>
         <SmallCapsTitle>
           {this.props.smallCapsTitle}
         </SmallCapsTitle>

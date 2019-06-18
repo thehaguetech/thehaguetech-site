@@ -112,6 +112,12 @@ class MyApp extends App {
           }
           p > :global(a) {
             color: #1126a9;
+            padding-bottom: 0;
+            border-bottom: 1px solid rgba(15, 34, 72, 0.3);
+            text-decoration: none;
+          }
+          p > :global(a:visited) {
+            color: #0f2247;
           }
           .flex {
             display: flex;

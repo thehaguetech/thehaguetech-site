@@ -33,6 +33,7 @@ class Button extends Component {
           .Button:hover {
             box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.19);
             transition: all 0.2s;
+            opacity: 0.8;
           }
         `}</style>
       </div>
@@ -64,9 +65,9 @@ class Button extends Component {
             text-transform: lowercase;
           }
           .Button:hover {
-            background: #fff000 !important;
-            border: solid #071124 1px !important;
-            color: #071124 !important;
+            box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.19);
+            transition: all 0.2s;
+            opacity: 0.8;
           }
         `}</style>
       </div>

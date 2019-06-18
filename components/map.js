@@ -7,7 +7,11 @@ class Marker extends Component {
   render() {
     return (
       <div>
-        <img src="/static/components/navigation/tht-logo.svg" />
+        <img src="/static/components/map/tht-marker.svg" style={{
+          marginLeft: '-12px',
+          marginTop: '-100px',
+          height: '100px'
+        }} />
       </div>
     )
   }
@@ -24,7 +28,7 @@ class Map extends Component {
 
   render() {
     return (
-      <div style={{ width: '100%', height: '476px' }}>
+      <div className="Map" style={{ width: '100%', height: '476px' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyDq4VqDgO9x6HIO5kEYez4LiCKfbsKgLF8' }}
           defaultCenter={this.props.center}
@@ -36,6 +40,11 @@ class Map extends Component {
             text="The Hague Tech"
           />
         </GoogleMapReact>
+        <style jsx>{`
+        .Map img {
+          filter: grayscale(100%)
+        }
+        `}</style>
       </div>
     );
   }

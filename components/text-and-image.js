@@ -19,7 +19,7 @@ class TextAndImage extends Component {
         <SmallCapsTitle>
           {this.props.category}
         </SmallCapsTitle>
-        <Title>
+        <Title size="small">
           {this.props.title}
         </Title>
         <div className="text" dangerouslySetInnerHTML={{__html: this.props.text}} />

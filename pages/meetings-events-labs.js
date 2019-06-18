@@ -39,16 +39,16 @@ function EventsAndLabs() {
         In 2018 The Hague Tech hosted multiple large scale events which led to growing networks, knowledge sharing, and collaboration: 
       </p>
     </IntroText>
+    <Title align="center">
+      Past events
+    </Title>
     <TextAndImage
       image="/static/pages/meetings-events-labs/hubfest.jpg"
       imagePosition="right"
       category=""
       title="Hubfest 2018"
-      text="<p>On September 20th and 21st a coalition of The Hague Tech, The Dutch Tech Group and The Vault San Francisco organized the first annual edition of <a href='https://hubfest.io/' target='_blank'>Hubfest</a> with the goal of uniting the Dutch start-up scene towards internationalization through collaboration. Hubfest was founded to help create and strengthen these networks, giving everyone involved more opportunities to succeed. </p>"
+      text="<p>On September 20th and 21st a coalition of The Hague Tech, The Dutch Tech Group and The Vault San Francisco organized the first edition of <a href='https://hubfest.io/' target='_blank'>Hubfest</a> with the goal of uniting the Dutch start-up scene towards internationalization through collaboration. Hubfest was founded to help create and strengthen these networks, giving everyone involved more opportunities to succeed. <a href='https://www.youtube-nocookie.com/embed/VU0_J6qeXkg?autoplay=1' target='_blank'>(video)</a></p>"
       />
-    <IntroText>
-      <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/VU0_J6qeXkg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameBorder="0" allowFullScreen></iframe>
-    </IntroText>
     <TextAndImage
       image="/static/pages/meetings-events-labs/blockchain-innovation-week.jpg"
       imagePosition="left"
@@ -81,6 +81,9 @@ function EventsAndLabs() {
         Want to join a lab or even start your own? The Hague Tech is the ideal place to start spreading your passions through collaborating with enthusiastic participants. There are already new labs in the work for this year and beyond so state up to date on our socials to find your next passion project. 
       </p>
     </IntroText>
+    <Title align="center">
+      Labs
+    </Title>
     <TextAndImage
       image="/static/pages/meetings-events-labs/ailab.jpg"
       imagePosition="left"

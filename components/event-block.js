@@ -10,7 +10,6 @@ const DateCircle = dynamic(() => import('./date-circle.js'));
 
 class EventBlock extends Component {
   render() {
-    console.log(this.props.event)
     const slug = this.props.event.datetime.split('T')[0] + '/' + this.props.event.slug
     const introText = this.props.event.introText.length <= 10 ? marked(this.props.event.detailedText).replace(/<\/?[^>]+(>|$)/g, '').substring(0, 200) : this.props.event.introText;
     return <Link prefetch href={`/event?slug=${slug}`} as={`/events/${slug}`}>
@@ -40,12 +39,16 @@ class EventBlock extends Component {
             height: 524px;
             background: #fff;
             box-shadow: 0 2px 13px rgba(0, 0, 0, 0.2);
-            width: 285px;
             margin: 20px 18px;
             overflow: hidden;
             position: relative;
             cursor: pointer;
             transition: all 0.2s;
+          }
+          @media(min-width: 480px) {
+            .EventBlock {
+              width: 285px;
+            }
           }
           .EventBlock:hover {
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);

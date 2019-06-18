@@ -38,6 +38,9 @@ class Title extends Component {
           overflow-x: hidden;
           overflow-y: hidden;
           word-break: break-word;
+
+          font-size: 11vw;
+          line-height: 10vw;
         }
         .small {
           font-size: 28px;

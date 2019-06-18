@@ -30,6 +30,14 @@ function Contact() {
       <Title size="small">
         Send us a message
       </Title>
+      <p style={{
+        fontWeight: 'bold',
+        background: '#feef00',
+        padding: '5px 10px',
+        display: 'none'
+      }}>
+        Thank you for your message! We will contact you soon.
+      </p>
       <ContactForm />
     </div>
     <BookATourBanner />
@@ -43,6 +51,7 @@ function Contact() {
         max-width: 100%;
         padding: 0 18px;
         margin: 0 auto;
+        margin-top: 4rem;
       }
     `}</style>
   </div>

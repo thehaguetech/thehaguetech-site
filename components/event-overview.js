@@ -3,6 +3,9 @@ import dynamic from 'next/dynamic';
 import * as R from 'ramda';
 import moment from 'moment';
 
+// Import helpers
+import {getEvents} from '../helpers/localStorage.js';
+
 // Import components
 const EventBlock = dynamic(() => import('./event-block.js'));
 
@@ -16,16 +19,12 @@ class EventOverview extends Component {
   }
   async componentDidMount() {
     let events;
-    events = await this.fetchEvents()
+    events = await getEvents()
     events = this.formatEvents(events)
     events = this.filterEvents(events)
     events = this.sortEvents(events)// Order chronologically
     events = this.removeDuplicates(events)
     this.setState({ events: events })
-  }
-  async fetchEvents() {
-    const response = await fetch('/api/events')
-    return await response.json()
   }
   formatEvents(events) {
     return R.map(R.prop('fields'), events)

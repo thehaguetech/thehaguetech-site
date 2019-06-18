@@ -94,8 +94,10 @@ Running production on Windows?
 ## Contributors
 
 - [bartwr](https://github.com/bartwr/) (Code)
-- Hans (Graphic Design)
+- Hans Pols (Graphic Design)
 - Peter Hofman (Server Management)
+- Charles Weiler-Ulin (Concept, Content)
+- Ali (Concept, Content)
 
 ## NOTES on Design
 

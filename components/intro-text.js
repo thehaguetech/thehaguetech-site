@@ -23,7 +23,7 @@ class IntroText extends Component {
             line-height: 32px;
             width: 649px;
             margin-top: 64px;
-            margin-bottom: 176px;
+            margin-bottom: 6rem;
           }
         }
       `}</style>

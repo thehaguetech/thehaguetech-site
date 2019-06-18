@@ -20,6 +20,7 @@ class EventOverview extends Component {
     events = this.formatEvents(events)
     events = this.filterEvents(events)
     events = this.sortEvents(events)// Order chronologically
+    events = this.removeDuplicates(events)
     this.setState({ events: events })
   }
   async fetchEvents() {

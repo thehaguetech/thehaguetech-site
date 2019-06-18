@@ -45,18 +45,29 @@ class EventBlock extends Component {
             overflow: hidden;
             position: relative;
             cursor: pointer;
-            transition: box-shadow 0.3s;
+            transition: all 0.2s;
           }
           .EventBlock:hover {
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: box-shadow 0.2s;
+            transition: all 0.4s cubic-bezier(.08,.82,.17,1);
+            transform: scale(1.02);
           }
           header {
             background: center center / cover no-repeat;
             height: 192px;
           }
+          header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            background: rgba(0,0,0,0.05);
+            height: 192px;
+          }
           .info {
-            padding: 40px 28px;
+            padding: 32px 28px;
             font-size: 14px;
             font-weight: 300;
             line-height: 24px;
@@ -71,6 +82,7 @@ class EventBlock extends Component {
             z-index: 1;
             background-image: linear-gradient(rgba(255, 255, 255, 0.3), #fff);
           }
+
         `}</style>
       </div>
     </Link>

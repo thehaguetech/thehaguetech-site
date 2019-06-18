@@ -25,9 +25,11 @@ function Events() {
       <IntroText>
         The Hague Tech is the premier home in The Hague for tech and business related events and meetups.
       </IntroText>
-      <Title align="center" size="small">
-        Events at The Hague Tech
-      </Title>
+      <div style={{marginBottom: '2rem'}}>
+        <Title align="center" size="small">
+          Events at The Hague Tech
+        </Title>
+      </div>
       <EventOverview />
     </div>
     <YellowBanner

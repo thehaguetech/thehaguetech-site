@@ -13,6 +13,10 @@ class DateCircle extends Component {
         </div>
       </div>
       <style jsx>{`
+        .DateCircle {
+          z-index: 2;
+          position: relative;
+        }
         .date {
           width: 57px;
           height: 57px;

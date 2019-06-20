@@ -112,7 +112,10 @@ class EventDetails extends Component {
         <div className="flex-1" />
       </div>
       <div className="flex">
-        <div className="image-wrapper">
+        <div className="flex-1 image-wrapper-fullsize">
+          <img src={this.state.event.smallImage.fields.file.url} alt="" className="image" />
+        </div>
+        <div className="image-wrapper" style={{display: 'none'}}>
           <img src={this.state.event.smallImage.fields.file.url} />
         </div>
         <div className="flex-1 introTextWrapper">
@@ -175,8 +178,20 @@ class EventDetails extends Component {
           .EventDetails {
             padding-top: 64px;
           }
-          .introTextWrapper {
+
+          .image-wrapper-fullsize {
+            margin-top: 0;
+            order: 2;
           }
+          .image-wrapper-fullsize .image {
+            min-width: 200px;
+            margin: 18px 32px;
+            margin-bottom: 50px;
+            width: calc(100% - 32px - 32px);
+            position: sticky;
+            top: 104px;
+          }
+
           .image-wrapper {
             order: 2;
             margin-top: 18px;
@@ -197,6 +212,7 @@ class EventDetails extends Component {
             position: absolute;
             height: 100%;          
           }
+
           .extra-padding {
             padding: 0 30px;
           }

@@ -74,10 +74,11 @@ class EventOverview extends Component {
           max-width: 100%;
           margin: 0 auto 48px;
         }
-        .EventOverview .events {
+        .events {
           display: flex;
           justify-content: center;
           flex-wrap: wrap;
+          margin: 0 -18px;
         }
       `}</style>
     </div>

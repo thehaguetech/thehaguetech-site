@@ -7,7 +7,9 @@ const SmallCapsTitle = dynamic(() => import('../components/small-caps-title.js')
 
 function BookATourBanner() {
   return <div className="BookATourBanner">
-    <div className="black-overlay"></div>
+    <div>
+      <div className="black-overlay"></div>
+    </div>
     <div className="placeholder">
       &nbsp;
     </div>

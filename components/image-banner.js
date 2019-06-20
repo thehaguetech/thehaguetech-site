@@ -11,7 +11,9 @@ class ImageBanner extends Component {
     return <div className="ImageBanner" style={{
       backgroundImage: `url(${this.props.image})`
     }}>
-      <div className="black-overlay"></div>
+      <div>
+        <div className="black-overlay"></div>
+      </div>
       <div className="placeholder">
         &nbsp;
       </div>

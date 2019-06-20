@@ -68,6 +68,7 @@ class StoryOverview extends Component {
           display: flex;
           justify-content: center;
           flex-wrap: wrap;
+          margin: 0 -18px;
         }
       `}</style>
     </div>

@@ -10,6 +10,7 @@ const DateCircle = dynamic(() => import('./date-circle.js'));
 class StoryBlock extends Component {
   render() {
     const slug = this.props.event.slug
+    const introText = this.props.event.introText2.length <= 10 ? marked(this.props.event.longText).replace(/<\/?[^>]+(>|$)/g, '').substring(0, 200) : this.props.event.introText2;
     return <Link prefetch href={`/story?slug=${slug}`} as={`/stories/${slug}`}>
       <div className="StoryBlock">
         <header style={{
@@ -28,7 +29,7 @@ class StoryBlock extends Component {
             {this.props.event.title}
           </Title>
           <p>
-            {this.props.event.introText}        
+            {introText}        
           </p>
         </div>
         <div className="gradient" />
@@ -37,7 +38,6 @@ class StoryBlock extends Component {
             height: 524px;
             background: #fff;
             box-shadow: 0 2px 13px rgba(0, 0, 0, 0.2);
-            width: 285px;
             margin: 20px 18px;
             overflow: hidden;
             position: relative;
@@ -47,6 +47,11 @@ class StoryBlock extends Component {
           .StoryBlock:hover {
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: box-shadow 0.2s;
+          }
+          @media(min-width: 480px) {
+            .StoryBlock {
+              width: 285px;
+            }
           }
           header {
             background: center center / cover no-repeat;

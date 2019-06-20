@@ -24,14 +24,20 @@ class Event extends Component {
       </Head>
       <Navigation />
       <div style={{height: '132px'}} /> 
-      <EventDetails slug={this.props.slug} />
-      <BookATourBanner />
-      <YellowBanner
-        title="Come and see for your self what The Hague Tech has to offer you!"
-        buttonText="book a tour"
-        buttonLink="https://outlook.office365.com/owa/calendar/TheHagueTech@jongensvantechniek.nl/bookings/"
-        target="_blank"
-        />
+      <div>
+        <EventDetails slug={this.props.slug} />
+      </div>
+      <div>
+        <BookATourBanner />
+      </div>
+      <div>
+        <YellowBanner
+          title="Come and see for your self what The Hague Tech has to offer you!"
+          buttonText="book a tour"
+          buttonLink="https://outlook.office365.com/owa/calendar/TheHagueTech@jongensvantechniek.nl/bookings/"
+          target="_blank"
+          />
+      </div>
       <Footer />
     </div>
   }

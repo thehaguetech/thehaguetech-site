@@ -64,11 +64,10 @@ class StoryOverview extends Component {
           max-width: 100%;
           margin: 0 auto 48px;
         }
-        .StoryOverview .stories {
+        .stories {
           display: flex;
           justify-content: center;
           flex-wrap: wrap;
-          margin: 0 -18px;
         }
       `}</style>
     </div>

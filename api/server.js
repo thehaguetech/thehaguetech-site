@@ -95,6 +95,11 @@ app.prepare().then(() => {
       const slug = pathname.split('/events/')[1];
       app.render(req, res, '/event', { slug: slug });
     }
+    // Make it possible to link to stories
+    else if (pathname.indexOf('/stories/') === 0) {
+      const slug = pathname.split('/stories/')[1];
+      app.render(req, res, '/story', { slug: slug });
+    }
     // API: Stories
     else if (pathname === '/api/stories' || pathname.indexOf('/api/stories?') === 0 ) {
       let stories = await fetchStories()

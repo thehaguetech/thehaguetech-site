@@ -114,13 +114,17 @@ function App() {
       buttonText="learn more"
       buttonLink="/coworking"
       />
-    <YellowBanner
-      title="Come and see for your self what The Hague Tech has to offer you!"
-      buttonText="book a tour"
-      buttonLink="https://outlook.office365.com/owa/calendar/TheHagueTech@jongensvantechniek.nl/bookings/"
-      target="_blank"
-      />
-    <NewsletterSubscribe />
+    <div>
+      <YellowBanner
+        title="Come and see for your self what The Hague Tech has to offer you!"
+        buttonText="book a tour"
+        buttonLink="https://outlook.office365.com/owa/calendar/TheHagueTech@jongensvantechniek.nl/bookings/"
+        target="_blank"
+        />
+    </div>
+    <div>
+      <NewsletterSubscribe />
+    </div>
     <Footer />
   </div>
 }

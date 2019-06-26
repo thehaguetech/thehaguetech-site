@@ -111,7 +111,8 @@ function fetchEntry (query) {
 function fetchStories () {
   return client.getEntries({
       content_type: 'story',
-      limit: 100
+      limit: 100,
+      order: '-sys.createdAt'
     })
   .then((response) => response.items)
   .catch((error) => {

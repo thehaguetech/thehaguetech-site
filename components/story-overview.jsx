@@ -44,7 +44,7 @@ class StoryOverview extends Component {
     return stories;
   }
   sortStories(stories) {
-    return stories.reverse();
+    return stories;
   }
   render() {
     if(! this.state.stories) return <div style={{minHeight: '800px'}} />

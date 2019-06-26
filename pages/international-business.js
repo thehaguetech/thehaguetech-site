@@ -55,12 +55,14 @@ function InternationalBusiness() {
         text="Situated in the political heart of The Netherlands, The Hague is a short train ride away from other major hubs in Rotterdam, Utrecht, and Amsterdam. The Hague was Europe’s 4th fastest growing tech hub in 2018 and the city is on a mission to accelerate innovation and talent. The Hague is the seat of the Dutch government and houses major multinational companies Dutch Royal Shell and AEGON. Internationals and expats are abundant in The Hague, leading to an internationally focused and open working environment that doesn’t forget the importance of work life balance. The Hague beyond being a central business hub is also the city by the sea, with the beach only a 10 minute tram ride away. "
         />
     </div>
-    <YellowBanner
-      title="Come and see for your self what The Hague Tech has to offer you!"
-      buttonText="book a tour"
-      buttonLink="https://outlook.office365.com/owa/calendar/TheHagueTech@jongensvantechniek.nl/bookings/"
-      target="_blank"
-      />
+    <div>
+      <YellowBanner
+        title="Come and see for your self what The Hague Tech has to offer you!"
+        buttonText="book a tour"
+        buttonLink="https://outlook.office365.com/owa/calendar/TheHagueTech@jongensvantechniek.nl/bookings/"
+        target="_blank"
+        />
+    </div>
     <NewsletterSubscribe />
     <Footer />
   </div>

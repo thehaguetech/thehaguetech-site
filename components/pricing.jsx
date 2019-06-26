@@ -38,7 +38,7 @@ class PricingBlock extends Component {
             <sup>&euro;</sup> {data.price}
           </div>
           <small>
-            per month excl. 21% vat
+            per month excl. 21% VAT
           </small>
         </div>
         <hr />
@@ -288,8 +288,8 @@ function Pricing() {
     {
       name: 'coworking',
       extraBenefit: '+ flex co-working',
-      price: 180,
-      title: 'Flexible workplace starting from 1 day a week.',
+      price: 195,
+      title: 'Flexible workplace, any day you like.',
       features: [
         'Super-fast wifi',
         'Unlimited coffee / tea',
@@ -308,7 +308,7 @@ function Pricing() {
     {
       name: 'dedicated',
       extraBenefit: '+ flex dedicated',
-      price: 255,
+      price: 230,
       title: 'Fixed workplace in co-working space.',
       features: [
         'Super-fast wifi',

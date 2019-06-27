@@ -103,6 +103,11 @@ class Navigation extends Component {
       this.setState({ activePrimaryNav: name, showNav: true })
     }
   }
+  hoverPrimaryNavLink(name) {
+    // On mobile: Do nothing
+    if(window.innerWidth < 780) return;
+    this.setState({ activePrimaryNav: name, showNav: true })
+  }
   render() {
     let navigation = [
       {
@@ -175,7 +180,10 @@ class Navigation extends Component {
                         {item.title}
                       </a>
                     </Link>
-                  : <a onClick={() => this.clickPrimaryNavLink(item.title)} className="primary-nav-link">
+                  : <a
+                      onClick={() => this.clickPrimaryNavLink(item.title)}
+                      onMouseOver={() => this.hoverPrimaryNavLink(item.title)}
+                      className="primary-nav-link">
                       {item.title}
                     </a>
                 }
@@ -208,9 +216,13 @@ class Navigation extends Component {
           top: 0;
           left: 0;
           width: 100%;
-          background: rgba(255, 255, 255, 0.95);
           padding: 1rem 18px;
           z-index: 10;
+        }
+        @media(max-width: 980px) {
+          .Navigation {
+            background: rgba(255,255,255,0.95);
+          }
         }
         .Navigation,
         .Navigation .toggle-nav {
@@ -467,22 +479,30 @@ class Navigation extends Component {
             min-height: 524px;
             display: flex;
           }
-          header.is-active .white-background.main {
-            width: 100%;
-            height: 130px;
-            position: absolute;
+          header .white-background.main {
             background: rgba(255,255,255,0.95);
+            width: 100%;
+            height: 110px;
+            position: absolute;
             width: 100%;
             left: 0;
             top: 0;
           }
+          header.is-active .white-background.main {
+          }
+          header .white-background.sub {
+            transition: background .44s .2s cubic-bezier(0.52, 0.16, 0.24, 1), max-height .56s cubic-bezier(0.52, 0.16, 0.24, 1);
+            max-height: 0;
+          }
           header.is-active .white-background.sub {
+            transition: background .36s cubic-bezier(0.32, 0.08, 0.24, 1), max-height .56s cubic-bezier(0.52, 0.16, 0.24, 1);
             position: absolute;
-            height: 405px;
+            height: 24rem;
+            max-height: 405px;
             background: #fff;
             width: 100%;
             left: 0;
-            bottom: 0;
+            top: 110px;
           }
           @keyframes fadein {
               from { opacity: 0; }
@@ -493,8 +513,12 @@ class Navigation extends Component {
               to   { opacity: 0; }
           }
 
+          header .black-background {
+            animation: fadeout 0.4s;
+          }
           header.is-active .black-background {
             animation: fadein 0.4s;
+            opacity: 1;
             background: rgba(0,0,0,0.8);
             height: 100%;
             width: 100%;
@@ -502,6 +526,14 @@ class Navigation extends Component {
             top: 0;
             left: 0;
             z-index: -1;
+          }
+          .secundary-nav {
+            transition: opacity 1s 0s;
+            opacity: 0;
+          }
+          header.is-active .secundary-nav {
+            transition: opacity .36s .56s;
+            opacity: 1;
           }
           nav nav li {
             margin: 8px 0;

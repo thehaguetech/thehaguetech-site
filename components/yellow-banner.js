@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic';
 import React, { Component } from 'react';
-import inView from 'in-view';
 import $ from 'jquery';
 
 // Load components
@@ -13,23 +12,35 @@ class YellowBanner extends Component {
   }
 
   initTransition() {
-    const makeYellow = (el) => {
-      $('body').addClass('yellow-banner');
-    }
-    const backToNormal = (el) => {
-      $('body').removeClass('yellow-banner');
-    }
-    // https://www.npmjs.com/package/in-view
-    inView.threshold(0.85)
-    inView('.YellowBanner')
-      .on('enter', makeYellow)
-      .on('exit', backToNormal);
+    const self = this;
+
+    // On scroll: Change background color
+    $(window).scroll(function(event){
+      const percentageSeen = self.percentageSeen();
+      const backgroundColorOpacity = Math.min(100, Math.floor((100 - percentageSeen) / 100 * 255))
+      const textAndImageOpacity = 100 - backgroundColorOpacity;
+      $('body').css('background-color', `rgba(255, 240, 0, ${backgroundColorOpacity / 100})`)
+      $('.TextAndImage').css('opacity', `${(textAndImageOpacity + 0) / 100}`)
+    })
+  }
+
+  percentageSeen () {
+    let $win = $(window),
+        $element = $('.YellowBanner'),
+        viewportHeight = $win.height(),
+        scrollTop = $win.scrollTop(),
+        elementOffsetTop = $element.offset().top,
+        elementHeight = $element.height();
+
+    // https://stackoverflow.com/a/37382645
+    var percentageSeen = Math.min( 100, Math.round((elementOffsetTop - scrollTop) * 100 / viewportHeight) )
+
+    return percentageSeen >= 0 ? percentageSeen : 0
   }
 
   componentWillUnmount() {
-    inView('.YellowBanner')
-      .on('enter', () => {})
-      .on('exit', () => {});
+    $(window).off('scroll');
+    $('body').css('background-color', `transparent`)
   }
 
   render() {
@@ -52,18 +63,11 @@ class YellowBanner extends Component {
       </div>
       <style global jsx>{`
         body {
-          transition: background-color 1000ms 0ms;   
+          transition: background-color 1000ms;   
         }
         body.yellow-banner {
           transition: background-color 1000ms 200ms;   
           background-color: #fff000;
-        }
-        .TextAndImage {
-          transition: opacity 500ms 200ms;
-        }
-        body.yellow-banner .TextAndImage {
-          opacity: 0;
-          transition: opacity 300ms 0;   
         }
         body.yellow-banner .YellowBanner::before {
           opacity: 1;
@@ -75,7 +79,7 @@ class YellowBanner extends Component {
         .YellowBanner {
           position: relative;
           text-align: left;
-          background: #fff000 url('/static/components/yellow-banner/yellow-background-image.jpg') center top no-repeat;
+          background: url('/static/components/yellow-banner/tht-particals-03-rev.png') center top no-repeat;
           background-size: cover;
           min-height: 624px;
           display: flex;

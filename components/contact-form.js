@@ -133,8 +133,8 @@ class ContactForm extends Component {
         {pageConfig.showMap && <div>
           <p className="paragraph">
             The Hague Tech<br />
-            <a href="https://goo.gl/maps/ZRQgWox2CKuWvuYV8" target="_blank" rel="external noopener">Anna van Hannoverstraat 4</a><br />
-            2595 BJ The Hague<br />
+            <a href="https://goo.gl/maps/ZRQgWox2CKuWvuYV8" target="_blank" rel="external noopener">Wilhelmina van Pruisenweg 35</a><br />
+            2595 AN The Hague<br />
             The Netherlands
           </p>
           <p className="paragraph">

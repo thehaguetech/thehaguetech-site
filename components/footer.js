@@ -2,9 +2,6 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Component } from 'react';
 
-// Load components
-// const Logo = dynamic(() => import('../components/logo.js'));
-
 class Footer extends Component {
   render() {
     return <div className="Footer">
@@ -19,6 +16,9 @@ class Footer extends Component {
           <a href="https://www.linkedin.com/company/the-hague-tech/" target="_blank">
             <img src="/static/components/footer/linkedin-icon.svg" alt="LinkedIn" />
           </a>
+          <a href="https://www.instagram.com/thehaguetech/" target="_blank">
+            <img src="/static/components/footer/instagram-icon.png" alt="Instagram" />
+          </a>
         </nav>
         <nav className="footer-nav">
           <Link prefetch href="/contact">
@@ -27,11 +27,7 @@ class Footer extends Component {
           <Link href="https://github.com/thehaguetech/thehaguetech-site#thehaguetech-site">
             <a className="nav-link" target="_blank">GitHub</a>
           </Link>
-          {/*<a href="">FAQ</a>*/}
-          {/*<a href="">Jobs</a>*/}
-          {/*<a href="">Privacy Policy</a>*/}
         </nav>
-        <div />
       </div>
       <style jsx>{`
         .Footer {
@@ -47,6 +43,10 @@ class Footer extends Component {
         .social-icons {
           justify-content: space-between;
         }
+        .social-icons img {
+          width: 18px;
+          height: 18px;
+        }
         @media(min-width: 480px) {
           .Footer {
             background-color: #000;
@@ -59,7 +59,6 @@ class Footer extends Component {
           .flex > * {
             flex: 1;
           }
-          .flex > *:first-child,
           .flex > *:last-child {
             width: 130px;
             flex: none;
@@ -67,7 +66,7 @@ class Footer extends Component {
         }
         .social-icons {
           display: flex;
-          max-width: 8rem;
+          max-width: 12rem;
         }
         .social-icons a {
           padding: 0 12px;
@@ -99,10 +98,8 @@ class Footer extends Component {
           }
         }
         .nav-link {
-          
         }
         .nav-link:hover {
-          
         }
       `}</style>
     </div>

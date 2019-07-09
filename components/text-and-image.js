@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import React, { Component } from 'react';
+import $ from 'jquery'
 
 // Load components
 const Title = dynamic(() => import('./title.js'));
@@ -7,8 +8,26 @@ const Button = dynamic(() => import('./button.js'));
 const SmallCapsTitle = dynamic(() => import('./small-caps-title.js'));
 
 class TextAndImage extends Component {
+
+  componentDidMount() {
+    // this.backgroundImageParallax($(`.TextAndImage[data-title='${this.props.title}'] .image-wrapper`), 0.25);
+  }
+
+  backgroundImageParallax($object, multiplier) {
+    // The function
+    multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
+    multiplier = 1 - multiplier;
+    var $doc = $(document);
+    $object.css({ "background-attachment" : "fixed" });
+    $(window).scroll(function(){
+      var from_top = $doc.scrollTop(),
+          bg_css = '0px ' +(multiplier * from_top) + 'px';
+      $object.css({"background-position" : bg_css });
+    });
+  }
+
   render() {
-    return <div className="TextAndImage">
+    return <div className="TextAndImage" data-title={this.props.title}>
       <div className="image-wrapper" style={{
         backgroundImage: `url(${this.props.image})`,
         order: this.props.imagePosition  == 'right' ? 1 : 0

@@ -63,7 +63,9 @@ function CoCreation() {
         />
     </div>
     <NewsletterSubscribe />
-    <Footer />
+    <div>
+      <Footer />
+    </div>
   </div>
 }
 

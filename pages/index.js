@@ -125,7 +125,9 @@ function App() {
     <div>
       <NewsletterSubscribe />
     </div>
-    <Footer />
+    <div>
+      <Footer />
+    </div>
   </div>
 }
 

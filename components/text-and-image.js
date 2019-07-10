@@ -27,7 +27,7 @@ class TextAndImage extends Component {
   }
 
   render() {
-    return <div className="TextAndImage" data-title={this.props.title}>
+    return <div className="TextAndImage" data-title={this.props.title} id={this.props.anchorName}>
       <div className="image-wrapper" style={{
         backgroundImage: `url(${this.props.image})`,
         order: this.props.imagePosition  == 'right' ? 1 : 0
@@ -43,7 +43,7 @@ class TextAndImage extends Component {
         </Title>
         <div className="text" dangerouslySetInnerHTML={{__html: this.props.text}} />
         <Button
-          href={this.props.buttonLink || 'https://www.bartroorda.nl'}
+          href={this.props.buttonLink}
           hidden={! this.props.buttonText }
           >
           {this.props.buttonText || 'learn more'}

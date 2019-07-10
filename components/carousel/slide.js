@@ -5,7 +5,7 @@ import * as R from 'ramda';
 class Slide extends Component {
   render() {
     return <div className="Slide">
-      <Link prefetch href={this.props.data.href}>
+      <a href={this.props.data.href}>
         <div>
           <div className="image-wrapper">
             <img height={this.props.data.imageHeight} src={this.props.data.image} style={{
@@ -17,10 +17,13 @@ class Slide extends Component {
             {this.props.data.title}
           </div>
         </div>
-      </Link>
+      </a>
       <style jsx>{`
         .Slide {
           cursor: pointer;
+        }
+        a {
+          text-decoration: none;
         }
         .Slide .image-wrapper {
           height: 118px;

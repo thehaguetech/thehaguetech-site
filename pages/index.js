@@ -17,31 +17,31 @@ const NewsletterSubscribe = dynamic(() => import('../components/newsletter-subsc
 const slides = [
   {
     title: 'international business',
-    href: '/international-business',
+    href: '#international-business',
     image: '/static/components/carousel/tht-icon-business.svg',
     imageHeight: 108
   },
   {
     title: 'co-creation',
-    href: '/co-creation',
+    href: '#co-creation',
     image: '/static/components/carousel/tht-icon-cocreate.svg',
     imageHeight: 118
   },
   {
     title: 'community',
-    href: '/community',
+    href: '#community',
     image: '/static/components/carousel/tht-icon-community.svg',
     imageHeight: 106
   },
   {
     title: 'events & labs',
-    href: '/meetings-events-labs',
+    href: '#meetings-events-labs',
     image: '/static/components/carousel/tht-icon-events.svg',
     imageHeight: 90
   },
   {
     title: 'co-working',
-    href: '/coworking',
+    href: '#coworking',
     image: '/static/components/carousel/tht-icon-coworking.svg',
     imageHeight: 104
   }
@@ -75,6 +75,7 @@ function App() {
         text="Is your business looking to enter the Dutch market or set up a base of operations here in Holland? The Hague Tech is an internationally focused organization with a local presence and knowledge base. With partnerships in Brazil, Silicon Valley, South Africa, and around the world, The Hague Tech is at the heart of globalization and internationalization while still understanding the need for local infrastructure and communities."
         buttonText="learn more"
         buttonLink="/international-business"
+        anchorName="international-business"
         />
       <TextAndImage
         image="/static/pages/index/cocreation.jpg"
@@ -84,6 +85,7 @@ function App() {
         text="The Hague Tech is an inspiring place to collaborate with talented individuals and innovative companies. But we strive to be and do more, to nurture an environment of co-creation. Co-creation means working together to create prototypes, products, technological solutions and beyond by activating the talent within The Hague Tech. Our community is filled with talented members looking to work together on new and exciting challenges. "
         buttonText="learn more"
         buttonLink="/co-creation"
+        anchorName="co-creation"
         />
       <TextAndImage
         image="/static/pages/index/community.jpg"
@@ -92,6 +94,7 @@ function App() {
         text="A collection of highly talented people is the indispensable basis of our ecosystem. Passionate and driven individuals should be facilitated in meeting each other easily and frequently. We provide this through the work space in the heart of our ecosystem. Together as a community we welcome in new members based on core values such as proactiveness, professionalism, and an openness to work and achieve together. "
         buttonText="learn more"
         buttonLink="/community"
+        anchorName="community"
         />
     </div>
     <BookATourBanner />
@@ -105,6 +108,7 @@ function App() {
       text="Success in business is a combination of hard work and luck. Luck can be engineered and we believe encouraging encounters is the best way to stimulate success and luck. Workshops, Meetups, festivals, and get-togethers around what our members in The Hague Tech are involved with leads to new connections and new entrepreneurial opportunities. "
       buttonText="learn more"
       buttonLink="/meetings-events-labs"
+      anchorName="meetings-events-labs"
       />
     <TextAndImage
       image="/static/pages/index/coworking.jpg"
@@ -113,6 +117,7 @@ function App() {
       text="We offer workspaces in fixed or flexible options in the general working areas or in closed areas. Our packages range from 1 day per week up to 24/7 access. Renting a desk will provide you with everything the ecosystem has to offer, our mission to provide hyper-location-as-a-service. "
       buttonText="learn more"
       buttonLink="/coworking"
+      anchorName="coworking"
       />
     <div>
       <YellowBanner

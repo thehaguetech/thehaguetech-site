@@ -62,7 +62,7 @@ class ContactForm extends Component {
       </div>
       <div className="flex-1 address">
         <p>
-          <img src="/static/pages/newsletter/page-header.jpg" alt="Photo of HubFest 2018" />
+          <img src="/static/pages/newsletter/page-header.jpg" alt="2019: THT OPENING EN HACKATON - © sacha grootjans" />
         </p>
         <p className="paragraph">
           The Hague Tech<br />

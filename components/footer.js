@@ -85,8 +85,9 @@ class Footer extends Component {
           .footer-nav {
             display: flex;
             justify-content: space-around;
-            padding: 0 10%;
+            padding: 0 0;
             margin: 0 auto;
+            width: 260px !important;
           }
           .social-icons {
             justify-content: space-around;

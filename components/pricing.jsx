@@ -180,6 +180,10 @@ class PricingBlock extends Component {
           font-weight: 500;
           line-height: 32px;
           text-align: center;
+          min-height: 96px;
+          justify-content: center;
+          flex-direction: column;
+          display: flex;
         }
         .features {
           color: #1126a9;

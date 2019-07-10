@@ -57,7 +57,7 @@ function App() {
     <Navigation />
     <VideoBanner />
     <IntroText>
-      The Hague Tech is a hub with a diverse and forward thinking Community and a platform for innovation.
+      The Hague Tech is a hub with a diverse and forward-thinking Community and a platform for innovation.
     </IntroText>
     <div>
       <div>

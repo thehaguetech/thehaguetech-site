@@ -39,8 +39,9 @@ class YellowBanner extends Component {
   }
 
   componentWillUnmount() {
-    $(window).off('scroll');
     $('body').css('background-color', `transparent`)
+    $('.TextAndImage, .StoryOverview').css('opacity', 1)
+    $(window).off('scroll');
   }
 
   render() {

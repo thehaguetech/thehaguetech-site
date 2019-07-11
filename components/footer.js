@@ -24,6 +24,9 @@ class Footer extends Component {
           <Link prefetch href="/contact">
             <a className="nav-link">Contact</a>
           </Link>
+          <Link prefetch href="/privacy-policy">
+            <a className="nav-link">Privacy</a>
+          </Link>
           <Link href="https://github.com/thehaguetech/thehaguetech-site#thehaguetech-site">
             <a className="nav-link" target="_blank">GitHub</a>
           </Link>

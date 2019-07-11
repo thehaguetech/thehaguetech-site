@@ -107,7 +107,8 @@ class MyApp extends App {
           img {
             max-width: 100%;
           }
-          p {
+          p,
+          li {
             font-family: "Maison Neue", sans-serif;
             max-width: 100%;
             font-size: 17px;

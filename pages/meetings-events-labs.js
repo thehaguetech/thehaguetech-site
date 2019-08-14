@@ -23,7 +23,7 @@ function EventsAndLabs() {
     <Navigation />
     <PageHeader
       smallCapsTitle="Meetings/Events/Labs"
-      title="Book a meetup, Host an event, or Join one of our cutting edge labs"
+      title="Book a meeting, Host an event, or Join one of our cutting edge labs"
       image="/static/pages/meetings-events-labs/page-header.jpg"
       />
     <IntroText>
@@ -65,9 +65,9 @@ function EventsAndLabs() {
       title="Hackathon for Peace, Justice, and Security"
       text="<p>The <a href='https://www.hackathonforgood.org/' target='_blank'>Hackathon for Good</a> organized by the Data Science Initiative of The Hague brought together teams from around the world to work on unique challenges provided by international organizations and NGOs. The Red Cross, the NATO Communications and Information Agency, the ICC, World Vision, and Asser Institute issued challenges to the more than 35 teams competing in the first annual hackathon. </p>"
       />
-    <IntroText>
-      <iframe title="vimeo-player" src="https://player.vimeo.com/video/303223371" width="640" height="360" frameBorder="0" allowFullScreen></iframe>
-    </IntroText>
+    <div align="center">
+      <iframe title="vimeo-player" src="https://player.vimeo.com/video/303223371" width="1327" height="600" frameBorder="0" allowFullScreen></iframe>
+    </div>
     <div>
       <YellowBanner
         title="Come and see for your self what The Hague Tech has to offer you!"

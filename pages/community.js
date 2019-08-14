@@ -22,7 +22,7 @@ function Community() {
     <PageHeader
       smallCapsTitle="Community"
       title="Join a vibrant and exciting community of doers"
-      image="/static/pages/community/page-header.jpg"
+      image="/static/pages/community/community.jpg"
       />
     <IntroText>
       <p>

@@ -22,7 +22,7 @@ function Community() {
     <PageHeader
       smallCapsTitle="Coworking"
       title="Find your new workspace or office best fit for your needs"
-      image="/static/pages/community/page-header.jpg"
+      image="/static/pages/coworking/coworking.jpg"
       />
     <IntroText>
       <p>

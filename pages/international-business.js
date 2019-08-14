@@ -29,16 +29,16 @@ function InternationalBusiness() {
     </IntroText>
     <div>
       <TextAndImage
-        image="/static/pages/international-business/partnership.png"
+        image="/static/pages/international-business/partnership.jpg"
         category=""
         title="Partnership"
         text="With partnerships in Brazil, Silicon Valley, South Africa, and around the world, The Hague Tech is at the heart of globalization and internationalization while still understanding the need for local infrastructure and communities."
         />
       <TextAndImage
-        image="/static/pages/international-business/soft-landing-program.png"
+        image="/static/pages/international-business/facilitation.jpg"
         imagePosition="right"
         category=""
-        title=""
+        title="Facilitation"
         text="<p>We facilitate international entrepreneurs and offers a path to growing your business in Europe, centered in The Hague. The program consists of business development, introductions to business networks, and startup visas for staying in the Netherlands. We work in collaboration with The Hague Business Agency, InnovationQuarter, and NFIA.</p><p>Joining The Hague Tech’s Soft Landing Program is the most effective and forward thinking path to growing your business in The Netherlands, the gateway to Europe.</p>"
         />
       <ImageBanner

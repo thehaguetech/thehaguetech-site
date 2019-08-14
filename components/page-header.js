@@ -8,7 +8,9 @@ const Button = dynamic(() => import('./button.js'));
 
 class PageHeader extends Component {
   render() {
-    return <div className="PageHeader" style={{backgroundImage: `url("${this.props.image}")`}}>
+    return <div className="PageHeader" style={Object.assign(
+        {},{backgroundImage: `url("${this.props.image}")`}, this.props.style
+      )}>
       <div>
         <div className="black-overlay" />
       </div>

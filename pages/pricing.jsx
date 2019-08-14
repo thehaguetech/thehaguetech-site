@@ -20,7 +20,8 @@ function Community() {
     <PageHeader
       smallCapsTitle="Become a member"
       title="Become a member of The Hague Tech"
-      image="/static/pages/community/page-header.jpg"
+      image="/static/pages/pricing/featured.jpg"
+      style={{backgroundPosition: 'center top'}}
       />
     <div>
       <Pricing />

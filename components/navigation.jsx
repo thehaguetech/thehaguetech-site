@@ -111,7 +111,7 @@ class Navigation extends Component {
   render() {
     let navigation = [
       {
-        title: 'What We Do',
+        title: 'What',
         items: [{
           title: 'Community',
           href: '/community',
@@ -135,7 +135,7 @@ class Navigation extends Component {
         }]
       },
       {
-        title: 'What is Happening',
+        title: 'Happening',
         items: [{
           title: 'Events',
           href: '/events',
@@ -335,7 +335,7 @@ class Navigation extends Component {
           }
           nav a.primary-nav-link {
             padding: 10px 0;
-            min-width: 0;
+            min-width: unset;
             border-bottom: solid transparent 9px;
           }
         }

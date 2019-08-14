@@ -23,6 +23,7 @@ function Community() {
       smallCapsTitle="Community"
       title="Join a vibrant and exciting community of doers"
       image="/static/pages/community/community.jpg"
+      style={{backgroundPosition: 'center top'}}
       />
     <IntroText>
       <p>

@@ -16,6 +16,30 @@ const NewsletterSubscribe = dynamic(() => import('../components/newsletter-subsc
 // Define Carousel slides
 const slides = [
   {
+    title: 'community',
+    href: '#community',
+    image: '/static/components/carousel/tht-icon-community.svg',
+    imageHeight: 106
+  },
+  {
+    title: 'co-working',
+    href: '#coworking',
+    image: '/static/components/carousel/tht-icon-coworking.svg',
+    imageHeight: 104
+  },
+  // {
+  //   title: 'meeting center',
+  //   href: '#meeting-center',
+  //   image: '/static/components/carousel/tht-icon-coworking.svg',
+  //   imageHeight: 104
+  // },
+  {
+    title: 'events & labs',
+    href: '#meetings-events-labs',
+    image: '/static/components/carousel/tht-icon-events.svg',
+    imageHeight: 90
+  },
+  {
     title: 'international business',
     href: '#international-business',
     image: '/static/components/carousel/tht-icon-business.svg',
@@ -27,24 +51,6 @@ const slides = [
     image: '/static/components/carousel/tht-icon-cocreate.svg',
     imageHeight: 118
   },
-  {
-    title: 'community',
-    href: '#community',
-    image: '/static/components/carousel/tht-icon-community.svg',
-    imageHeight: 106
-  },
-  {
-    title: 'events & labs',
-    href: '#meetings-events-labs',
-    image: '/static/components/carousel/tht-icon-events.svg',
-    imageHeight: 90
-  },
-  {
-    title: 'co-working',
-    href: '#coworking',
-    image: '/static/components/carousel/tht-icon-coworking.svg',
-    imageHeight: 104
-  }
 ]
 
 function App() {
@@ -69,25 +75,6 @@ function App() {
         <Carousel slides={slides} />
       </div>
       <TextAndImage
-        image="/static/pages/index/international-business.jpg"
-        category="international business"
-        title="Set up your business in the innovative heart of The Netherlands"
-        text="Is your business looking to enter the Dutch market or set up a base of operations here in Holland? The Hague Tech is an internationally focused organization with a local presence and knowledge base. With partnerships in Brazil, Silicon Valley, South Africa, and around the world, The Hague Tech is at the heart of globalization and internationalization while still understanding the need for local infrastructure and communities."
-        buttonText="learn more"
-        buttonLink="/international-business"
-        anchorName="international-business"
-        />
-      <TextAndImage
-        image="/static/pages/index/cocreation.jpg"
-        imagePosition="right"
-        category="co-creation"
-        title="Co-create and innovate with our multi-talented community"
-        text="The Hague Tech is an inspiring place to collaborate with talented individuals and innovative companies. But we strive to be and do more, to nurture an environment of co-creation. Co-creation means working together to create prototypes, products, technological solutions and beyond by activating the talent within The Hague Tech. Our community is filled with talented members looking to work together on new and exciting challenges. "
-        buttonText="learn more"
-        buttonLink="/co-creation"
-        anchorName="co-creation"
-        />
-      <TextAndImage
         image="/static/pages/index/community.jpg"
         category="community"
         title="Join a vibrant and exciting community of doers"
@@ -95,6 +82,16 @@ function App() {
         buttonText="learn more"
         buttonLink="/community"
         anchorName="community"
+        />
+      <TextAndImage
+        image="/static/pages/index/coworking.jpg"
+        imagePosition="right"
+        category="co-working"
+        title="Find your new workspace or office best fit for your needs"
+        text="We offer workspaces in fixed or flexible options in the general working areas or in closed areas. Our packages range from 1 day per week up to 24/7 access. Renting a desk will provide you with everything the ecosystem has to offer, our mission to provide hyper-location-as-a-service. "
+        buttonText="learn more"
+        buttonLink="/coworking"
+        anchorName="coworking"
         />
     </div>
     <BookATourBanner />
@@ -111,13 +108,23 @@ function App() {
       anchorName="meetings-events-labs"
       />
     <TextAndImage
-      image="/static/pages/index/coworking.jpg"
-      category="co-working"
-      title="Find your new workspace or office best fit for your needs"
-      text="We offer workspaces in fixed or flexible options in the general working areas or in closed areas. Our packages range from 1 day per week up to 24/7 access. Renting a desk will provide you with everything the ecosystem has to offer, our mission to provide hyper-location-as-a-service. "
+      image="/static/pages/index/international-business.jpg"
+      category="international business"
+      title="Set up your business in the innovative heart of The Netherlands"
+      text="Is your business looking to enter the Dutch market or set up a base of operations here in Holland? The Hague Tech is an internationally focused organization with a local presence and knowledge base. With partnerships in Brazil, Silicon Valley, South Africa, and around the world, The Hague Tech is at the heart of globalization and internationalization while still understanding the need for local infrastructure and communities."
       buttonText="learn more"
-      buttonLink="/coworking"
-      anchorName="coworking"
+      buttonLink="/international-business"
+      anchorName="international-business"
+      />
+    <TextAndImage
+      image="/static/pages/index/cocreation.jpg"
+      imagePosition="right"
+      category="co-creation"
+      title="Co-create and innovate with our multi-talented community"
+      text="The Hague Tech is an inspiring place to collaborate with talented individuals and innovative companies. But we strive to be and do more, to nurture an environment of co-creation. Co-creation means working together to create prototypes, products, technological solutions and beyond by activating the talent within The Hague Tech. Our community is filled with talented members looking to work together on new and exciting challenges. "
+      buttonText="learn more"
+      buttonLink="/co-creation"
+      anchorName="co-creation"
       />
     <div>
       <YellowBanner

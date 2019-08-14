@@ -11,7 +11,7 @@ const Footer = dynamic(() => import('../components/footer.js'));
 function Thanks() {
   return <div className="root">
     <Head>
-      <title>Privacy policy - The Hague Tech</title>
+      <title>Thanks - The Hague Tech</title>
     </Head>
 
     <Navigation />

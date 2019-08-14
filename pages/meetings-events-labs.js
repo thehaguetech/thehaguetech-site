@@ -108,8 +108,12 @@ function EventsAndLabs() {
         </Link>
       </Title>
     </div>
-    <EventOverview limit="3" />
-    <NewsletterSubscribe />
+    <div>
+      <EventOverview limit="3" />
+    </div>
+    <div>
+      <NewsletterSubscribe />
+    </div>
     <Footer />
   </div>
 }

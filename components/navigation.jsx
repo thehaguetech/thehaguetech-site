@@ -111,7 +111,7 @@ class Navigation extends Component {
   render() {
     let navigation = [
       {
-        title: 'What',
+        title: 'What we do',
         items: [{
           title: 'Community',
           href: '/community',
@@ -135,7 +135,7 @@ class Navigation extends Component {
         }]
       },
       {
-        title: 'Happening',
+        title: 'What is happening',
         items: [{
           title: 'Events',
           href: '/events',
@@ -219,7 +219,7 @@ class Navigation extends Component {
           padding: 1rem 18px;
           z-index: 10;
         }
-        @media(max-width: 1060px) {
+        @media(max-width: 1100px) {
           .Navigation {
             background: rgba(255,255,255,0.95);
           }
@@ -237,7 +237,7 @@ class Navigation extends Component {
         .Navigation.is-active .toggle-nav {
           transition: top 0s;
         }
-        @media (min-width: 1060px) {
+        @media (min-width: 1100px) {
           .Navigation {
             padding: 0;
           }
@@ -258,7 +258,6 @@ class Navigation extends Component {
           display: none;
           padding-top: 3rem;
           margin-top: 22px;
-          width: 64px;
           margin-left: -32px;
           position: relative;
           z-index: 2;
@@ -270,7 +269,7 @@ class Navigation extends Component {
         .main-nav > ul {
           position: relative;
         }
-        @media(min-width: 1060px) {
+        @media(min-width: 1100px) {
           .main-nav {
             display: flex;
             margin-top: 0;
@@ -287,12 +286,11 @@ class Navigation extends Component {
           margin: 0;
         }
         ul {
-          width: 7rem;
           min-height: 16rem;
+          width: 100%;
         }
-        @media(min-width: 1060px) {
+        @media(min-width: 1100px) {
           ul {
-            width: 7rem;
             height: auto;
             min-height: auto;
           }
@@ -325,18 +323,35 @@ class Navigation extends Component {
           min-width: 84px;
           cursor: pointer;
         }
+        .primary-nav-item {
+          max-width: 125px;
+        }
         .primary-nav-link {
           min-width: 96px;
           white-space: nowrap;
+          max-width: 113px;
+          max-height: 175px;
+          white-space: normal;
         }
-        @media(min-width: 1060px) {
+        .secundary-nav-link  {
+          margin-right: 0;
+        }
+        @media(min-width: 1100px) {
           nav a {
             padding: 10px 8px
+          }
+          .primary-nav-item {
+            max-width: 9999px;
           }
           nav a.primary-nav-link {
             padding: 10px 0;
             min-width: unset;
             border-bottom: solid transparent 9px;
+            max-width: 9999px;
+            max-height: 9999px;
+          }
+          .secundary-nav-link  {
+            margin-right: 10px;
           }
         }
         nav nav a {
@@ -345,7 +360,7 @@ class Navigation extends Component {
           margin-right: 10px;
           display: block;
         }
-        @media(min-width: 1060px) {
+        @media(min-width: 1100px) {
           nav a {
             margin-bottom: 0;
             text-align: center;
@@ -358,13 +373,13 @@ class Navigation extends Component {
         .primary-nav-item {
           left: -1rem;
         }
-        @media(min-width: 1060px) {
+        @media(min-width: 1100px) {
           .primary-nav-item {
             left: 0;
           }
         }
 
-        @media(min-width: 1060px) {
+        @media(min-width: 1100px) {
           .primary-nav-item {
             position: static;
             left: 0;
@@ -378,7 +393,12 @@ class Navigation extends Component {
             height: 71px;
           }
           .secundary-nav > ul {
-            min-width: 284px;
+            min-width: 204px;
+          }
+        }
+        @media(min-width: 1400px) {
+          .secundary-nav > ul {
+            min-width: 302px;
           }
         }
 
@@ -389,7 +409,7 @@ class Navigation extends Component {
         .secundary-nav-link.is-active {
           background: #feef00;
         }
-        @media(min-width: 1060px) {
+        @media(min-width: 1100px) {
           nav .primary-nav-link:hover,
           nav .primary-nav-link:focus,
           nav .primary-nav-link:active,
@@ -408,7 +428,7 @@ class Navigation extends Component {
           top: 0;
           left: 0;
           padding-left: 125px;
-          z-index: -1;
+          z-index: 0;
         }
         .primary-nav-item.is-active > nav.has-subnav {
           display: flex;
@@ -451,7 +471,7 @@ class Navigation extends Component {
           height: 100vh;
           overflow-y: auto;
         }
-        @media(min-width: 1060px) {
+        @media(min-width: 1100px) {
           .toggle-nav {
             display: none;
           }
@@ -566,7 +586,7 @@ class Navigation extends Component {
           }
         }
 
-        @media(min-width: 1060px) {
+        @media(min-width: 1100px) {
           .primary-nav-item {
             margin-right: 48px;
             margin-left: 48px;

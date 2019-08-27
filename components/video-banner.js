@@ -7,7 +7,7 @@ const Button = dynamic(() => import('../components/button.js'));
 function VideoBanner() {
   return <div className="VideoBanner">
     {/*<video className="video" autoPlay loop muted poster="/static/components/video-banner/madagascar3.jpg" src="static/components/video-banner/madagascar3.mp4">*/}
-    <video className="video" autoPlay loop muted poster="/static/components/video-banner/background.png"></video>
+    <video className="video" autoPlay loop muted poster="/static/components/index-slider/2019_THT-OPENING-EN-HACKATON_sacha grootjans-188.jpg"></video>
     <div className="overlay">
       <Title color="#fff">
         Innovate faster. Better. Together.

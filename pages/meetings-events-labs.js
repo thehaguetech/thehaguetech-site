@@ -87,14 +87,18 @@ function EventsAndLabs() {
         target="_blank"
         />
     </div>
-    <IntroText>
-      <p>
-        A major part of our value creation is the introduction of our labs. Our labs are physical spaces with weekly or monthly meetings that bring entrepreneurs and innovators together. These labs are centered around different themes to stimulate co-working, knowledge exchange, and the creation of new projects. The Hague Tech is currently housing a blockchain lab (Blockbar), an artificial intelligence lab, (AI-Lab The Hague), and the Smart Building Techlab. A pension lab and a government lab are currently in development and will be launched in the near future. AI Lab and Blockbar were founded in 2018 and reached unprecedented levels of success and collaboration. AI Lab was the #1 Meetup in The Hague for 2018 while Blockbar reached the #3 spot. 
-      </p>
-      <p>
-        Want to join a lab or even start your own? The Hague Tech is the ideal place to start spreading your passions through collaborating with enthusiastic participants. There are already new labs in the work for this year and beyond so state up to date on our socials to find your next passion project. 
-      </p>
-    </IntroText>
+    <div>
+      <IntroText>
+        <p>
+          A major part of our value creation is the introduction of our labs. Our labs are physical spaces with weekly or monthly meetings that bring entrepreneurs and innovators together. These labs are centered around different themes to stimulate co-working, knowledge exchange, and the creation of new projects. The Hague Tech is currently housing a blockchain lab (Blockbar), an artificial intelligence lab, (AI-Lab The Hague), and the Smart Building Techlab. A pension lab and a government lab are currently in development and will be launched in the near future. AI Lab and Blockbar were founded in 2018 and reached unprecedented levels of success and collaboration. AI Lab was the #1 Meetup in The Hague for 2018 while Blockbar reached the #3 spot. 
+        </p>
+      </IntroText>
+      <IntroText>
+        <p>
+          Want to join a lab or even start your own? The Hague Tech is the ideal place to start spreading your passions through collaborating with enthusiastic participants. There are already new labs in the work for this year and beyond so state up to date on our socials to find your next passion project. 
+        </p>
+      </IntroText>
+    </div>
     <Title align="center">
       Labs
     </Title>

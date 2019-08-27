@@ -7,6 +7,7 @@ const Navigation = dynamic(() => import('../components/navigation.jsx'));
 const ImageBanner = dynamic(() => import('../components/image-banner.js'));
 const PageHeader = dynamic(() => import('../components/page-header.js'));
 const IntroText = dynamic(() => import('../components/intro-text.js'));
+const Button = dynamic(() => import('../components/button.js'));
 const Title = dynamic(() => import('../components/title.js'));
 const TextAndImage = dynamic(() => import('../components/text-and-image.js'));
 const BookATourBanner = dynamic(() => import('../components/book-a-tour-banner.js'));
@@ -22,24 +23,34 @@ function EventsAndLabs() {
     </Head>
     <Navigation />
     <PageHeader
-      smallCapsTitle="Meetings/Events/Labs"
-      title="Book a meeting, Host an event, or Join one of our cutting edge labs"
+      smallCapsTitle="Meetings, Events & Labs"
+      title="The #1 Tech Event Location in The Hague "
       image="/static/pages/meetings-events-labs/page-header.jpg"
       />
     <IntroText>
       <p>
-        Success in business is a combination of hard work and luck. Luck can be engineered and we believe encouraging encounters is the best way to stimulate success and luck.
+        Our members have helped grow The Hague Tech into the top location for tech events in the Hague, from workshops to Meetups to festivals and more! Make sure to follow The Hague Tech on Meetup to see what exciting event is happening next 
       </p>
       <p>
-        Workshops, Meetups, festivals, and get-togethers around what our members in The Hague Tech are involved with leads to new connections and new entrepreneurial opportunities.
-      </p>
-      <p>
-        Our members initiate events (ranging from 20 to 400 people) around themes such as business development, opportunities for talent in technology and international business, legal implications such as GDPR, and subject-specific themes such as artificial intelligence, blockchain, and cyber security. We help facilitate these members and their events through our network, space, and publicity. 
-      </p>
-      <p>
-        In 2018 The Hague Tech hosted multiple large scale events which led to growing networks, knowledge sharing, and collaboration: 
+        <Button href="https://www.meetup.com/The-Hague-Tech/" target="_blank">
+          Follow us on Meetup
+        </Button>
       </p>
     </IntroText>
+    <TextAndImage
+      image=""
+      imagePosition="left"
+      category=""
+      title="Our Innovation Labs"
+      text="<p>The Hague Tech is home to diverse and engaging labs created by our members and facilitated by THT. Our labs are physical spaces with weekly or monthly Meetups, bringing entrepreneurs and innovators together to stimulate co-working, knowledge exchange, and new projects. The Hague Tech currently houses a blockchain lab (Blockbar), an artificial intelligence lab (AI Lab), and the Smart Building Techlab. Additional labs are currently in development, including a government lab and a pension lab. AI Lab was the #1 Meetup in The Hague in 2018 while Blockbar was #3. Our labs helped propel the Hague to the 4th fastest growing tech hub in Europe. </p><p>Want to join a lab or even start your own? The Hague Tech is the ideal place to start sharing your passion with a group of enthusiastic people ready to collaborate!</p>"
+      />
+    <TextAndImage
+      image=""
+      imagePosition="right"
+      category=""
+      title="An Event for Every Interest"
+      text="<p>In 2018 alone, The Hague Tech hosted over 200 events ranging from business development, opportunities for talent in technology and international business, legal implications such as GDPR, and subject-specific themes such as artificial intelligence, blockchain, and cyber security. Make sure to take a look at our past events to see the type of exciting content happening daily at The Hague Tech. </p>"
+      />
     <Title align="center">
       Past events
     </Title>
@@ -48,14 +59,14 @@ function EventsAndLabs() {
       imagePosition="right"
       category=""
       title="Hubfest 2018"
-      text="<p>On September 20th and 21st a coalition of The Hague Tech, The Dutch Tech Group and The Vault San Francisco organized the first edition of <a href='https://hubfest.io/' target='_blank'>Hubfest</a> with the goal of uniting the Dutch start-up scene towards internationalization through collaboration. Hubfest was founded to help create and strengthen these networks, giving everyone involved more opportunities to succeed. <a href='https://www.youtube-nocookie.com/embed/VU0_J6qeXkg?autoplay=1' target='_blank'>(video)</a></p>"
+      text="<p>For a two-day event a coalition of The Hague Tech, <a href='http://dutchtechgroup.nl/' target='_blank'>The Dutch Tech Group</a>, and <a href='https://thevault.co' target='_blank'>The Vault San Francisco</a> organized the first edition of <a href='https://hubfest.io' target='_blank'>Hubfest</a> with the goal of uniting the Dutch start-up scene towards internationalization through collaboration. Hubfest was founded to help create and strengthen these networks, giving everyone involved more opportunities to succeed. (<a href='https://www.youtube-nocookie.com/embed/VU0_J6qeXkg?autoplay=1' target='_blank'>video</a>)</p>"
       />
     <TextAndImage
       image="/static/pages/meetings-events-labs/blockchain-innovation-week.jpg"
       imagePosition="left"
       category=""
       title="Blockchain Innovation Week"
-      text="<p>Organized and ran by Blockbar, one of our coworking labs in The Hague Tech, <a href='https://blockbar.nl/biw/' target='_blank'>Blockchain Innovation Week</a> provided meetups, workshops, and lectures surrounding blockchain technology. Speakers such as Rabobank, Komodo, ixo.foundation, BitmyMoney and CryptoPepes provided unique insight into projects happening at the time around blockchain. </p>"
+      text="<p>Organized and ran by Blockbar, one of our co-working labs in The Hague Tech, <a href='https://blockbar.nl/biw/' href='_blank'>Blockchain Innovation Week</a> provided meetups, workshops, and lectures surrounding blockchain technology. Speakers such as <a href='https://www.rabobank.nl/particulieren/' target='_blank'>Rabobank</a>, <a href='https://komodoplatform.com' target='_blank'>Komodo</a>, <a href='http://ixo.foundation/' target='_blank'>ixo.foundation</a>, <a href='https://www.bitmymoney.com' target='_blank'>BitmyMoney</a> and <a href='https://cryptopepes.io' target='_blank'>CryptoPepes</a> provided unique insight into blockchain projects happening at the time.</p>"
       />
     {/*https://www.studiokordaat.nl/werk/hackathon-peace-justice-security/*/}
     <TextAndImage
@@ -63,7 +74,7 @@ function EventsAndLabs() {
       imagePosition="right"
       category=""
       title="Hackathon for Peace, Justice, and Security"
-      text="<p>The <a href='https://www.hackathonforgood.org/' target='_blank'>Hackathon for Good</a> organized by the Data Science Initiative of The Hague brought together teams from around the world to work on unique challenges provided by international organizations and NGOs. The Red Cross, the NATO Communications and Information Agency, the ICC, World Vision, and Asser Institute issued challenges to the more than 35 teams competing in the first annual hackathon. </p>"
+      text="<p>Organized by the Data Science Initiative of The Hague, the Hackathon for Good has now held two editions at The Hague Tech. Teams from around the world have worked on unique challenges provided by international organizations and NGOS. The Red Cross, the Nato Communications and Information Agency, the ICC, the European Commission Space4Good, and many more issued challenges to hundreds of participants in this annual event.  </p>"
       />
     <div align="center">
       <iframe title="vimeo-player" src="https://player.vimeo.com/video/303223371" width="1327" height="600" frameBorder="0" allowFullScreen></iframe>

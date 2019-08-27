@@ -12,6 +12,7 @@ const BookATourBanner = dynamic(() => import('../components/book-a-tour-banner.j
 const YellowBanner = dynamic(() => import('../components/yellow-banner.js'));
 const Footer = dynamic(() => import('../components/footer.js'));
 const NewsletterSubscribe = dynamic(() => import('../components/newsletter-subscribe.js'));
+const FullWidthImage = dynamic(() => import('../components/full-width-image.js'));
 
 function Community() {
   return <div className="root">
@@ -27,12 +28,23 @@ function Community() {
       />
     <IntroText>
       <p>
-        A collection of highly talented people is the indispensable basis of our ecosystem. Passionate and driven individuals should be facilitated in meeting each other easily and frequently. We provide this through the work space in the heart of our ecosystem.
-      </p>
-      <p>
-        Together as a community we welcome in new members based on core values such as proactiveness, professionalism, and an openness to work and achieve together. Those who believe in doing well are who drive our responsibility to make sure talented people meet each other.
+        The core of The Hague Tech is our international and diverse community of entrepreneurs, freelancers, startups, scaleups, corporations, governments, and more! Build your network, build your business, and build your friendships all within our passionate community. 
       </p>
     </IntroText>
+    <TextAndImage
+      image="/static/pages/coworking/coworking.jpg"
+      category="community"
+      title="Becoming a member"
+      text="The easiest way to become part of our community and start sharing value? Become a member of The Hague Tech today and see everything we have to offer! Having a membership includes access to our events and innovation labs. We co-create workshops, meetups, and events with our partners, and you! Our spaces are your playground for knowledge exchange and collaboration. Attend one of the many events offered each month and see for yourself while grabbing a beer with a peer. After all, the best ideas are said to be written on a beer coasters!"
+      buttonText="book a tour"
+      buttonLink="https://outlook.office365.com/owa/calendar/TheHagueTech@jongensvantechniek.nl/bookings/"
+      anchorName="community"
+      />
+    <Title align="center" size="small">
+      Our Community at a glance
+    </Title>
+    <FullWidthImage image="/static/pages/index/community.jpg" />
+
     {/*
     (Community Statistics Needed) - Main Point of Focus
     (Company Statistics Needed) - Profiles

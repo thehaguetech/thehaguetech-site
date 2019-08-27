@@ -21,25 +21,25 @@ function InternationalBusiness() {
     <Navigation />
     <PageHeader
       smallCapsTitle="International Business"
-      title="Set up your business in The Hague"
+      title="Your business’s new home in The Hague"
       image="/static/pages/international-business/page-header.jpg"
       />
     <IntroText>
-      Is your business looking to enter the Dutch market or set up a base of operations here in Holland? The Hague Tech is an internationally focused organization with a local presence and knowledge base. 
+      Are you looking to expand your business to the Netherlands or set up a new company here in The Hague? The Hague Tech is the perfect place to build your global organization alongside startups, scaleups, governments, and corporates. 
     </IntroText>
     <div>
       <TextAndImage
         image="/static/pages/international-business/partnership.jpg"
         category=""
-        title="Partnership"
-        text="With partnerships in Brazil, Silicon Valley, South Africa, and around the world, The Hague Tech is at the heart of globalization and internationalization while still understanding the need for local infrastructure and communities."
+        title="Facilitating Your Business Goals"
+        text="<p>We facilitate international focused entrepreneurs and business owners in growing your business in Europe, headquartered in The Hague. Our Soft Landing Program consists of business development, introductions to business networks and local ecosystems, and startup visas for staying in the Netherlands. We work in collaboration with The Hague Business Agency, InnovationQuarter, and NFIA (Netherlands Foreign Investment Agency).</p><p>Joining The Hague Tech’s Soft Landing Program is the quickest, easiest, and more comprehensive path to growing your business in The Netherlands, the gateway to Europe.</p>"
         />
       <TextAndImage
         image="/static/pages/international-business/facilitation.jpg"
         imagePosition="right"
         category=""
-        title="Facilitation"
-        text="<p>We facilitate international entrepreneurs and offers a path to growing your business in Europe, centered in The Hague. The program consists of business development, introductions to business networks, and startup visas for staying in the Netherlands. We work in collaboration with The Hague Business Agency, InnovationQuarter, and NFIA.</p><p>Joining The Hague Tech’s Soft Landing Program is the most effective and forward thinking path to growing your business in The Netherlands, the gateway to Europe.</p>"
+        title="Our Global Partnerships"
+        text="<p>We pride ourselves on creating international business partnerships that bring global opportunities to our members and partners. With partnerships in Brazil, Silicon Valley, South Africa, and around the world, The Hague Tech is a center of globalization and internationalization while still focusing on the importance of local ecosystems and communities around The Hague and the Netherlands. </p>"
         />
       <ImageBanner
         image="/static/pages/international-business/quote-charles.png"
@@ -51,7 +51,7 @@ function InternationalBusiness() {
       <TextAndImage
         image="/static/pages/international-business/why-thehague.png"
         category=""
-        title=""
+        title="Why The Hague?"
         text="Situated in the political heart of The Netherlands, The Hague is a short train ride away from other major hubs in Rotterdam, Utrecht, and Amsterdam. The Hague was Europe’s 4th fastest growing tech hub in 2018 and the city is on a mission to accelerate innovation and talent. The Hague is the seat of the Dutch government and houses major multinational companies Dutch Royal Shell and AEGON. Internationals and expats are abundant in The Hague, leading to an internationally focused and open working environment that doesn’t forget the importance of work life balance. The Hague beyond being a central business hub is also the city by the sea, with the beach only a 10 minute tram ride away. "
         />
     </div>

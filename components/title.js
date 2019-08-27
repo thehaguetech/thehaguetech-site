@@ -10,7 +10,7 @@ class Title extends Component {
     if(this.props.size) {
       size = this.props.size;
     } else {
-      size = (lengthOfTitle < 40 ? 'large' : 'small')
+      size = (lengthOfTitle < 38 ? 'large' : 'small')
     }
     return <div
         className={

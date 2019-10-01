@@ -11,35 +11,42 @@ class ImageBanner extends Component {
     return <div className="ImageBanner" style={{
       backgroundImage: `url(${this.props.image})`
     }}>
-      <div>
-        <div className="black-overlay"></div>
-      </div>
-      <div className="placeholder">
+      <div className="black-overlay">
         &nbsp;
       </div>
-      <div className="text-wrapper">
-        <Title color="#fff">
-          {this.props.title}
-        </Title>
-        <div style={{ margin: '1rem 0' }}>
-          <SmallCapsTitle>
-            {this.props.SmallCapsTitle}
-          </SmallCapsTitle>
+      <div className="ImageBanner-inner">
+        <div className="text-wrapper">
+          <Title color="#fff">
+            {this.props.title}
+          </Title>
+          <div style={{ margin: '1rem 0' }}>
+            <SmallCapsTitle>
+              {this.props.SmallCapsTitle}
+            </SmallCapsTitle>
+          </div>
+          <br /><br />
+          <Button href={this.props.buttonLink}>
+            {this.props.buttonText}
+          </Button>
         </div>
-        <br /><br />
-        <Button href={this.props.buttonLink}>
-          {this.props.buttonText}
-        </Button>
+        <div className="placeholder">
+          &nbsp;
+        </div>
       </div>
       <style jsx>{`
         .ImageBanner {
-          background: #000 center center / cover no-repeat;
+          background: #000 63% 0% / cover no-repeat;
           position: relative;
           color: #fff;
           padding: 3rem 1rem;
+          margin-bottom: 3rem;
+        }
+        .ImageBanner-inner {
           display: flex;
           justify-content: space-around;
-          margin-bottom: 3rem;
+          margin: 0 auto;
+          width: 1057px;
+          max-width: 90%;
         }
         .black-overlay {
           position: absolute;
@@ -55,11 +62,16 @@ class ImageBanner extends Component {
             min-height: 821px;
 
             background-size: cover;
-            background-position: unset;
+            background-position: 70% top;
           }
         }
         .placeholder {
-          flex: 6;
+          flex: 2;
+        }
+        @media (min-width: 900px) {
+          .placeholder {
+            flex: 6;
+          }
         }
         .text-wrapper {
           z-index: 1;

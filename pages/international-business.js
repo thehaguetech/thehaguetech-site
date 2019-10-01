@@ -34,6 +34,8 @@ function InternationalBusiness() {
         title="Facilitating Your Business Goals"
         text="<p>We facilitate international focused entrepreneurs and business owners in growing your business in Europe, headquartered in The Hague. Our Soft Landing Program consists of business development, introductions to business networks and local ecosystems, and startup visas for staying in the Netherlands. We work in collaboration with The Hague Business Agency, InnovationQuarter, and NFIA (Netherlands Foreign Investment Agency).</p><p>Joining The Hague Tech’s Soft Landing Program is the quickest, easiest, and more comprehensive path to growing your business in The Netherlands, the gateway to Europe.</p>"
         />
+    </div>
+    <div>
       <TextAndImage
         image="/static/pages/international-business/facilitation.jpg"
         imagePosition="right"
@@ -41,13 +43,17 @@ function InternationalBusiness() {
         title="Our Global Partnerships"
         text="<p>We pride ourselves on creating international business partnerships that bring global opportunities to our members and partners. With partnerships in Brazil, Silicon Valley, South Africa, and around the world, The Hague Tech is a center of globalization and internationalization while still focusing on the importance of local ecosystems and communities around The Hague and the Netherlands. </p>"
         />
+    </div>
+    <div>
       <ImageBanner
-        image="/static/pages/international-business/quote-charles.png"
+        image="/static/pages/international-business/quote-charles.jpg"
         SmallCapsTitle="Charles Weiler-Ulin  |  Founder Holland Park Media"
         title="“The Hague Tech helped me get a startup visa and introduced me to one of the most international and diverse networks and community that I’ve ever been a part of.”"
-        buttonText="Become a member"
+        buttonText="Become&nbsp;a&nbsp;member"
         buttonLink="/join-community"
         />
+    </div>
+    <div>
       <TextAndImage
         image="/static/pages/international-business/why-thehague.png"
         category=""

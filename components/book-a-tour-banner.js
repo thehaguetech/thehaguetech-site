@@ -23,7 +23,7 @@ function BookATourBanner() {
         </SmallCapsTitle>
       </div>
       <br /><br />
-      <Button buttonLink="https://outlook.office365.com/owa/calendar/TheHagueTech@jongensvantechniek.nl/bookings/" target="_blank">
+      <Button buttonLink="https://outlook.office365.com/owa/calendar/bookings@thehaguetech.com/bookings/" target="_blank">
         Book a tour
       </Button>
     </div>

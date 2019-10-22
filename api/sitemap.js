@@ -16,7 +16,7 @@ const populateSitemap = async function() {
   for(let idx in events) {
     let date = events[idx].fields.datetime.substr(0, 10);
     urls.push({
-      url: '/' + date + '/' + events[idx].fields.slug, changefreq: 'weekly', priority: 0.8,
+      url: '/events/' + date + '/' + events[idx].fields.slug, changefreq: 'weekly', priority: 0.8,
     })
   }
   return urls;

@@ -21,9 +21,6 @@ class Footer extends Component {
           </a>
         </nav>
         <nav className="footer-nav">
-          <Link prefetch href="https://www.indeedjobs.com/the-hague-tech-bv">
-            <a className="nav-link" target="_blank">Careers</a>
-          </Link>
           <Link prefetch href="/contact">
             <a className="nav-link">Contact</a>
           </Link>

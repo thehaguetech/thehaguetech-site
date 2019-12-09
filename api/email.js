@@ -6,7 +6,7 @@ const sendMail = function(from) {
     to: 'launch@thehaguetech.com',
     from: 'website@thehaguetech.com',
     subject: 'Email from thehaguetech.com',
-    html: `${from.name} <${from.email}> sent the following message:<br /><hr /><br />` +
+    html: `${from.name} (${from.email}) sent the following message:<br /><hr /><br />` +
           from.message.replace("\n", '<br/>') + "<br /><br />"
   };
   sgMail.send(msg);

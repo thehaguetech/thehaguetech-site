@@ -5,7 +5,7 @@ const sendMail = function(from) {
   const msg = {
     to: 'launch@thehaguetech.com',
     from: 'website@thehaguetech.com',
-    subject: 'Email from thehaguetech.nl',
+    subject: 'Email from thehaguetech.com',
     html: `${from.name} <${from.email}> sent the following message:<br /><hr /><br />` +
           from.message.replace("\n", '<br/>') + "<br /><br />"
   };

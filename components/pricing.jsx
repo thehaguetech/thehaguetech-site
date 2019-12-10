@@ -276,7 +276,7 @@ function Pricing() {
     {
       name: 'membership',
       extraBenefit: '',
-      price: 56,50,
+      price: '56,50',
       title: 'Become part of the community of The Hague Tech',
       features: [
         'Super-fast wifi',

@@ -45,8 +45,9 @@ class MyApp extends App {
           <meta property="og:title" content="Join the The Hague Tech community" />
           <meta property="og:url" content="https://www.thehaguetech.com/" />
           <meta property="og:image" content="https://thehaguetech-site.netlify.com/static/og-image.jpg" />
-
+          
           <link href="/static/tht-favicon@2x.png" rel="icon" type="image/x-icon" />
+          <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="89a25338-68d0-40c6-97db-d4ab7c057ce2" data-blockingmode="auto" type="text/javascript"></script>
           <script dangerouslySetInnerHTML={{
           __html: `(function(h,o,t,j,a,r){
               h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};

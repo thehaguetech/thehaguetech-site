@@ -19,7 +19,11 @@ const EventOverview = dynamic(() => import('../components/event-overview.js'));
 function EventsAndLabs() {
   return <div className="root">
     <Head>
+
       <title>Meetings / Events / Labs - The Hague Tech</title>
+
+      <meta key="og:image" property="og:image" content="https://www.thehaguetech.com/static/pages/meetings-events-labs/meta.jpg" />
+
     </Head>
     <Navigation />
     <PageHeader

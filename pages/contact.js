@@ -18,7 +18,14 @@ const ContactForm = dynamic(() => import('../components/contact-form.js'));
 function Contact() {
   return <div className="Contact">
     <Head>
-      <title>Contact - The Hague Tech</title>
+
+      <title>Contact Us | The Hague Tech</title>
+
+      <meta key="og:title" property="og:title" content="Contact Us | The Hague Tech" />
+      <meta key="og:image" property="og:image" content="https://www.thehaguetech.com/static/pages/contact/meta.jpg" />
+      <meta key="og:description" property="og:description" content="Find out how to contact us with your questions, partnership inquiries, and more! Unable to find your answer online? Our team is happy to help and provide you with answers and begin to facilitate your journey with The Hague Tech." />
+      <meta key="description" name="description" content="Find out how to contact us with your questions, partnership inquiries, and more! Unable to find your answer online? Our team is happy to help and provide you with answers and begin to facilitate your journey with The Hague Tech." />
+
     </Head>
     <Navigation />
     <div style={{height: '132px'}} /> 

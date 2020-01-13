@@ -13,7 +13,14 @@ const StoryOverview = dynamic(() => import('../components/story-overview.jsx'));
 function Stories() {
   return <div className="StoriesPage">
     <Head>
-      <title key="title">Stories at The Hague Tech</title>
+
+      <title key="title">Stories & News | The Hague Tech</title>
+
+      <meta key="og:title" property="og:title" content="Stories & News | The Hague Tech" />
+      <meta key="og:image" property="og:image" content="https://www.thehaguetech.com/static/pages/stories/meta.jpg" />
+      <meta key="og:description" property="og:description" content="Read the latest from around The Hague Tech community and see the progress happening everyday. See why The Hague Tech is the premier location for startups, scaleups, and governments in The Hague." />
+      <meta key="description" name="description" content="Read the latest from around The Hague Tech community and see the progress happening everyday. See why The Hague Tech is the premier location for startups, scaleups, and governments in The Hague." />
+
     </Head>
     <Navigation />
     <div>

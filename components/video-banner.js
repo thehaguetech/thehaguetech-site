@@ -5,9 +5,21 @@ const Title = dynamic(() => import('../components/title.js'));
 const Button = dynamic(() => import('../components/button.js'));
 
 function VideoBanner() {
+  const images = [
+    '2019_THT-OPENING-EN-HACKATON_sacha grootjans-188.jpg',
+    '2019_THT-OPENING-EN-HACKATON FIXED_sacha grootjans-126.jpg',
+    '2019_THT-OPENING-EN-HACKATON_sacha grootjans-01-LOW-RESOLUTION-1200px.jpg',
+    '2019_THT-OPENING-EN-HACKATON_sacha grootjans-40',
+    '2019_THT-OPENING-EN-HACKATON_sacha grootjans-87.jpg',
+    '2019_THT-OPENING-EN-HACKATON_sacha grootjans-174.jpg',
+    '2019_THT-OPENING-EN-HACKATON_sacha grootjans-180.jpg',
+    '2019_THT-OPENING-EN-HACKATON_sacha grootjans-191.jpg',
+    '2019_THT-OPENING-EN-HACKATON_sacha grootjans-203.jpg'
+  ]
+  const randomFromArray = (items) => items[Math.floor(Math.random()*items.length)]
   return <div className="VideoBanner">
     {/*<video className="video" autoPlay loop muted poster="/static/components/video-banner/madagascar3.jpg" src="static/components/video-banner/madagascar3.mp4">*/}
-    <video className="video" autoPlay loop muted poster="/static/components/index-slider/2019_THT-OPENING-EN-HACKATON_sacha grootjans-188.jpg"></video>
+    <video className="video" autoPlay loop muted poster={`/static/components/index-slider/${randomFromArray(images)}`}></video>
     <div className="overlay">
       <Title color="#fff">
         Innovate faster. Better. Together.

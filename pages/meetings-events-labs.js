@@ -66,7 +66,7 @@ function EventsAndLabs() {
         Looking to host an inspiring event, start or join one of our innovative labs, or even an entire hackathon? The Hague Tech is providing engaging opportunities at every corner. Contact <a href="mailto:events@thehaguetech.com">events@thehaguetech.com</a> to learn more.
       </p>
       <p>
-        <Button href="mailto:events@thehaguetech.com" target="_blank" style={{transform: 'scale(1.4)', marginTop: '20px', marginBottom: '50px'}}>
+        <Button href="mailto:events@thehaguetech.com" target="_blank" style={{transform: 'scale(1.4)', marginTop: '20px', marginBottom: '100px'}}>
           Contact us
         </Button>
       </p>

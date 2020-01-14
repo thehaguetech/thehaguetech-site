@@ -125,6 +125,10 @@ class Navigation extends Component {
           href: '/meetings-events-labs',
           image: '/static/components/carousel/tht-icon-events.svg'
         }, {
+          title: 'Meeting Spaces',
+          href: '/meeting-spaces',
+          image: '/static/components/carousel/tht-icon-coworking.svg'
+        }, {
           title: 'International Business',
           href: '/international-business',
           image: '/static/components/carousel/tht-icon-business.svg'

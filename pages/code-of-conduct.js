@@ -22,7 +22,11 @@ function CodeOfConduct() {
       <title>Code of Conduct | The Hague Tech</title>
     </Head>
     <Navigation />
-
+    <PageHeader
+      smallCapsTitle="Code of Conduct"
+      title="Live like at home, not a hotel"
+      image="https://strongdaily.net/wp-content/uploads/2019/07/Planning-the-Layout.jpg"
+      />
     <div className="content-wrapper">
       <Title size="large">
         Who let the people in?

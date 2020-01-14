@@ -9,7 +9,7 @@ function VideoBanner() {
     '2019_THT-OPENING-EN-HACKATON_sacha grootjans-188.jpg',
     '2019_THT-OPENING-EN-HACKATON FIXED_sacha grootjans-126.jpg',
     '2019_THT-OPENING-EN-HACKATON_sacha grootjans-01-LOW-RESOLUTION-1200px.jpg',
-    '2019_THT-OPENING-EN-HACKATON_sacha grootjans-40',
+    '2019_THT-OPENING-EN-HACKATON_sacha grootjans-40.jpg',
     '2019_THT-OPENING-EN-HACKATON_sacha grootjans-87.jpg',
     '2019_THT-OPENING-EN-HACKATON_sacha grootjans-174.jpg',
     '2019_THT-OPENING-EN-HACKATON_sacha grootjans-180.jpg',

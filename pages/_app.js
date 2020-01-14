@@ -76,7 +76,6 @@ class MyApp extends App {
           });
           window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();`}} />
         </Head>
-        <Component {...pageProps} />
         <style jsx global>{`
           * {
             box-sizing: border-box;
@@ -219,6 +218,7 @@ class MyApp extends App {
           }
 
         `}</style>
+        <Component {...pageProps} />
       </Container>
     );
   }

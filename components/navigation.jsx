@@ -121,7 +121,7 @@ class Navigation extends Component {
           href: '/coworking',
           image: '/static/components/carousel/tht-icon-coworking.svg'
         }, {
-          title: 'Meetings, Events & Labs',
+          title: 'Events & Labs',
           href: '/meetings-events-labs',
           image: '/static/components/carousel/tht-icon-events.svg'
         }, {

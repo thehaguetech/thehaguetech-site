@@ -35,7 +35,7 @@ function EventsAndLabs() {
       />
     <IntroText>
       <p>
-        In order to better facilitate our community, offer awesome services for external members, and a needed service, The Hague Tech offers a variety of meeting rooms to perfectly serve whatever your needs may be. Our meeting rooms give innovative parties the opportunity to meet and share knowledge while offering an alternative to companies and entrepreneurs who don’t need full time office space. Our meeting rooms keep our hub dynamic, always bringing new and exciting people through our doors.
+        In order to better facilitate our community, we offer awesome services for external members, and a needed service, The Hague Tech offers a variety of meeting rooms to perfectly serve whatever your needs may be. Our meeting rooms give innovative parties the opportunity to meet and share knowledge while offering an alternative to companies and entrepreneurs who don’t need full time office space. Our meeting rooms keep our hub dynamic, always bringing new and exciting people through our doors.
       </p>
     </IntroText>
     <TextAndImage

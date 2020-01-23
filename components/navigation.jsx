@@ -533,7 +533,7 @@ class Navigation extends Component {
             position: absolute;
             left: 0;
             top: 7rem;
-            margin-left: 24px;
+            margin-left: 34px;
             padding-left: 8px;
             padding-left: 0;
           }

@@ -113,22 +113,6 @@ class Navigation extends Component {
       {
         title: 'What we do',
         items: [{
-          title: 'Community',
-          href: '/community',
-          image: '/static/components/carousel/tht-icon-community.svg'
-        }, {
-          title: 'Co-working',
-          href: '/coworking',
-          image: '/static/components/carousel/tht-icon-coworking.svg'
-        }, {
-          title: 'Events & Labs',
-          href: '/meetings-events-labs',
-          image: '/static/components/carousel/tht-icon-events.svg'
-        }, {
-          title: 'Meeting Spaces',
-          href: '/meeting-spaces',
-          image: '/static/components/carousel/tht-icon-coworking.svg'
-        }, {
           title: 'International Business',
           href: '/international-business',
           image: '/static/components/carousel/tht-icon-business.svg'
@@ -136,6 +120,24 @@ class Navigation extends Component {
           title: 'Co-creation',
           href: '/co-creation',
           image: '/static/components/carousel/tht-icon-cocreate.svg'
+        }, {
+          title: 'Community',
+          href: '/community',
+          image: '/static/components/carousel/tht-icon-community.svg'
+        }, {
+          title: 'Events & Labs',
+          href: '/meetings-events-labs',
+          image: '/static/components/carousel/tht-icon-events.svg',
+          imageHeight: '36px'
+        }, {
+          title: 'Co-working',
+          href: '/coworking',
+          image: '/static/components/carousel/tht-icon-coworking.svg',
+          imageHeight: '36px'
+        }, {
+          title: 'Meeting Spaces',
+          href: '/meeting-spaces',
+          image: '/static/components/navigation/tht-icon-meeting-spaces.svg'
         }]
       },
       {
@@ -143,11 +145,13 @@ class Navigation extends Component {
         items: [{
           title: 'Events',
           href: '/events',
-          image: '/static/components/navigation/tht-icon-events.svg'///tht-icon-stories.svg
+          image: '/static/components/navigation/tht-icon-events.svg',//tht-icon-stories.svg
+          imageHeight: '36px'
         }, {
           title: 'Stories',
           href: '/stories',
-          image: '/static/components/navigation/tht-icon-stories.svg'
+          image: '/static/components/navigation/tht-icon-stories.svg',
+          imageHeight: '38px'
         }]
       },
       {
@@ -194,10 +198,15 @@ class Navigation extends Component {
                 <nav className={'secundary-nav' + (item.items ? ' has-subnav' : '')}>
                   <ul>
                     {item.items && R.map((item) => {
-                      return <li key={item.title} className="icon" style={{backgroundImage: `url(${item.image})`}}>
+                      return <li className="secundary-nav-item" key={item.title}>
                         <Link prefetch href={item.href}>
-                          <a className={'secundary-nav-link' + (this.state.path == item.href ? ' is-active' : '')}>{item.title}</a>
+                          <div className="icon" style={{backgroundImage: `url(${item.image})`, backgroundSize: `auto ${item.imageHeight}`}} />
                         </Link>
+                        <div style={{flex: 1, alignSelf: 'center'}}>
+                          <Link prefetch href={item.href}>
+                            <a className={'secundary-nav-link' + (this.state.path == item.href ? ' is-active' : '')}>{item.title}</a>
+                          </Link>
+                        </div>
                       </li>
                     }, item.items)}
                   </ul>
@@ -241,7 +250,27 @@ class Navigation extends Component {
         .Navigation.is-active .toggle-nav {
           transition: top 0s;
         }
+
+        li.secundary-nav-item {
+          display: flex;
+          justify-content: flex-start;
+          flex-direction: row !important;
+        }
+        .Navigation .secundary-nav-item .icon {
+          background: no-repeat url('https://assets.materialup.com/uploads/30080ad4-97ee-47f7-a98a-c0d2e8d704b2/preview');
+          background-size: auto 42px;
+          height: 42px;
+          width: 42px;
+          min-width: 42px;
+          margin-right: 5px;
+          align-self: start;
+          background-position: center center;
+        }
+
         @media (min-width: 1100px) {
+          .Navigation .secundary-nav-item .icon {
+            align-self: center;
+          }
           .Navigation {
             padding: 0;
           }
@@ -269,6 +298,9 @@ class Navigation extends Component {
         .secundary-nav {
           position: static;
           z-index: 1;
+        }
+        .secundary-nav li {
+          min-height: 42px;
         }
         .main-nav > ul {
           position: relative;
@@ -337,12 +369,18 @@ class Navigation extends Component {
           max-height: 175px;
           white-space: normal;
         }
-        .secundary-nav-link  {
+        .secundary-nav-link {
           margin-right: 0;
         }
         @media(min-width: 1100px) {
           nav a {
             padding: 10px 8px
+          }
+          .secundary-nav-link {
+            margin-right: 0;
+            min-height: 10px;
+            height: 30px;
+            
           }
           .primary-nav-item {
             max-width: 9999px;
@@ -574,11 +612,6 @@ class Navigation extends Component {
           }
         }
 
-        .Navigation .icon {
-          background: no-repeat url('https://assets.materialup.com/uploads/30080ad4-97ee-47f7-a98a-c0d2e8d704b2/preview');
-          background-size: 40px;
-          padding-left: calc(40px + 1rem);
-        }
         @media(min-width: 480px) {
           .Navigation .icon:first-child {
             background-size: 34px;

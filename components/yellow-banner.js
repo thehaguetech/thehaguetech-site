@@ -35,7 +35,7 @@ class YellowBanner extends Component {
     // https://stackoverflow.com/a/37382645
     var percentageSeen = Math.min( 100, Math.round((elementOffsetTop - scrollTop) * 100 / viewportHeight) )
 
-    console.log(percentageSeen)
+    // console.log(percentageSeen)
     return percentageSeen >= 0 ? Math.abs(percentageSeen * 1.8) : Math.abs(percentageSeen * 2.2)
   }
 

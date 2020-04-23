@@ -1,16 +1,31 @@
 import Head from 'next/head';
 import React from 'react';
 import App, { Container } from 'next/app';
+const contentful = require('contentful')
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
+    let story = null;
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
-    }
 
-    return { pageProps };
+      const client = await contentful.createClient({
+        space: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+      })
+
+      story = await client.getEntries({
+        content_type: 'story',
+        'fields.slug': pageProps.slug,
+        limit: 1
+      })
+        .then((entry) => entry.items[0])
+        .catch(console.error)
+    }
+    
+    return { pageProps, story };
   }
 
   componentDidMount() {
@@ -23,25 +38,76 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props;
-
+    const { Component, pageProps, story } = this.props;
+    let storyImageUrl = null
+    let storyTitle = null
+    let storyDescription = null
+    if (story) {
+      const image = story.fields.smallImage.fields.file.url.slice(23);
+      const url = "https://images.contentful.com/";
+      storyImageUrl = url + image
+      storyTitle = story.fields.title
+      storyDescription = story.fields.longText.split("\n")[0]
+    }
     return (
       <Container>
         <Head>
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+            key="viewport"
+          />
 
-          <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png" />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/static/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/static/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/static/favicon-16x16.png"
+          />
           <link rel="manifest" href="/static/site.webmanifest" />
-          <link rel="mask-icon" href="/static/safari-pinned-tab.svg" color="#0f2247" />
+          <link
+            rel="mask-icon"
+            href="/static/safari-pinned-tab.svg"
+            color="#0f2247"
+          />
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="theme-color" content="#ffffff" />
 
-          <meta key="og:title" property="og:title" content="The Hague Tech" />
-          <meta key="og:image" property="og:image" content="https://www.thehaguetech.com/static/pages/index/meta.jpg" />
-          <meta key="og:description" property="og:description" content="The largest tech community in The Hague, Netherlands offering office space, co-working space, event space, meeting space, co-creation labs, startup visa programme." />
-          <meta key="description" name="description" content="The largest tech community in The Hague, Netherlands offering office space, co-working space, event space, meeting space, co-creation labs, startup visa programme." />
+          <meta
+            key="og:title"
+            property="og:title"
+            content={storyTitle || "The Hague Tech"}
+          />
+          <meta
+            key="og:image"
+            property="og:image"
+            content={storyImageUrl || "https://www.thehaguetech.com/static/pages/index/meta.jpg"}
+          />
+          <meta
+            key="og:description"
+            property="og:description"
+            content={storyDescription ||
+              "The largest tech community in The Hague, Netherlands offering office space, co-working space, event space, meeting space, co-creation labs, startup visa programme."
+            }
+          />
+          <meta
+            key="description"
+            name="description"
+            content={storyDescription ||
+              "The largest tech community in The Hague, Netherlands offering office space, co-working space, event space, meeting space, co-creation labs, startup visa programme."
+            }
+          />
 
           <link href="/static/tht-favicon@2x.png" rel="icon" type="image/x-icon" />
           <script dangerouslySetInnerHTML={{

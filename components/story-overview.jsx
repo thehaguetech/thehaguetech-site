@@ -21,8 +21,8 @@ class StoryOverview extends Component {
     let stories;
     stories = await getStories()
     stories = this.formatStories(stories)
-    stories = this.filterStories(stories)
     stories = this.sortStories(stories)// Order a-chronologically
+    stories = this.filterStories(stories)
     this.setState({ stories: stories })
   }
   async fetchStories() {

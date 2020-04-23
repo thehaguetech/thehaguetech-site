@@ -16,7 +16,14 @@ const NewsletterSubscribe = dynamic(() => import('../components/newsletter-subsc
 function CoCreation() {
   return <div className="root">
     <Head>
-      <title>Co-creation - The Hague Tech</title>
+
+      <title>Co-Creation | The Hague Tech</title>
+
+      <meta key="og:title" property="og:title" content="Co-Creation | The Hague Tech" />
+      <meta key="og:image" property="og:image" content="https://www.thehaguetech.com/static/pages/co-creation/meta.jpg" />
+      <meta key="og:description" property="og:description" content="Working together to co-create prototypes, products, technological solutions, and more by collaborating with the talent all around The Hague Tech." />
+      <meta key="description" name="description" content="Working together to co-create prototypes, products, technological solutions, and more by collaborating with the talent all around The Hague Tech." />
+
     </Head>
     <Navigation />
     <PageHeader

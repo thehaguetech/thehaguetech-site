@@ -27,6 +27,12 @@ class Footer extends Component {
           <Link prefetch href="/privacy-policy">
             <a className="nav-link">Privacy</a>
           </Link>
+          <Link prefetch href="/code-of-conduct">
+            <a className="nav-link">Code of Conduct</a>
+          </Link>
+          <Link prefetch href="/pet-policy">
+            <a className="nav-link">Pet Policy</a>
+          </Link>
           <Link href="https://github.com/thehaguetech/thehaguetech-site#thehaguetech-site">
             <a className="nav-link" target="_blank">GitHub</a>
           </Link>
@@ -50,7 +56,7 @@ class Footer extends Component {
           width: 18px;
           height: 18px;
         }
-        @media(min-width: 480px) {
+        @media(min-width: 1024px) {
           .Footer {
             background-color: #000;
             padding: 1rem 1rem;
@@ -84,13 +90,20 @@ class Footer extends Component {
           color: #fff;
           margin: 0.5rem 0;
         }
-        @media(min-width: 480px) {
+        .footer-nav {
+          padding: 0 12px;
+        }
+        @media(min-width: 1024px) {
           .footer-nav {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             padding: 0 0;
             margin: 0 auto;
-            width: 300px !important;
+            width: auto !important;
+          }
+          .footer-nav .nav-link {
+            margin-right: 10px;
+            margin-left: 10px;
           }
           .social-icons {
             justify-content: space-around;

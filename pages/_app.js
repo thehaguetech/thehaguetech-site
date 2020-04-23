@@ -29,7 +29,6 @@ class MyApp extends App {
       <Container>
         <Head>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
-          <meta name="description" content="The Tech Community and Workspace in the heart of the city where creative talent, businesses, government and research institutions come together." />
 
           <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
@@ -39,12 +38,10 @@ class MyApp extends App {
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="theme-color" content="#ffffff" />
 
-          <meta property="og:image:width" content="1024" />
-          <meta property="og:image:height" content="536" />
-          <meta property="og:description" content="Innovate faster. Better. Together. Collaborate with our community to bring your tech ideas to life." />
-          <meta property="og:title" content="Join the The Hague Tech community" />
-          <meta property="og:url" content="https://www.thehaguetech.com/" />
-          <meta property="og:image" content="https://thehaguetech-site.netlify.com/static/og-image.jpg" />
+          <meta key="og:title" property="og:title" content="The Hague Tech" />
+          <meta key="og:image" property="og:image" content="https://www.thehaguetech.com/static/pages/index/meta.jpg" />
+          <meta key="og:description" property="og:description" content="The largest tech community in The Hague, Netherlands offering office space, co-working space, event space, meeting space, co-creation labs, startup visa programme." />
+          <meta key="description" name="description" content="The largest tech community in The Hague, Netherlands offering office space, co-working space, event space, meeting space, co-creation labs, startup visa programme." />
 
           <link href="/static/tht-favicon@2x.png" rel="icon" type="image/x-icon" />
           <script dangerouslySetInnerHTML={{
@@ -79,7 +76,6 @@ class MyApp extends App {
           });
           window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();`}} />
         </Head>
-        <Component {...pageProps} />
         <style jsx global>{`
           * {
             box-sizing: border-box;
@@ -222,6 +218,7 @@ class MyApp extends App {
           }
 
         `}</style>
+        <Component {...pageProps} />
       </Container>
     );
   }

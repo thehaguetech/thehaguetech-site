@@ -98,6 +98,13 @@ class StoryDetails extends Component {
   render() {
     if(! this.state.event) return <div style={{minHeight: '800px'}} />
     return <div className="StoryDetails">
+      <Head>
+        <title key="title">{this.state.event.title}</title>
+        <meta key="og:title" property="og:title" content={this.state.event.title} />
+        <meta key="og:image" property="og:image" content={this.state.event.smallImage.fields.file.url} />
+        <meta key="og:description" property="og:description" content={this.state.event.longText.split("\n")[0]} />
+        <meta key="description" name="description" content={this.state.event.longText.split("\n")[0]} />
+      </Head>
       <div className="flex">
         <div className="flex-1 extra-padding">
           <div style={{width: '57px', margin: '24px 0'}}>

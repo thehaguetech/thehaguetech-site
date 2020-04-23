@@ -13,7 +13,14 @@ const EventOverview = dynamic(() => import('../components/event-overview.js'));
 function Events() {
   return <div className="EventsPage">
     <Head>
-      <title key="title">Events at The Hague Tech</title>
+
+      <title key="title">Events | The Hague Tech</title>
+
+      <meta key="og:title" property="og:title" content="Events | The Hague Tech" />
+      <meta key="og:image" property="og:image" content="https://www.thehaguetech.com/static/pages/events/meta.jpg" />
+      <meta key="og:description" property="og:description" content="We are the top location for tech events in the Hague, from workshops to Meetups to festivals to hackathons and more! Join an event or host your own in a lively and fun atmosphere at The Hague Tech." />
+      <meta key="description" name="description" content="We are the top location for tech events in the Hague, from workshops to Meetups to festivals to hackathons and more! Join an event or host your own in a lively and fun atmosphere at The Hague Tech." />
+
     </Head>
     <Navigation />
     <div>

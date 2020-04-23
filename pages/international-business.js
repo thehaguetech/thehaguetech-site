@@ -16,7 +16,14 @@ const NewsletterSubscribe = dynamic(() => import('../components/newsletter-subsc
 function InternationalBusiness() {
   return <div className="root">
     <Head>
-      <title>International Business - The Hague Tech</title>
+
+      <title>International Business | The Hague Tech</title>
+
+      <meta key="og:title" property="og:title" content="International Business | The Hague Tech" />
+      <meta key="og:image" property="og:image" content="https://www.thehaguetech.com/static/pages/international-business/meta.jpg" />
+      <meta key="og:description" property="og:description" content="Build your global organization alongside startups, scaleups, governments, and corporates right in the center of The Hague, an international business hub with bridges to connect and grow all over the world. " />
+      <meta key="description" name="description" content="Build your global organization alongside startups, scaleups, governments, and corporates right in the center of The Hague, an international business hub with bridges to connect and grow all over the world. " />
+
     </Head>
     <Navigation />
     <PageHeader

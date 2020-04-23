@@ -19,17 +19,21 @@ const EventOverview = dynamic(() => import('../components/event-overview.js'));
 function EventsAndLabs() {
   return <div className="root">
     <Head>
-      <title>Meetings / Events / Labs - The Hague Tech</title>
+
+      <title>Events & Labs | The Hague Tech</title>
+
+      <meta key="og:image" property="og:image" content="https://www.thehaguetech.com/static/pages/meetings-events-labs/meta.jpg" />
+
     </Head>
     <Navigation />
     <PageHeader
-      smallCapsTitle="Meetings, Events & Labs"
-      title="The #1 Tech Event Location in The Hague "
+      smallCapsTitle="Events & Labs"
+      title="The #1 Tech Event Location in The Hague"
       image="/static/pages/meetings-events-labs/page-header.jpg"
       />
     <IntroText>
       <p>
-        Our members have helped grow The Hague Tech into the top location for tech events in the Hague, from workshops to Meetups to festivals and more! Make sure to follow The Hague Tech on Meetup to see what exciting event is happening next 
+        Our members have helped grow The Hague Tech into the top location for tech events in the Hague, from workshops to Meetups to festivals and more! Make sure to follow The Hague Tech on Meetup to see what exciting event is happening next
       </p>
       <p>
         <Button href="https://www.meetup.com/The-Hague-Tech/" target="_blank">
@@ -42,15 +46,32 @@ function EventsAndLabs() {
       imagePosition="left"
       category=""
       title="Our Innovation Labs"
-      text="<p>The Hague Tech is home to diverse and engaging labs created by our members and facilitated by THT. Our labs are physical spaces with weekly or monthly Meetups, bringing entrepreneurs and innovators together to stimulate co-working, knowledge exchange, and new projects. The Hague Tech currently houses a blockchain lab (Blockbar), an artificial intelligence lab (AI Lab), and the Smart Building Techlab. Additional labs are currently in development, including a government lab and a pension lab. AI Lab was the #1 Meetup in The Hague in 2018 while Blockbar was #3. Our labs helped propel the Hague to the 4th fastest growing tech hub in Europe. </p><p>Want to join a lab or even start your own? The Hague Tech is the ideal place to start sharing your passion with a group of enthusiastic people ready to collaborate!</p>"
+      text="<p>
+        The Hague Tech is home to diverse and engaging labs created by our members and facilitated by THT. Our labs are physical spaces with weekly or monthly Meetups, bringing entrepreneurs and innovators together to stimulate co-working, knowledge exchange, and new projects. The Hague Tech currently houses a blockchain lab (<a href='https://blockbar.nl' target='_blank'>Blockbar</a>), an artificial intelligence lab (<a href='https://ailab.one/' target='_blank'>AI Lab</a>), and the Smart Building Techlab. Additional labs are currently in development, including a government lab and a pension lab. AI Lab was the <a href='https://www.linkedin.com/pulse/hague-europes-4th-fastest-growing-tech-hub-look-charles-weiler-ulin/' target='_blank'>#1 Meetup in The Hague</a> while Blockbar was #3. Our labs helped propel the Hague to the 4th fastest growing tech hub in Europe.
+      </p>
+      <p>
+        Want to join a lab or even start your own? The Hague Tech is the ideal place to start sharing your passion with a group of enthusiastic people ready to collaborate!
+      </p>"
       />
     <TextAndImage
       image=""
       imagePosition="right"
       category=""
       title="An Event for Every Interest"
-      text="<p>In 2018 alone, The Hague Tech hosted over 200 events ranging from business development, opportunities for talent in technology and international business, legal implications such as GDPR, and subject-specific themes such as artificial intelligence, blockchain, and cyber security. Make sure to take a look at our past events to see the type of exciting content happening daily at The Hague Tech. </p>"
+      text="<p>Yearly, The Hague Tech hosts over 200 events ranging from business development, opportunities for talent in technology and international business, legal implications such as GDPR, and subject-specific themes such as artificial intelligence, blockchain, and cyber security. Make sure to take a look at our past events to see the type of exciting content happening daily at The Hague Tech. </p>"
       />
+
+    <IntroText>
+      <p style={{fontSize: '24px', lineHeight: '38px'}}>
+        Looking to host an inspiring event, start or join one of our innovative labs, or even an entire hackathon? The Hague Tech is providing engaging opportunities at every corner. Contact <a href="mailto:events@thehaguetech.com">events@thehaguetech.com</a> to learn more.
+      </p>
+      <p>
+        <Button href="mailto:events@thehaguetech.com" target="_blank" style={{transform: 'scale(1.4)', marginTop: '20px', marginBottom: '100px'}}>
+          Contact us
+        </Button>
+      </p>
+    </IntroText>
+
     <Title align="center">
       Past events
     </Title>
@@ -74,48 +95,34 @@ function EventsAndLabs() {
       imagePosition="right"
       category=""
       title="Hackathon for Peace, Justice, and Security"
-      text="<p>Organized by the Data Science Initiative of The Hague, the Hackathon for Good has now held two editions at The Hague Tech. Teams from around the world have worked on unique challenges provided by international organizations and NGOS. The Red Cross, the Nato Communications and Information Agency, the ICC, the European Commission Space4Good, and many more issued challenges to hundreds of participants in this annual event.  </p>"
+      text="<p>Organized by the Data Science Initiative of The Hague, the Hackathon for Good has now held two editions at The Hague Tech. Teams from around the world have worked on unique challenges provided by international organizations and NGOS. The Red Cross, the Nato Communications and Information Agency, the ICC, the European Commission Space4Good, and many more issued challenges to hundreds of participants in this annual event.</p>"
       />
     <div align="center">
-      <iframe title="vimeo-player" src="https://player.vimeo.com/video/303223371" width="1327" height="600" frameBorder="0" allowFullScreen></iframe>
+
+      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/AEQZiwTa060" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" width="1327" height="600" allowFullScreen></iframe>
+
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VU0_J6qeXkg" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" width="1327" height="600" allowFullScreen></iframe>
+
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/G0DGfiMkQtQ" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" width="1327" height="600" allowFullScreen></iframe>
+
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <iframe title="vimeo-player" src="https://player.vimeo.com/video/303223371" width="1327" height="600" frameBorder="0" allowFullScreen hidden></iframe>
+
     </div>
-    <div>
-      <YellowBanner
-        title="Come and see for your self what The Hague Tech has to offer you!"
-        buttonText="book a tour"
-        buttonLink="https://outlook.office365.com/owa/calendar/TheHagueTech@jongensvantechniek.nl/bookings/"
-        target="_blank"
-        />
-    </div>
-    <div>
-      <IntroText>
-        <p>
-          A major part of our value creation is the introduction of our labs. Our labs are physical spaces with weekly or monthly meetings that bring entrepreneurs and innovators together. These labs are centered around different themes to stimulate co-working, knowledge exchange, and the creation of new projects. The Hague Tech is currently housing a blockchain lab (Blockbar), an artificial intelligence lab, (AI-Lab The Hague), and the Smart Building Techlab. A pension lab and a government lab are currently in development and will be launched in the near future. AI Lab and Blockbar were founded in 2018 and reached unprecedented levels of success and collaboration. AI Lab was the #1 Meetup in The Hague for 2018 while Blockbar reached the #3 spot. 
-        </p>
-      </IntroText>
-      <IntroText>
-        <p>
-          Want to join a lab or even start your own? The Hague Tech is the ideal place to start spreading your passions through collaborating with enthusiastic participants. There are already new labs in the work for this year and beyond so state up to date on our socials to find your next passion project. 
-        </p>
-      </IntroText>
-    </div>
-    <Title align="center">
-      Labs
-    </Title>
-    <TextAndImage
-      image="/static/pages/meetings-events-labs/ailab.jpg"
-      imagePosition="left"
-      category=""
-      title="Discover what artificial intelligence can do for you"
-      text="<p><a href='https://www.meetup.com/AI-Lab/' target='_blank'>AI Lab</a> is an active community that organizes lectures, workshops, MMOOCS, coworking days, congresses and hackthons. It's a good place to meet fellow machine learning & artificial intelligence enthusiasts. Make sure you check out the <a href='https://www.youtube.com/channel/UCQreT88kXvrioxFYkuKV02g/videos' target='_blank'>video series</a> as well, that you can support <a href='https://www.patreon.com/ailab' target='_blank'>via Patreon</a>.</p>"
-      />
-    <TextAndImage
-      image="/static/pages/meetings-events-labs/blockbar-2.jpg"
-      imagePosition="right"
-      category=""
-      title="Open Blockchain Lab The Hague"
-      text="<p>Ever wondered what the future of value looks like? Value like internet transactions, personal identity, car data sharing, truthful journalistic works.. Blockchain offered a new way to secure data, and makes collaboration easier. At <a href='https://www.meetup.com/blockbar/' target='_blank'>Blockbar</a> we work on projects, discuss developments and exchange knowledge by doing talks and workshops. If you want to learn or create related to blockchain & decentralized systems around it, join on Fridays. Blockbar is the The Hague based space where you cowork with likeminded people and develop your dApps.</p>"
-      />
     <div style={{marginBottom: '2rem'}}>
       <Title align="center">
         <Link prefetch href="/events">

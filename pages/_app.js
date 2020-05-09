@@ -6,16 +6,18 @@ const contentful = require('contentful')
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
-    let story = null;
+    let story = null, event = null;
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
 
+      // Init Contentful connection
       const client = await contentful.createClient({
         space: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
       })
 
+      // Get story based on slug
       story = await client.getEntries({
         content_type: 'story',
         'fields.slug': pageProps.slug,
@@ -23,9 +25,18 @@ class MyApp extends App {
       })
         .then((entry) => entry.items[0])
         .catch(console.error)
+
+      // Get event based on slug
+      event = await client.getEntries({
+        content_type: 'event',
+        'fields.slug': pageProps.slug,
+        limit: 1
+      })
+        .then((entry) => entry.items[0])
+        .catch(console.error)
     }
     
-    return { pageProps, story };
+    return { pageProps, story, event }
   }
 
   componentDidMount() {
@@ -37,18 +48,38 @@ class MyApp extends App {
     }
   }
 
-  render() {
-    const { Component, pageProps, story } = this.props;
-    let storyImageUrl = null
-    let storyTitle = null
-    let storyDescription = null
-    if (story) {
-      const image = story.fields.smallImage.fields.file.url.slice(23);
-      const url = "https://images.contentful.com/";
-      storyImageUrl = url + image
-      storyTitle = story.fields.title
-      storyDescription = story.fields.longText.split("\n")[0]
+  getMeta(props) {
+    const { story, event } = props;
+    const imageBaseUrl = "https://images.contentful.com/";
+
+    // Set default meta tags
+    let meta = {
+      imageUrl: 'https://www.thehaguetech.com/static/pages/index/meta.jpg',
+      title: 'The Hague Tech',
+      description: 'The largest tech community in The Hague, Netherlands offering office space, co-working space, event space, meeting space, co-creation labs, startup visa programme.',
     }
+
+    // If this is a story, set story meta tags
+    if(story) {
+      meta.imageUrl = imageBaseUrl + story.fields.smallImage.fields.file.url.slice(23)
+      meta.title = story.fields.title
+      meta.description = story.fields.longText.split("\n")[0]
+    }
+
+    // If this is a event, set event meta tags
+    if(event) {
+      meta.imageUrl = imageBaseUrl + event.fields.smallImage.fields.file.url.slice(23)
+      meta.title = event.fields.title
+      meta.description = event.fields.longText.split("\n")[0]
+    }
+
+    return meta;
+  }
+
+  render() {
+    const { Component, pageProps, story, event } = this.props;
+    const meta = this.getMeta({story, event})
+
     return (
       <Container>
         <Head>
@@ -87,26 +118,22 @@ class MyApp extends App {
           <meta
             key="og:title"
             property="og:title"
-            content={storyTitle || "The Hague Tech"}
+            content={meta.title}
           />
           <meta
             key="og:image"
             property="og:image"
-            content={storyImageUrl || "https://www.thehaguetech.com/static/pages/index/meta.jpg"}
+            content={meta.imageUrl}
           />
           <meta
             key="og:description"
             property="og:description"
-            content={storyDescription ||
-              "The largest tech community in The Hague, Netherlands offering office space, co-working space, event space, meeting space, co-creation labs, startup visa programme."
-            }
+            content={meta.description}
           />
           <meta
             key="description"
             name="description"
-            content={storyDescription ||
-              "The largest tech community in The Hague, Netherlands offering office space, co-working space, event space, meeting space, co-creation labs, startup visa programme."
-            }
+            content={meta.description}
           />
 
           <link href="/static/tht-favicon@2x.png" rel="icon" type="image/x-icon" />

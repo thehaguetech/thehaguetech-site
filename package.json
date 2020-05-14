@@ -35,7 +35,7 @@
   "dependencies": {
     "sitemap": "2.2.0",
     "express": "4.17.1",
-    "next": "8.1.0",
+    "next": "9.3.3",
     "react": "16.11.0",
     "react-dom": "16.11.0",
     "contentful": "7.10.0",

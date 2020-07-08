@@ -100,8 +100,8 @@ app.prepare().then(() => {
       const slug = pathname.split('/stories/')[1];
       app.render(req, res, '/story', { slug: slug });
     }
-    else if (pathname.indexOf('/page/') === 0) {
-      const slug = pathname.split('/page/')[1];
+    else if (pathname.indexOf('/landing/') === 0) {
+      const slug = pathname.split('/landing/')[1];
       app.render(req, res, '/landing-page', { slug: slug });
     }
     // API: Stories

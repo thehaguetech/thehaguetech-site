@@ -79,9 +79,6 @@ class LandingPage extends Component {
             </div>
             <div className="pageContent" dangerouslySetInnerHTML={{__html: this.state.content}}></div>
             <div>
-                <BookATourBanner />
-            </div>
-            <div>
                 <YellowBanner
                     title={this.state.landing_page.tagLine}
                     buttonText={this.state.landing_page.tagLineButtonText}
@@ -97,10 +94,19 @@ class LandingPage extends Component {
         width: 100%;
         height: 100%;
       }
+      
       .pageContent {
             padding: 5% 30%;
             text-align:center;
        }
+      
+      @media only screen and (max-width: 800px) {
+        .pageContent {
+            padding: 5%;
+            text-align:center;
+       }
+      }
+   
       .video {
         width: 100%;
         height: 100vh;

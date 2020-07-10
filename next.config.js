@@ -8,7 +8,7 @@ module.exports = {
                 'jQuery': 'jquery',
             })
         );
-        config.optimization.minimize = true;
+        config.optimization.minimize = false;
         return config
     }
 };

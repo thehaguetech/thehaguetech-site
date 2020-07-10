@@ -19,7 +19,7 @@ class YellowBanner extends Component {
       const percentageSeen = self.percentageSeen();
       const backgroundColorOpacity = Math.min(100, Math.floor((100 - percentageSeen) / 100 * 255))
       const textAndImageOpacity = 100 - backgroundColorOpacity;
-      $('body').css('background-color', `rgba(255, 240, 0, ${backgroundColorOpacity / 100})`)
+      $('.YellowBanner').css('background-color', `rgba(255, 240, 0, ${backgroundColorOpacity / 100})`)
       $('.TextAndImage, .StoryOverview').css('opacity', `${(textAndImageOpacity + 0) / 100}`)
     })
   }

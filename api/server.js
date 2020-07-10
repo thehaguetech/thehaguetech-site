@@ -16,7 +16,7 @@ const config = require('../next.config');
 const app = next(config, { dev });
 const handle = app.getRequestHandler();
 
-const {fetchEntriesForContentType, fetchEntry, fetchStories, fetchStory} = require('./contentful.js');
+const {fetchEntriesForContentType, fetchEntry, fetchStories, fetchStory, fetchLandingPages, fetchLandingPage} = require('./contentful.js');
 const {sendMail} = require('./email.js');
 const {newsletterAdd} = require('./newsletter.js');
 const {populateSitemap} = require('./sitemap.js');
@@ -32,7 +32,7 @@ app.prepare().then(() => {
   // Sitemap
   server.get('/sitemap.xml', async function(req, res){
     // Populate urls
-    const urls = await populateSitemap()
+    const urls = await populateSitemap();
     // Create sitemap
     const sitemap = sm.createSitemap({
       hostname: 'https://www.thehaguetech.com',
@@ -46,13 +46,13 @@ app.prepare().then(() => {
 
   // API: Mail
   server.post('/api/mail/contact', function(req, res){
-    let message = req.body.message + '<br /><br /><hr /><br />'
+    let message = req.body.message + '<br /><br /><hr /><br />';
     // Add extra fields, like company name, website, etc)
-    if(req.body.name) message += '' + req.body.name + '<br />'
-    if(req.body.company) message += '' + req.body.company + '<br />'
-    if(req.body.tel) message += '' + req.body.tel + '<br />'
-    if(req.body.website) message += '' + req.body.website + '<br />'
-    if(req.body.type) message += '<br />💬 I\'m interested in joining the community by ' + req.body.type + '<br />'
+    if(req.body.name) message += '' + req.body.name + '<br />';
+    if(req.body.company) message += '' + req.body.company + '<br />';
+    if(req.body.tel) message += '' + req.body.tel + '<br />';
+    if(req.body.website) message += '' + req.body.website + '<br />';
+    if(req.body.type) message += '<br />💬 I\'m interested in joining the community by ' + req.body.type + '<br />';
 
     const mail = sendMail({
       name: req.body.name,
@@ -103,17 +103,21 @@ app.prepare().then(() => {
       const slug = pathname.split('/stories/')[1];
       app.render(req, res, '/story', { slug: slug });
     }
+    else if (pathname.indexOf('/landing/') === 0) {
+      const slug = pathname.split('/landing/')[1];
+      app.render(req, res, '/landing-page', { slug: slug });
+    }
     // API: Stories
     else if (pathname === '/api/stories' || pathname.indexOf('/api/stories?') === 0 ) {
-      let stories = await fetchStories()
+      let stories = await fetchStories();
       res.setHeader('Content-Type', 'application/json');
       res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
       res.end(JSON.stringify(stories, null, 3));
     }
     // API: Story
     else if (pathname.indexOf('/api/stories/') === 0) {
-      const slug = pathname.split('/stories/')[1]
-      let story = await fetchStory({ slug: slug })
+      const slug = pathname.split('/stories/')[1];
+      let story = await fetchStory({ slug: slug });
       res.setHeader('Content-Type', 'application/json');
       res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
       res.end(JSON.stringify(story, null, 3));
@@ -122,36 +126,55 @@ app.prepare().then(() => {
     else if (pathname === '/api/events' || pathname.indexOf('/api/events?') === 0 ) {
       let entries = await fetchEntriesForContentType('event', {
         query: query
-      })
+      });
       res.setHeader('Content-Type', 'application/json');
       res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
       res.end(JSON.stringify(entries, null, 3));
     }
     // API: Event
     else if (pathname.indexOf('/api/events/') === 0) {
-      const slugFullPath = pathname.split('/events/')[1]
-      const date = slugFullPath.split('/')[0]
-      const slug = slugFullPath.split('/')[1]
+      const slugFullPath = pathname.split('/events/')[1];
+      const date = slugFullPath.split('/')[0];
+      const slug = slugFullPath.split('/')[1];
       let entry = await fetchEntry({
         content_type: 'event',
         slug: slug,
         date: date
-      })
+      });
       res.setHeader('Content-Type', 'application/json');
       res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
       res.end(JSON.stringify(entry, null, 3));
     }
+    // API: Landing-pages
+    else if (pathname === '/api/landing-pages' || pathname.indexOf('/api/landing-pages?') === 0 ) {
+      let landingPages = await fetchLandingPages();
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+      res.end(JSON.stringify(landingPages, null, 3));
+    }
+    // API: Landing-page
+    else if (pathname.indexOf('/api/landing-pages/') === 0) {
+      const slug = pathname.split('/landing-pages/')[1];
+      let landingPage = await fetchLandingPage({ slug: slug });
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+      res.end(JSON.stringify(landingPage, null, 3));
+    }
     else {
       return handle(req, res, parsedUrl);
     }
-  })
+  });
 
-  server.listen(process.env.PORT || 443, (err) => {
-    if (err) throw err
+  server.listen(process.env.PORT || 3000, (err) => {
+    if (err) {
+      console.log('error!');
+      throw err;
+    }
     console.log('> Ready on http://localhost:' + (process.env.PORT || 3000))
   })
 })
 .catch((ex) => {
-  console.error(ex.stack)
+  console.log('error!');
+  console.error(ex.stack);
   process.exit(1)
-})
+});

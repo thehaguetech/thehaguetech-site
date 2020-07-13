@@ -35,19 +35,24 @@ class TextAndImage extends Component {
         <img src={this.props.image} className="image" />
       </div>
       <div className="text-wrapper">
+
         <SmallCapsTitle>
           {this.props.category}
         </SmallCapsTitle>
+
         <Title size="small">
           {this.props.title}
         </Title>
+
         <div className="text" dangerouslySetInnerHTML={{__html: this.props.text}} />
-        <Button
+
+        {this.props.buttonLink && <Button
           href={this.props.buttonLink}
-          hidden={! this.props.buttonText }
+          hidden={! this.props.buttonText}
           >
           {this.props.buttonText || 'learn more'}
-        </Button>
+        </Button>}
+
       </div>
       <style jsx>{`
         .TextAndImage {

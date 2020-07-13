@@ -94,9 +94,9 @@ Running production on Windows?
 Running production on Linux?
 
     export CONTENTFUL_SPACE_ID=orgovvkppcys
-    export CONTENTFUL_ACCESS_TOKEN=3caa6c37abedc9556a200ad30ce2c59938a2bae6ec1b3b30a16c90d0f5fb9c77
+    export CONTENTFUL_ACCESS_TOKEN=ACCESS_TOKEN
     export PORT=3000
-    export SENDGRID_API_KEY='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'
+    export SENDGRID_API_KEY='SENDGRIDAPIKEY'
     export MAILCHIMP_ID='f49378b026862af74390f89fa6b820c0-us15'
     export SENDGRID_API_KEY=apikey
     export NODE_ENV=production

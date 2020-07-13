@@ -1,6 +1,14 @@
+const webpack = require('webpack');
+
 module.exports = {
-  env: {
-    CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
-    CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID
-  },
-}
+    webpack: (config, { dev }) => {
+        config.plugins.push(
+            new webpack.ProvidePlugin({
+                '$': 'jquery',
+                'jQuery': 'jquery',
+            })
+        );
+        config.optimization.minimize = false;
+        return config
+    }
+};

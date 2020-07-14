@@ -91,6 +91,17 @@ Running production on Windows?
     SET NODE_ENV=production
     node api/server.js
 
+Running production on Linux?
+
+    export CONTENTFUL_SPACE_ID=orgovvkppcys
+    export CONTENTFUL_ACCESS_TOKEN=ACCESS_TOKEN
+    export PORT=3000
+    export SENDGRID_API_KEY='SENDGRIDAPIKEY'
+    export MAILCHIMP_ID='f49378b026862af74390f89fa6b820c0-us15'
+    export SENDGRID_API_KEY=apikey
+    export NODE_ENV=production
+    node api/server.js
+
 ## Contributors
 
 - [bartwr](https://github.com/bartwr/) (Code)

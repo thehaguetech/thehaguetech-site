@@ -1,21 +1,27 @@
+require('dotenv').config();
+
 import Head from 'next/head';
 import React from 'react';
 import App, { Container } from 'next/app';
-const contentful = require('contentful')
+const contentful = require('contentful');
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
+    // console.log(SPACE_ID);
+    // console.log(ACCESS_TOKEN);
     let pageProps = {};
     let story = null, event = null;
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
 
-      // Init Contentful connection
-      const client = await contentful.createClient({
+      const params = {
         space: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
-      })
+      };
+
+      // Init Contentful connection
+      const client = await contentful.createClient(params);
 
       // Get story based on slug
       story = await client.getEntries({
@@ -24,7 +30,7 @@ class MyApp extends App {
         limit: 1
       })
         .then((entry) => entry.items[0])
-        .catch(console.error)
+        .catch(console.error);
 
       // Get event based on slug
       event = await client.getEntries({

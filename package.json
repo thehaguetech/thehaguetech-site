@@ -9,7 +9,8 @@
     "start": "npm cache clean --force && node ./node_modules/next/dist/bin/next build && NODE_ENV=production node api/server.js",
     "build": "next build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "next build && next export"
+    "deploy": "next build && next export",
+    "serve": "next build && node api/server.js"
   },
   "plugins": [
     [
@@ -33,27 +34,29 @@
   },
   "homepage": "https://github.com/thehaguetech/thehaguetech-site#readme",
   "dependencies": {
-    "@sendgrid/mail": "^6.4.0",
-    "chalk": "^1.1.3",
-    "cli-table2": "^0.2.0",
-    "contentful": "^7.7.0",
-    "express": "^4.17.1",
-    "google-map-react": "^1.1.4",
-    "in-view": "^0.6.1",
-    "jquery": "^3.4.1",
-    "mailchimp-api-v3": "^1.13.0",
-    "marked": "^0.6.2",
-    "moment": "^2.24.0",
-    "next": "^8.1.0",
-    "ramda": "^0.26.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-swipe": "^6.0.4",
-    "sitemap": "^2.2.0",
-    "styled-jsx": "^3.2.1",
-    "swipe-js-iso": "^2.1.5"
+    "@sendgrid/mail": "6.4.0",
+    "chalk": "1.1.3",
+    "cli-table2": "0.2.0",
+    "contentful": "7.10.0",
+    "dotenv": "^8.2.0",
+    "express": "4.17.1",
+    "google-map-react": "1.1.5",
+    "in-view": "0.6.1",
+    "jquery": "3.5.0",
+    "lodash": "4.17.15",
+    "mailchimp-api-v3": "1.13.1",
+    "marked": "0.7.0",
+    "moment": "2.24.0",
+    "next": "9.3.3",
+    "ramda": "0.26.1",
+    "react": "16.11.0",
+    "react-dom": "16.11.0",
+    "react-swipe": "6.0.4",
+    "sitemap": "2.2.0",
+    "styled-jsx": "3.2.2",
+    "swipe-js-iso": "2.1.5"
   },
   "engines": {
-    "node": ">= 8.0.0"
+    "node": "12.13.0"
   }
 }

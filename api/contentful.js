@@ -1,15 +1,15 @@
 'use strict'
 
-const contentful = require('contentful')
-const chalk = require('chalk')
-const Table = require('cli-table2')
+const contentful = require('contentful');
+const chalk = require('chalk');
+const Table = require('cli-table2');
 
 const client = contentful.createClient({
   // This is the space ID. A space is like a project folder in Contentful terms
   space: process.env.CONTENTFUL_SPACE_ID,
   // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
-})
+});
 
 // Entry point of the boilerplate, called at the end.
 function runBoilerplate () {
@@ -107,6 +107,31 @@ function fetchEntry (query) {
     .catch(console.error)
 }
 
+function fetchLandingPages() {
+  return client.getEntries({
+    content_type: 'landingpage',
+    limit: 100
+  })
+      .then((response) => response.items)
+      .catch((error) => {
+        console.log(chalk.red(`\nError occurred while fetching Entries for story:`));
+        console.error(error)
+      })
+}
+
+function fetchLandingPage(query) {
+  return client.getEntries({
+    content_type: 'landingpage',
+    'fields.slug': query.slug,
+    limit: 1
+  })
+      .then((response) => response.items[0])
+      .catch((error) => {
+        console.log(chalk.red(`\nError occurred while fetching an entry for a landing page:`));
+        console.error(error)
+      })
+}
+
 // Load all entries for a given Content Type from Contentful
 function fetchStories () {
   return client.getEntries({
@@ -116,7 +141,7 @@ function fetchStories () {
     })
   .then((response) => response.items)
   .catch((error) => {
-    console.log(chalk.red(`\nError occurred while fetching Entries for story:`))
+    console.log(chalk.red(`\nError occurred while fetching Entries for story:`));
     console.error(error)
   })
 }
@@ -136,5 +161,7 @@ module.exports = {
   fetchEntriesForContentType,
   fetchEntry,
   fetchStories,
-  fetchStory
-}
+  fetchStory,
+  fetchLandingPages,
+  fetchLandingPage
+};

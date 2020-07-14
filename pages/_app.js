@@ -7,8 +7,6 @@ const contentful = require('contentful');
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
-    // console.log(SPACE_ID);
-    // console.log(ACCESS_TOKEN);
     let pageProps = {};
     let story = null, event = null;
 
@@ -16,8 +14,8 @@ class MyApp extends App {
       pageProps = await Component.getInitialProps(ctx);
 
       const params = {
-        space: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+        space: SPACE_ID,
+        accessToken: ACCESS_TOKEN
       };
 
       // Init Contentful connection

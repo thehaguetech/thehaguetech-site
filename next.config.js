@@ -1,7 +1,5 @@
+require('dotenv').config();
 const webpack = require('webpack');
-
-console.log(process.env.CONTENTFUL_SPACE_ID);
-console.log(process.env.CONTENTFUL_ACCESS_TOKEN);
 
 module.exports = {
     webpack: (config, { dev }) => {

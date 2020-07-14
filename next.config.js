@@ -1,3 +1,4 @@
+require('dotenv').config();
 const webpack = require('webpack');
 
 module.exports = {
@@ -8,7 +9,14 @@ module.exports = {
                 'jQuery': 'jquery',
             })
         );
+        config.plugins.push(
+            new webpack.DefinePlugin({
+                SPACE_ID: JSON.stringify(process.env.CONTENTFUL_SPACE_ID),
+                ACCESS_TOKEN: JSON.stringify(process.env.CONTENTFUL_ACCESS_TOKEN),
+            })
+        );
         config.optimization.minimize = false;
+        config.node.fs = "empty";
         return config
     }
 };

@@ -13,7 +13,7 @@ class Footer extends Component {
           <a href="https://www.twitter.com/The_Hague_Tech" target="_blank">
             <img src="/static/components/footer/twitter-icon.svg" alt="Twitter" />
           </a>
-          <a href="https://www.linkedin.com/company/the-hague-tech/" target="_blank">
+          <a href="https://www.linkedin.com/company/thehaguetech" target="_blank">
             <img src="/static/components/footer/linkedin-icon.svg" alt="LinkedIn" />
           </a>
           <a href="https://www.instagram.com/thehaguetech/" target="_blank">

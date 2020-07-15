@@ -114,7 +114,7 @@ function fetchLandingPages() {
   })
       .then((response) => response.items)
       .catch((error) => {
-        console.log(chalk.red(`\nError occurred while fetching Entries for story:`));
+        console.log(chalk.red(`\nError occurred while fetching entries for landing pages:`));
         console.error(error)
       })
 }

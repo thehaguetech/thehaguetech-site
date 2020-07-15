@@ -22,15 +22,15 @@ class LandingPage extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { landing_page: null, content: null }
+        this.state = { landing_page: null, content: null, metaDescription: null }
     }
     async componentDidMount() {
-        const event = await this.fetchLandingPage(this.props.slug);
-        await this.formatContent(event);
+        const landingPage = await this.fetchLandingPage(this.props.slug);
+        await this.formatContent(landingPage);
     }
     async componentWillReceiveProps(newProps) {
-        const event = await this.fetchLandingPage(newProps.slug);
-        await this.formatContent(event);
+        const landingPage = await this.fetchLandingPage(newProps.slug);
+        await this.formatContent(landingPage);
     }
     async fetchLandingPage(slug) {
         const response = await fetch(`/api/landing-pages/${slug}`);
@@ -39,14 +39,16 @@ class LandingPage extends Component {
     formatLandingPage(landingPage) {
         return landingPage.fields
     }
-   async formatContent(event) {
-        const content = await event.fields.content.content;
-        let contentParagraphs = await [];
+   async formatContent(landingPage) {
+        const content = await landingPage.fields.content.content;
+        let contentParagraphs = [];
+        let metaDescription = '';
         await content.forEach((data) => {
             contentParagraphs.push(`<p>${data.content[0].value}</p>`);
+            metaDescription += data.content[0].value + ' ';
         });
 
-       await this.setState({ landing_page: this.formatLandingPage(event), content: contentParagraphs });
+       await this.setState({ landing_page: this.formatLandingPage(landingPage), content: contentParagraphs, metaDescription: metaDescription });
 
     }
     render() {
@@ -54,6 +56,10 @@ class LandingPage extends Component {
         return <div className="LandingPage">
             <Head>
                 <title key="title">{ this.state.landing_page.title }</title>
+                <meta key="og:title" property="og:title" content={this.state.landing_page.title} />
+                <meta key="og:image" property="og:image" content={this.state.landing_page.headerImage.fields.file.url} />
+                <meta key="og:description" property="og:description" content={this.state.metaDescription} />
+                <meta key="description" name="description" content={this.state.metaDescription} />
             </Head>
             <Navigation />
             <div style={{height: '132px'}} />

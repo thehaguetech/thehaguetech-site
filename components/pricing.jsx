@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -11,16 +11,18 @@ const TextAndImage = dynamic(() => import('../components/text-and-image.js'));
 
 class PricingBlock extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       isActive: false
     }
   }
+
   render() {
     const mapIndexed = R.addIndex(R.map);
     const data = this.props.data;
-    return <div className={`PricingBlock ${data.name}`}>
+
+    return <div className={`PricingBlock ${data.name} match-height`}>
       <div className="boxed">
         <div className="triangle">
           <span>Popular</span>103
@@ -35,11 +37,9 @@ class PricingBlock extends Component {
         </div>
         <div className="pricing-wrapper">
           <div className="price-in-euros">
-            <sup>&euro;</sup> {data.price}
+            {data.price !== 'VAR' ? (<sup>&euro;</sup>) : <sup></sup>}  {data.price}
           </div>
-          <small>
-            per month excl. 21% VAT
-          </small>
+          {data.price !== 'VAR' ? (<small>per month excl. 21% VAT</small>) : <small>Price on request and need</small>}
         </div>
         <hr />
         <h1>
@@ -272,7 +272,7 @@ class PricingBlock extends Component {
 }
 
 function Pricing() {
-  const memberships = [
+  const membershipsPart1 = [
     {
       name: 'membership',
       extraBenefit: '',
@@ -349,13 +349,72 @@ function Pricing() {
       ],
       tagline: 'The best way to make our space yours and join our community.'
     }
-  ]
+  ];
+
+  const membershipsPart2 = [
+    {
+      name: 'co-working-day-week',
+      extraBenefit: '',
+      price: '25,00',
+      title: 'Co-work a day or week',
+      features: [
+        'Super-fast wifi',
+        'Unlimited coffee / tea',
+        'Use massage chair',
+        'Ping-pong and foosball',
+        'Access from 09.00 till 17.00',
+        '€ 100,- for 1 week (5 days)',
+        'Access to the The Hague Tech community for 1 day or 1 week'
+      ],
+      tagline: 'A interesting & inspiring place to work and meet the THT community'
+    },
+    {
+      name: 'flex-office',
+      extraBenefit: '',
+      price: 'VAR',
+      title: 'Flexible office (when you don\'t need a fulltime office!)',
+      features: [
+        'Super-fast wifi',
+        'Unlimited coffee / tea',
+        'Use massage chair',
+        'Ping-pong and foosball',
+        'Access from 09.00 till 17.00',
+        'Private events',
+        'Workplace in a enclosed space for 4 or 8 times a month',
+        'Contract period 1 month',
+        'Use desks in co-working space',
+        'Locker (add. € 15 p/m)',
+        'Postal address (add. € 25 p/m)',
+        'Use office for 4 or 8 days a month',
+        'Office for 1, 3, 5 or 7 persons',
+      ],
+      tagline: 'Workplace in a enclosed space for 4 or 8 times a month'
+    },
+    {
+      name: 'virtual-office',
+      extraBenefit: '',
+      price: '82,25',
+      title: 'Virtual office',
+      features: [
+        'Recognized business address (register Chamber of Commerce)',
+        'Mailbox at Wilhelmina van Pruisenweg 35, Den Haag (close to station)',
+        'Includes a The Hague Tech membership',
+        'Possibility to use The Hague Tech workspace',
+        'Optional: Mail forwarded twice a month'
+      ],
+      tagline: ''
+    }
+  ];
+
   return <div className="Pricing">
     <IntroText>
       The Hague Tech offers the space you need right now, and in the future. Our dynamic building can fulfill all your needs.
     </IntroText>
     <div className="pricing-blocks-wrapper">
-      {R.map((membership) => <PricingBlock key={membership.name} data={membership} />, memberships)}
+      {R.map((membershipPart1) => <PricingBlock key={membershipPart1.name} data={membershipPart1} />, membershipsPart1)}
+    </div>
+    <div className="pricing-blocks-wrapper">
+      {R.map((membershipPart2) => <PricingBlock key={membershipPart2.name} data={membershipPart2} />, membershipsPart2)}
     </div>
     <style jsx>{`
       .pricing-blocks-wrapper {

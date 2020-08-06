@@ -29,7 +29,7 @@ class PricingBlock extends Component {
         </div>
         <div className="heading">
           <Link href="/join-community">
-            <b>Membership</b>
+            <b>{data.heading}</b>
           </Link>
           <span className="extra-benefit">
             {data.extraBenefit}
@@ -39,10 +39,10 @@ class PricingBlock extends Component {
           <div className="price-in-euros">
             {data.price !== 'VAR' ? (<sup>&euro;</sup>) : <sup></sup>}  {data.price}
           </div>
-          {data.price !== 'VAR' ? (<small>per month excl. 21% VAT</small>) : <small>Price on request and need</small>}
+           <small>{data.priceDescription}</small>
         </div>
         <hr />
-        <h1>
+        <h1 className="title">
           {data.title}
         </h1>
         <div className={'features' + (this.state.isActive ? ' is-active' : '')}>
@@ -67,14 +67,25 @@ class PricingBlock extends Component {
         {data.tagline}
       </div>
       <style jsx>{`
+       @media(min-width: 480px) {
+         .PricingBlock {
+            width: 306px;
+         }
+         
+         .PricingBlock .title {
+            font-size: 24px;
+         }
+       }
+       
+       .PricingBlock .title {
+          font-size: 18px;
+       }
+      
         .PricingBlock {
           text-align: left;
           margin: 32px 12px;
-        }
-        @media(min-width: 480px) {
-          .PricingBlock {
-            margin: 32px 16px;
-          }
+          display: inline-block;
+          vertical-align: top;
         }
         .PricingBlock .boxed {
           position: relative;
@@ -199,11 +210,6 @@ class PricingBlock extends Component {
         .features.is-active {
           max-height: 1200px;
         }
-        @media(min-width: 480px) {
-          .features {
-            max-height: 9999px;
-          }
-        }
         .feature {
           border-top: solid #ccc 1px;
           padding: 12px;
@@ -243,11 +249,6 @@ class PricingBlock extends Component {
           transition: transform 0.4s;
           transform: rotate(0);
         }
-        @media(min-width: 480px) {
-          .arrow {
-            display: none;
-          }
-        }
         .tagline {
           padding: 18px 0;
           margin: 50px 0;
@@ -258,14 +259,6 @@ class PricingBlock extends Component {
           line-height: 24px;
           background: left top url('/static/yellow-sign.png') no-repeat;
         }
-
-        @media(min-width: 480px) {
-          .PricingBlock {
-            display: inline-block;
-            vertical-align: top;
-            width: 306px;
-          }
-        }
       `}</style>
     </div>
   }
@@ -275,8 +268,10 @@ function Pricing() {
   const membershipsPart1 = [
     {
       name: 'membership',
+      heading: 'Membership',
       extraBenefit: '',
       price: '56,50',
+      priceDescription: 'per month excl. 21% VAT',
       title: 'Become part of the community of The Hague Tech',
       features: [
         'Super-fast wifi',
@@ -291,8 +286,10 @@ function Pricing() {
     },
     {
       name: 'coworking',
+      heading: 'Membership',
       extraBenefit: '+ flex co-working',
       price: 205,
+      priceDescription: 'per month excl. 21% VAT',
       title: 'Flexible workplace, any day you like.',
       features: [
         'Super-fast wifi',
@@ -310,8 +307,10 @@ function Pricing() {
     },
     {
       name: 'dedicated',
+      heading: 'Membership',
       extraBenefit: '+ flex dedicated',
       price: 230,
+      priceDescription: 'per month excl. 21% VAT',
       title: 'Dedicated workplace in co-working space.',
       features: [
         'Super-fast wifi',
@@ -330,8 +329,10 @@ function Pricing() {
     },
     {
       name: 'office',
+      heading: 'Membership',
       extraBenefit: '+ office (starting at)',
       price: 484,
+      priceDescription: 'per month excl. 21% VAT',
       title: 'Dedicated workplace in enclosed space.',
       features: [
         'Super-fast wifi',
@@ -354,25 +355,43 @@ function Pricing() {
   const membershipsPart2 = [
     {
       name: 'co-working-day-week',
+      heading: 'Co-work a day',
       extraBenefit: '',
       price: '25,00',
-      title: 'Co-work a day or week',
+      priceDescription: 'per day excl. 21% VAT',
+      title: 'Access to the The Hague Tech community for 1 day',
       features: [
         'Super-fast wifi',
         'Unlimited coffee / tea',
         'Use massage chair',
         'Ping-pong and foosball',
         'Access from 09.00 till 17.00',
-        '€ 100,- for 1 week (5 days)',
-        'Access to the The Hague Tech community for 1 day or 1 week'
+        '€ 100,- for 1 week (5 days)'
       ],
       tagline: 'A interesting & inspiring place to work and meet the THT community'
     },
     {
+      name: 'virtual-office',
+      heading: 'Virtual office',
+      extraBenefit: '',
+      price: '82,25',
+      priceDescription: 'per month excl. 21% VAT',
+      title: 'Membership + business address',
+      features: [
+        'Recognized business address (register Chamber of Commerce)',
+        'Mailbox at Wilhelmina van Pruisenweg 35, Den Haag (close to station)',
+        'Possibility to use The Hague Tech workspace',
+        'Optional: Mail forwarded twice a month'
+      ],
+      tagline: 'Working from home and yet a address for your business'
+    },
+    {
       name: 'flex-office',
+      heading: 'Flexible office',
       extraBenefit: '',
       price: 'VAR',
-      title: 'Flexible office (when you don\'t need a fulltime office!)',
+      priceDescription: 'Price on request and need',
+      title: 'Workplace in a enclosed space for 4 or 8 times a month',
       features: [
         'Super-fast wifi',
         'Unlimited coffee / tea',
@@ -380,7 +399,6 @@ function Pricing() {
         'Ping-pong and foosball',
         'Access from 09.00 till 17.00',
         'Private events',
-        'Workplace in a enclosed space for 4 or 8 times a month',
         'Contract period 1 month',
         'Use desks in co-working space',
         'Locker (add. € 15 p/m)',
@@ -388,22 +406,8 @@ function Pricing() {
         'Use office for 4 or 8 days a month',
         'Office for 1, 3, 5 or 7 persons',
       ],
-      tagline: 'Workplace in a enclosed space for 4 or 8 times a month'
+      tagline: 'When you don\'t need a fulltime office!'
     },
-    {
-      name: 'virtual-office',
-      extraBenefit: '',
-      price: '82,25',
-      title: 'Virtual office',
-      features: [
-        'Recognized business address (register Chamber of Commerce)',
-        'Mailbox at Wilhelmina van Pruisenweg 35, Den Haag (close to station)',
-        'Includes a The Hague Tech membership',
-        'Possibility to use The Hague Tech workspace',
-        'Optional: Mail forwarded twice a month'
-      ],
-      tagline: ''
-    }
   ];
 
   return <div className="Pricing">
@@ -414,6 +418,9 @@ function Pricing() {
       {R.map((membershipPart1) => <PricingBlock key={membershipPart1.name} data={membershipPart1} />, membershipsPart1)}
     </div>
     <div className="pricing-blocks-wrapper">
+      <IntroText>
+        New offerings
+      </IntroText>
       {R.map((membershipPart2) => <PricingBlock key={membershipPart2.name} data={membershipPart2} />, membershipsPart2)}
     </div>
     <style jsx>{`

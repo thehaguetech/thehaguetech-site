@@ -6,10 +6,11 @@
   "scripts": {
     "dev-without-server": "next",
     "dev": "export $(cat .env | xargs) && node api/server.js",
-    "start": "npm install && next build && node api/server.js",
+    "start": "npm install && node ./node_modules/next/dist/bin/next build && NODE_ENV=production node api/server.js",
     "build": "next build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "next build && next export"
+    "deploy": "next build && next export",
+    "serve": "next build && node api/server.js"
   },
   "plugins": [
     [

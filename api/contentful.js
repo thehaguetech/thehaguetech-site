@@ -1,15 +1,15 @@
 'use strict'
 
-const contentful = require('contentful')
-const chalk = require('chalk')
-const Table = require('cli-table2')
+const contentful = require('contentful');
+const chalk = require('chalk');
+const Table = require('cli-table2');
 
 const client = contentful.createClient({
   // This is the space ID. A space is like a project folder in Contentful terms
   space: process.env.CONTENTFUL_SPACE_ID,
   // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
-})
+});
 
 // Entry point of the boilerplate, called at the end.
 function runBoilerplate () {
@@ -114,7 +114,7 @@ function fetchLandingPages() {
   })
       .then((response) => response.items)
       .catch((error) => {
-        console.log(chalk.red(`\nError occurred while fetching Entries for story:`));
+        console.log(chalk.red(`\nError occurred while fetching entries for landing pages:`));
         console.error(error)
       })
 }

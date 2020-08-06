@@ -1,16 +1,53 @@
+require('dotenv').config();
+
 import Head from 'next/head';
 import React from 'react';
 import App, { Container } from 'next/app';
+const contentful = require('contentful');
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
+    let story = null, event = null, landingPage = null;
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
+
+      // Init Contentful connection
+      const client = await contentful.createClient( {
+        space: SPACE_ID,
+        accessToken: ACCESS_TOKEN
+      });
+
+      // Get story based on slug
+      story = await client.getEntries({
+        content_type: 'story',
+        'fields.slug': pageProps.slug,
+        limit: 1
+      })
+        .then((entry) => entry.items[0])
+        .catch(console.error);
+
+      // Get event based on slug
+      event = await client.getEntries({
+        content_type: 'event',
+        'fields.slug': pageProps.slug,
+        limit: 1
+      })
+        .then((entry) => entry.items[0])
+        .catch(console.error);
+
+      // Get landing page based on slug
+      landingPage = await client.getEntries({
+        content_type: 'landingpage',
+        'fields.slug': pageProps.slug,
+        limit: 1
+      })
+        .then((entry) => entry.items[0])
+        .catch(console.error);
     }
 
-    return { pageProps };
+    return { pageProps, story, event, landingPage }
   }
 
   componentDidMount() {
@@ -22,26 +59,106 @@ class MyApp extends App {
     }
   }
 
+  getMeta(props) {
+    const { story, event, landingPage } = props;
+    const imageBaseUrl = "https://images.contentful.com/";
+
+    // Set default meta tags
+    let meta = {
+      imageUrl: 'https://www.thehaguetech.com/static/pages/index/meta.jpg',
+      title: 'The Hague Tech',
+      description: 'The largest tech community in The Hague, Netherlands offering office space, co-working space, event space, meeting space, co-creation labs, startup visa programme.',
+    };
+
+    // If this is a story, set story meta tags
+    if(story) {
+      meta.imageUrl = imageBaseUrl + story.fields.smallImage.fields.file.url.slice(23);
+      meta.title = story.fields.title;
+      if (typeof story.fields.longText !== 'undefined') {
+        meta.description = story.fields.longText.split("\n")[0]
+      }
+    }
+
+    // If this is a event, set event meta tags
+    if(event) {
+      meta.imageUrl = imageBaseUrl + event.fields.smallImage.fields.file.url.slice(23);
+      meta.title = event.fields.title;
+      if (typeof event.fields.longText !== 'undefined') {
+        meta.description = event.fields.longText.split("\n")[0]
+      }
+    }
+
+    // If this is a landing page, set landing page meta tags
+    if(landingPage) {
+      meta.imageUrl = imageBaseUrl + landingPage.fields.headerImage.fields.file.url.slice(23);
+      meta.title = landingPage.fields.title;
+      landingPage.fields.content.content.forEach((data) => {
+        meta.description += data.content[0].value + ' ';
+      });
+    }
+
+    return meta;
+  }
+
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, story, event, landingPage } = this.props;
+    const meta = this.getMeta({story, event, landingPage});
 
     return (
       <Container>
         <Head>
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+            key="viewport"
+          />
 
-          <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png" />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/static/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/static/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/static/favicon-16x16.png"
+          />
           <link rel="manifest" href="/static/site.webmanifest" />
-          <link rel="mask-icon" href="/static/safari-pinned-tab.svg" color="#0f2247" />
+          <link
+            rel="mask-icon"
+            href="/static/safari-pinned-tab.svg"
+            color="#0f2247"
+          />
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="theme-color" content="#ffffff" />
 
-          <meta key="og:title" property="og:title" content="The Hague Tech" />
-          <meta key="og:image" property="og:image" content="https://www.thehaguetech.com/static/pages/index/meta.jpg" />
-          <meta key="og:description" property="og:description" content="The largest tech community in The Hague, Netherlands offering office space, co-working space, event space, meeting space, co-creation labs, startup visa programme." />
-          <meta key="description" name="description" content="The largest tech community in The Hague, Netherlands offering office space, co-working space, event space, meeting space, co-creation labs, startup visa programme." />
+          <meta
+            key="og:title"
+            property="og:title"
+            content={meta.title}
+          />
+          <meta
+            key="og:image"
+            property="og:image"
+            content={meta.imageUrl}
+          />
+          <meta
+            key="og:description"
+            property="og:description"
+            content={meta.description}
+          />
+          <meta
+            key="description"
+            name="description"
+            content={meta.description}
+          />
 
           <link href="/static/tht-favicon@2x.png" rel="icon" type="image/x-icon" />
           <script dangerouslySetInnerHTML={{

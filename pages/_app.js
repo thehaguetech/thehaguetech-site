@@ -90,7 +90,7 @@ class MyApp extends App {
 
     // If this is a landing page, set landing page meta tags
     if(landingPage) {
-      meta.imageUrl = imageBaseUrl + landingPage.fields.headerImage.fields.file.url.slice(23);
+      meta.imageUrl = imageBaseUrl + landingPage.fields.headerImage.fields.file.url;
       meta.title = landingPage.fields.title;
       landingPage.fields.content.content.forEach((data) => {
         meta.description += data.content[0].value + ' ';

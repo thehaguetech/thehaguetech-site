@@ -1,21 +1,25 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
 import Link from 'next/link';
 import * as R from 'ramda';
 
 // Load components
 const IntroText = dynamic(() => import('../components/intro-text.js'));
-const Title = dynamic(() => import('../components/title.js'));
-const TextAndImage = dynamic(() => import('../components/text-and-image.js'));
 
 class PricingBlock extends Component {
   constructor(props) {
     super(props);
 
+    this.handleIsActive = (name = '', isActive = false) => {};
+
+    if (typeof props.handleIsActive !== 'undefined') {
+      this.handleIsActive = props.handleIsActive;
+    }
+
+
     this.state = {
       isActive: false
-    }
+    };
   }
 
   render() {
@@ -24,10 +28,10 @@ class PricingBlock extends Component {
     let includeText = '';
 
     if (!this.state.isActive) {
-       includeText = "Find out what's included";
+      includeText = "Find out what's included"
     }
 
-    return <div className={`PricingBlock ${data.name} match-height`}>
+    return <div className={`PricingBlock ${data.name}`}>
       <div className="boxed">
         <div className="triangle">
           <span>Popular</span>103
@@ -44,20 +48,30 @@ class PricingBlock extends Component {
           <div className="price-in-euros">
             {data.price !== 'VAR' ? (<sup>&euro;</sup>) : <sup></sup>}  {data.price}
           </div>
-           <small>{data.priceDescription}</small>
+          <small>{data.priceDescription}</small>
         </div>
         <hr />
         <h1 className="title">
           {data.title}
         </h1>
         <div className={'features' + (this.state.isActive ? ' is-active' : '')}>
-          <div className="feature" style={(this.state.isActive) ? {display:'none'} : {}} onClick={() => this.setState({ isActive: ! this.state.isActive })}>
+          <div className="feature" style={(this.state.isActive) ? {display:'none'} : {}}
+               onClick={() => {
+                 this.setState({ isActive: ! this.state.isActive });
+                 this.handleIsActive(data.name, this.state.isActive);
+               }}
+          >
             {includeText}
             <div className={'arrow' + (this.state.isActive ? ' down' : '')} />
           </div>
           {mapIndexed((feature, idx) => {
             return <div key={idx} className="feature"
-                        onClick={() => idx === 0 && this.setState({ isActive: ! this.state.isActive })}
+                        onClick={() => {
+                          if (idx === 0) {
+                            this.setState({ isActive: ! this.state.isActive });
+                            this.handleIsActive(data.name, this.state.isActive);
+                          }
+                        }}
             >
               {feature}
               <div style={(!this.state.isActive || idx !== 0) ? {display:'none'} : {}} className={'arrow' + (this.state.isActive ? ' down' : '')} />
@@ -284,166 +298,186 @@ class PricingBlock extends Component {
   }
 }
 
-function Pricing() {
-  const membershipsPart1 = [
-    {
-      name: 'membership',
-      heading: 'Membership',
-      extraBenefit: '',
-      price: '56,50',
-      priceDescription: 'per month excl. 21% VAT',
-      title: 'Become part of the community of The Hague Tech',
-      features: [
-        'Super-fast wifi',
-        'Unlimited coffee / tea',
-        'Private events',
-        'Use massage chair',
-        'Ping-pong and foosball',
-        'Access Monday to Friday',
-        'Contract period 1 month'
-      ],
-      tagline: 'A great way to access the power of our community.'
-    },
-    {
-      name: 'coworking',
-      heading: 'Membership',
-      extraBenefit: '+ flex co-working',
-      price: 205,
-      priceDescription: 'per month excl. 21% VAT',
-      title: 'Flexible workplace, any day you like.',
-      features: [
-        'Super-fast wifi',
-        'Unlimited coffee / tea',
-        'Private events',
-        'Use massage chair',
-        'Ping-pong and foosball',
-        'Access 24/7',
-        'Contract period 1 month',
-        'Use desks in co-working space',
-        'Locker (add. € 15 p/m)',
-        'Postal address (add. € 25 p/m)',
-      ],
-      tagline: 'An incredible way to work in our co-working space and with our community.'
-    },
-    {
-      name: 'dedicated',
-      heading: 'Membership',
-      extraBenefit: '+ flex dedicated',
-      price: 230,
-      priceDescription: 'per month excl. 21% VAT',
-      title: 'Dedicated workplace in co-working space.',
-      features: [
-        'Super-fast wifi',
-        'Unlimited coffee / tea',
-        'Private events',
-        'Use massage chair',
-        'Ping-pong and foosball',
-        'Access Access 24/7',
-        'Contract period 1 month',
-        'Use desks in co-working space',
-        'Locker (add. € 15 p/m)',
-        'Postal address (add. € 25 p/m)',
-        'Dedicated workplace with desk',
-      ],
-      tagline: 'The perfect way to set up shop right in the heart of our community.'
-    },
-    {
-      name: 'office',
-      heading: 'Membership',
-      extraBenefit: '+ office (starting at)',
-      price: 484,
-      priceDescription: 'per month excl. 21% VAT',
-      title: 'Dedicated workplace in enclosed space.',
-      features: [
-        'Super-fast wifi',
-        'Unlimited coffee / tea',
-        'Private events',
-        'Use massage chair',
-        'Ping-pong and foosball',
-        'Access 24/7',
-        'Contract period 1 month',
-        'Use desks in co-working space',
-        'Locker (add. € 15 p/m)',
-        'Postal address (add. € 25 p/m)',
-        'Dedicated workplace with desk',
-        'Enclosed, lockable office',
-      ],
-      tagline: 'The best way to make our space yours and join our community.'
-    }
-  ];
+class Pricing extends Component {
+  constructor(props) {
+    super(props);
 
-  const membershipsPart2 = [
-    {
-      name: 'co-working-day-week',
-      heading: 'Co-work a day',
-      extraBenefit: '',
-      price: '25,00',
-      priceDescription: 'per day excl. 21% VAT',
-      title: 'Access to the The Hague Tech community for 1 day',
-      features: [
-        'Super-fast wifi',
-        'Unlimited coffee / tea',
-        'Use massage chair',
-        'Ping-pong and foosball',
-        'Access from 09.00 till 17.00',
-        '€ 100,- for 1 week (5 days)'
-      ],
-      tagline: 'An interesting & inspiring place to work and meet the The Hague Tech community'
-    },
-    {
-      name: 'virtual-office',
-      heading: 'Virtual office',
-      extraBenefit: '',
-      price: '82,25',
-      priceDescription: 'per month excl. 21% VAT',
-      title: 'Membership + business address',
-      features: [
-        'Recognized business address (register Chamber of Commerce)',
-        'Mailbox at Wilhelmina van Pruisenweg 35, Den Haag (close to station)',
-        'Possibility to use The Hague Tech workspace',
-        'Optional: Mail forwarded twice a month'
-      ],
-      tagline: 'Working from home and yet an address for your business'
-    },
-    {
-      name: 'flex-office',
-      heading: 'Flexible office',
-      extraBenefit: '',
-      price: 'VAR',
-      priceDescription: 'Price on request and need',
-      title: 'Workplace in an enclosed space for 4 or 8 times a month',
-      features: [
-        'Super-fast wifi',
-        'Unlimited coffee / tea',
-        'Use massage chair',
-        'Ping-pong and foosball',
-        'Access from 09.00 till 17.00',
-        'Private events',
-        'Contract period 1 month',
-        'Use desks in co-working space',
-        'Locker (add. € 15 p/m)',
-        'Postal address (add. € 25 p/m)',
-        'Use office for 4 or 8 days a month',
-        'Office for 1, 3, 5 or 7 persons',
-      ],
-      tagline: 'When you don\'t need a fulltime office!'
-    },
-  ];
+    this.state = {
+      isActive: false
+    };
 
-  return <div className="Pricing">
-    <IntroText>
-      The Hague Tech offers the space you need right now, and in the future. Our dynamic building can fulfill all your needs.
-    </IntroText>
-    <div className="pricing-blocks-wrapper" id="firstPricingBlock">
-      {R.map((membershipPart1) => <PricingBlock key={membershipPart1.name} data={membershipPart1} />, membershipsPart1)}
-    </div>
-    <div className="pricing-blocks-wrapper">
-      <h1 className="newOfferings">New offerings</h1>
-      {R.map((membershipPart2) => <PricingBlock key={membershipPart2.name} data={membershipPart2} />, membershipsPart2)}
-    </div>
-    <style jsx>{`
-    
-    
+    this.size = 0;
+
+    this.handleIsActive = (blockName = '', isActive = false) => {
+
+        if (!isActive) {
+          this.size++;
+        } else {
+          this.size--;
+        }
+
+        this.setState({isActive: this.size > 0});
+    };
+  }
+
+  render() {
+    const membershipsPart1 = [
+      {
+        name: 'membership',
+        heading: 'Membership',
+        extraBenefit: '',
+        price: '56,50',
+        priceDescription: 'per month excl. 21% VAT',
+        title: 'Become part of the community of The Hague Tech',
+        features: [
+          'Super-fast wifi',
+          'Unlimited coffee / tea',
+          'Private events',
+          'Use massage chair',
+          'Ping-pong and foosball',
+          'Access Monday to Friday',
+          'Contract period 1 month'
+        ],
+        tagline: 'A great way to access the power of our community.'
+      },
+      {
+        name: 'coworking',
+        heading: 'Membership',
+        extraBenefit: '+ flex co-working',
+        price: 205,
+        priceDescription: 'per month excl. 21% VAT',
+        title: 'Flexible workplace, any day you like.',
+        features: [
+          'Super-fast wifi',
+          'Unlimited coffee / tea',
+          'Private events',
+          'Use massage chair',
+          'Ping-pong and foosball',
+          'Access 24/7',
+          'Contract period 1 month',
+          'Use desks in co-working space',
+          'Locker (add. € 15 p/m)',
+          'Postal address (add. € 25 p/m)',
+        ],
+        tagline: 'An incredible way to work in our co-working space and with our community.'
+      },
+      {
+        name: 'dedicated',
+        heading: 'Membership',
+        extraBenefit: '+ flex dedicated',
+        price: 230,
+        priceDescription: 'per month excl. 21% VAT',
+        title: 'Dedicated workplace in co-working space.',
+        features: [
+          'Super-fast wifi',
+          'Unlimited coffee / tea',
+          'Private events',
+          'Use massage chair',
+          'Ping-pong and foosball',
+          'Access Access 24/7',
+          'Contract period 1 month',
+          'Use desks in co-working space',
+          'Locker (add. € 15 p/m)',
+          'Postal address (add. € 25 p/m)',
+          'Dedicated workplace with desk',
+        ],
+        tagline: 'The perfect way to set up shop right in the heart of our community.'
+      },
+      {
+        name: 'office',
+        heading: 'Membership',
+        extraBenefit: '+ office (starting at)',
+        price: 484,
+        priceDescription: 'per month excl. 21% VAT',
+        title: 'Dedicated workplace in enclosed space.',
+        features: [
+          'Super-fast wifi',
+          'Unlimited coffee / tea',
+          'Private events',
+          'Use massage chair',
+          'Ping-pong and foosball',
+          'Access 24/7',
+          'Contract period 1 month',
+          'Use desks in co-working space',
+          'Locker (add. € 15 p/m)',
+          'Postal address (add. € 25 p/m)',
+          'Dedicated workplace with desk',
+          'Enclosed, lockable office',
+        ],
+        tagline: 'The best way to make our space yours and join our community.'
+      }
+    ];
+
+    const membershipsPart2 = [
+      {
+        name: 'co-working-day-week',
+        heading: 'Co-work a day',
+        extraBenefit: '',
+        price: '25,00',
+        priceDescription: 'per day excl. 21% VAT',
+        title: 'Access to the The Hague Tech community for 1 day',
+        features: [
+          'Super-fast wifi',
+          'Unlimited coffee / tea',
+          'Use massage chair',
+          'Ping-pong and foosball',
+          'Access from 09.00 till 17.00',
+          '€ 100,- for 1 week (5 days)'
+        ],
+        tagline: 'An interesting & inspiring place to work and meet the The Hague Tech community'
+      },
+      {
+        name: 'virtual-office',
+        heading: 'Virtual office',
+        extraBenefit: '',
+        price: '82,25',
+        priceDescription: 'per month excl. 21% VAT',
+        title: 'Membership + business address',
+        features: [
+          'Recognized business address (register Chamber of Commerce)',
+          'Mailbox at Wilhelmina van Pruisenweg 35, Den Haag (close to station)',
+          'Possibility to use The Hague Tech workspace',
+          'Optional: Mail forwarded twice a month'
+        ],
+        tagline: 'Working from home and yet an address for your business'
+      },
+      {
+        name: 'flex-office',
+        heading: 'Flexible office',
+        extraBenefit: '',
+        price: 'VAR',
+        priceDescription: 'Price on request and need',
+        title: 'Workplace in an enclosed space for 4 or 8 times a month',
+        features: [
+          'Super-fast wifi',
+          'Unlimited coffee / tea',
+          'Use massage chair',
+          'Ping-pong and foosball',
+          'Access from 09.00 till 17.00',
+          'Private events',
+          'Contract period 1 month',
+          'Use desks in co-working space',
+          'Locker (add. € 15 p/m)',
+          'Postal address (add. € 25 p/m)',
+          'Use office for 4 or 8 days a month',
+          'Office for 1, 3, 5 or 7 persons',
+        ],
+        tagline: 'When you don\'t need a fulltime office!'
+      },
+    ];
+
+    return <div className="Pricing">
+      <IntroText>
+        The Hague Tech offers the space you need right now, and in the future. Our dynamic building can fulfill all your needs.
+      </IntroText>
+      <div className="pricing-blocks-wrapper" id="firstPricingBlock">
+        {R.map((membershipPart1) => <PricingBlock handleIsActive={this.handleIsActive} key={membershipPart1.name} data={membershipPart1} />, membershipsPart1)}
+      </div>
+      <div className="pricing-blocks-wrapper">
+        <h1 className="newOfferings">New offerings</h1>
+        {R.map((membershipPart2) => <PricingBlock key={membershipPart2.name} data={membershipPart2} />, membershipsPart2)}
+      </div>
+      <style jsx>{`
       .pricing-blocks-wrapper {
         text-align: center;
       }
@@ -453,7 +487,7 @@ function Pricing() {
       }
       
        #firstPricingBlock {
-          height: 690px;
+          height: ${this.state.isActive ? '1200px' : '690px'}
         }
       
       @media(max-width: 1340px) {
@@ -468,7 +502,8 @@ function Pricing() {
         }
       }
     `}</style>
-  </div>
+    </div>
+  }
 }
 
 export default Pricing;

@@ -21,6 +21,11 @@ class PricingBlock extends Component {
   render() {
     const mapIndexed = R.addIndex(R.map);
     const data = this.props.data;
+    let includeText = '';
+
+    if (!this.state.isActive) {
+       includeText = "Find out what's included";
+    }
 
     return <div className={`PricingBlock ${data.name} match-height`}>
       <div className="boxed">
@@ -46,14 +51,16 @@ class PricingBlock extends Component {
           {data.title}
         </h1>
         <div className={'features' + (this.state.isActive ? ' is-active' : '')}>
+          <div className="feature" style={(this.state.isActive) ? {display:'none'} : {}} onClick={() => this.setState({ isActive: ! this.state.isActive })}>
+            {includeText}
+            <div className={'arrow' + (this.state.isActive ? ' down' : '')} />
+          </div>
           {mapIndexed((feature, idx) => {
             return <div key={idx} className="feature"
-              onClick={() => idx === 0 && this.setState({ isActive: ! this.state.isActive })}
-              >
+                        onClick={() => idx === 0 && this.setState({ isActive: ! this.state.isActive })}
+            >
               {feature}
-              {idx === 0 &&
-                <div className={'arrow' + (this.state.isActive ? ' down' : '')} />
-              }
+              <div style={(!this.state.isActive || idx !== 0) ? {display:'none'} : {}} className={'arrow' + (this.state.isActive ? ' down' : '')} />
             </div>
           }, data.features)}
         </div>
@@ -245,7 +252,20 @@ class PricingBlock extends Component {
           right: 12px;
           cursor: pointer;
         }
-        .arrow.down {
+        
+        .main-arrow {
+          width: 100%;
+          transition: transform 0.4s 0.2s;
+          transform: rotate(180deg);
+          background: top left no-repeat url('/static/components/pricing/arrow-top.svg');
+          width: 16px;
+          height: 9px;
+          position: absolute;
+          right: 12px;
+          cursor: pointer;
+        }
+        
+        .arrow.down, .main-arrow.down {
           transition: transform 0.4s;
           transform: rotate(0);
         }
@@ -265,7 +285,6 @@ class PricingBlock extends Component {
 }
 
 function Pricing() {
-  const firstFeatureText = "Find out what's included";
   const membershipsPart1 = [
     {
       name: 'membership',
@@ -275,7 +294,6 @@ function Pricing() {
       priceDescription: 'per month excl. 21% VAT',
       title: 'Become part of the community of The Hague Tech',
       features: [
-        firstFeatureText,
         'Super-fast wifi',
         'Unlimited coffee / tea',
         'Private events',
@@ -294,7 +312,6 @@ function Pricing() {
       priceDescription: 'per month excl. 21% VAT',
       title: 'Flexible workplace, any day you like.',
       features: [
-        firstFeatureText,
         'Super-fast wifi',
         'Unlimited coffee / tea',
         'Private events',
@@ -316,7 +333,6 @@ function Pricing() {
       priceDescription: 'per month excl. 21% VAT',
       title: 'Dedicated workplace in co-working space.',
       features: [
-        firstFeatureText,
         'Super-fast wifi',
         'Unlimited coffee / tea',
         'Private events',
@@ -339,7 +355,6 @@ function Pricing() {
       priceDescription: 'per month excl. 21% VAT',
       title: 'Dedicated workplace in enclosed space.',
       features: [
-        firstFeatureText,
         'Super-fast wifi',
         'Unlimited coffee / tea',
         'Private events',
@@ -366,7 +381,6 @@ function Pricing() {
       priceDescription: 'per day excl. 21% VAT',
       title: 'Access to the The Hague Tech community for 1 day',
       features: [
-        firstFeatureText,
         'Super-fast wifi',
         'Unlimited coffee / tea',
         'Use massage chair',
@@ -384,7 +398,6 @@ function Pricing() {
       priceDescription: 'per month excl. 21% VAT',
       title: 'Membership + business address',
       features: [
-        firstFeatureText,
         'Recognized business address (register Chamber of Commerce)',
         'Mailbox at Wilhelmina van Pruisenweg 35, Den Haag (close to station)',
         'Possibility to use The Hague Tech workspace',
@@ -421,7 +434,7 @@ function Pricing() {
     <IntroText>
       The Hague Tech offers the space you need right now, and in the future. Our dynamic building can fulfill all your needs.
     </IntroText>
-    <div className="pricing-blocks-wrapper">
+    <div className="pricing-blocks-wrapper" id="firstPricingBlock">
       {R.map((membershipPart1) => <PricingBlock key={membershipPart1.name} data={membershipPart1} />, membershipsPart1)}
     </div>
     <div className="pricing-blocks-wrapper">
@@ -429,6 +442,8 @@ function Pricing() {
       {R.map((membershipPart2) => <PricingBlock key={membershipPart2.name} data={membershipPart2} />, membershipsPart2)}
     </div>
     <style jsx>{`
+    
+    
       .pricing-blocks-wrapper {
         text-align: center;
       }
@@ -437,11 +452,19 @@ function Pricing() {
         font-size: 35px;
       }
       
+       #firstPricingBlock {
+          height: 690px;
+        }
+      
       @media(max-width: 1340px) {
         .pricing-blocks-wrapper {
           width: 1000px;
           max-width: 100%;
           margin: 0 auto;
+        }
+        
+         #firstPricingBlock {
+          height: 1490px;
         }
       }
     `}</style>

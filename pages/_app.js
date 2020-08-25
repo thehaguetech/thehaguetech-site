@@ -138,21 +138,10 @@ class MyApp extends App {
           />
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="theme-color" content="#ffffff" />
-
-          <meta
-            key="og:title"
-            property="og:title"
-            content={meta.title}
-          />
           <meta
               key="twitter:title"
               property="twitter:title"
               content={meta.title}
-          />
-          <meta
-            key="og:image"
-            property="og:image"
-            content={meta.imageUrl}
           />
           <meta
               key="twitter:image"
@@ -160,14 +149,37 @@ class MyApp extends App {
               content={meta.imageUrl}
           />
           <meta
-            key="og:description"
-            property="og:description"
-            content={meta.description}
-          />
-          <meta
               key="twitter:description"
               property="twitter:description"
               content={meta.description}
+          />
+          <meta
+              key="twitter:card"
+              property="twitter:card"
+              content="summary"
+          />
+          <meta
+              key="twitter:site"
+              property="twitter:site"
+              content="MaikouYoruno"
+          />
+
+          <meta
+            key="og:title"
+            property="og:title"
+            content={meta.title}
+          />
+
+          <meta
+            key="og:image"
+            property="og:image"
+            content={meta.imageUrl}
+          />
+
+          <meta
+            key="og:description"
+            property="og:description"
+            content={meta.description}
           />
           <meta
             key="description"

@@ -145,14 +145,29 @@ class MyApp extends App {
             content={meta.title}
           />
           <meta
+              key="twitter:title"
+              property="twitter:title"
+              content={meta.title}
+          />
+          <meta
             key="og:image"
             property="og:image"
             content={meta.imageUrl}
           />
           <meta
+              key="twitter:image"
+              property="twitter:image"
+              content={meta.imageUrl}
+          />
+          <meta
             key="og:description"
             property="og:description"
             content={meta.description}
+          />
+          <meta
+              key="twitter:description"
+              property="twitter:description"
+              content={meta.description}
           />
           <meta
             key="description"

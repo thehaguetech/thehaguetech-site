@@ -158,11 +158,11 @@ class MyApp extends App {
               property="twitter:card"
               content="summary"
           />
-          <meta
-              key="twitter:site"
-              property="twitter:site"
-              content="MaikouYoruno"
-          />
+          {/*<meta*/}
+          {/*    key="twitter:site"*/}
+          {/*    property="twitter:site"*/}
+          {/*    content="MaikouYoruno"*/}
+          {/*/>*/}
 
           <meta
             key="og:title"

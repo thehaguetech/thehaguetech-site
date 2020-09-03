@@ -8,51 +8,51 @@ import App, { Container } from 'next/app';
 const contentful = require('contentful');
 
 class MyApp extends App {
-  // static async getInitialProps({ Component, ctx }) {
-  //   let pageProps = {};
-  //   let story = null, event = null, landingPage = null;
-  //
-  //   if (Component.getInitialProps) {
-  //     pageProps = await Component.getInitialProps(ctx);
-  //
-  //     // Init Contentful connection
-  //     const client = await contentful.createClient( {
-  //       space: SPACE_ID,
-  //       accessToken: ACCESS_TOKEN
-  //     });
-  //
-  //     if (typeof pageProps.slug !== 'undefined') {
-  //       // Get story based on slug
-  //       story = await client.getEntries({
-  //         content_type: 'story',
-  //         'fields.slug': pageProps.slug,
-  //         limit: 1
-  //       })
-  //         .then((entry) => entry.items[0])
-  //         .catch(console.error);
-  //
-  //       // Get event based on slug
-  //       event = await client.getEntries({
-  //         content_type: 'event',
-  //         'fields.slug': pageProps.slug,
-  //         limit: 1
-  //       })
-  //         .then((entry) => entry.items[0])
-  //         .catch(console.error);
-  //
-  //       // Get landing page based on slug
-  //       landingPage = await client.getEntries({
-  //         content_type: 'landingpage',
-  //         'fields.slug': pageProps.slug,
-  //         limit: 1
-  //       })
-  //         .then((entry) => entry.items[0])
-  //         .catch(console.error);
-  //     }
-  //   }
-  //
-  //   return { pageProps, story, event, landingPage }
-  // }
+  static async getInitialProps({ Component, ctx }) {
+    let pageProps = {};
+    let story = null, event = null, landingPage = null;
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
+
+      // Init Contentful connection
+      const client = await contentful.createClient( {
+        space: SPACE_ID,
+        accessToken: ACCESS_TOKEN
+      });
+
+      if (typeof pageProps.slug !== 'undefined') {
+        // Get story based on slug
+        story = await client.getEntries({
+          content_type: 'story',
+          'fields.slug': pageProps.slug,
+          limit: 1
+        })
+          .then((entry) => entry.items[0])
+          .catch(console.error);
+
+        // Get event based on slug
+        event = await client.getEntries({
+          content_type: 'event',
+          'fields.slug': pageProps.slug,
+          limit: 1
+        })
+          .then((entry) => entry.items[0])
+          .catch(console.error);
+
+        // Get landing page based on slug
+        landingPage = await client.getEntries({
+          content_type: 'landingpage',
+          'fields.slug': pageProps.slug,
+          limit: 1
+        })
+          .then((entry) => entry.items[0])
+          .catch(console.error);
+      }
+    }
+
+    return { pageProps, story, event, landingPage }
+  }
 
   componentDidMount() {
     if ("serviceWorker" in navigator) {
@@ -367,53 +367,53 @@ class MyApp extends App {
   }
 }
 
-export async function getStaticProps({ params }) {
-
-  let story = null, event = null, landingPage = null;
-
-  // Init Contentful connection
-  const client = await contentful.createClient( {
-    space: SPACE_ID,
-    accessToken: ACCESS_TOKEN
-  });
-
-  if (typeof params.slug !== 'undefined') {
-    // Get story based on slug
-    story = await client.getEntries({
-      content_type: 'story',
-      'fields.slug': params.slug,
-      limit: 1
-    })
-        .then((entry) => entry.items[0])
-        .catch(console.error);
-
-    // Get event based on slug
-    event = await client.getEntries({
-      content_type: 'event',
-      'fields.slug': params.slug,
-      limit: 1
-    })
-        .then((entry) => entry.items[0])
-        .catch(console.error);
-
-    // Get landing page based on slug
-    landingPage = await client.getEntries({
-      content_type: 'landingpage',
-      'fields.slug': params.slug,
-      limit: 1
-    })
-        .then((entry) => entry.items[0])
-        .catch(console.error);
-  }
-
-  return {
-    props: {
-      pageProps,
-      story,
-      event,
-      landingPage
-    },
-  }
-}
+// export async function getStaticProps({ params }) {
+//
+//   let story = null, event = null, landingPage = null;
+//
+//   // Init Contentful connection
+//   const client = await contentful.createClient( {
+//     space: SPACE_ID,
+//     accessToken: ACCESS_TOKEN
+//   });
+//
+//   if (typeof params.slug !== 'undefined') {
+//     // Get story based on slug
+//     story = await client.getEntries({
+//       content_type: 'story',
+//       'fields.slug': params.slug,
+//       limit: 1
+//     })
+//         .then((entry) => entry.items[0])
+//         .catch(console.error);
+//
+//     // Get event based on slug
+//     event = await client.getEntries({
+//       content_type: 'event',
+//       'fields.slug': params.slug,
+//       limit: 1
+//     })
+//         .then((entry) => entry.items[0])
+//         .catch(console.error);
+//
+//     // Get landing page based on slug
+//     landingPage = await client.getEntries({
+//       content_type: 'landingpage',
+//       'fields.slug': params.slug,
+//       limit: 1
+//     })
+//         .then((entry) => entry.items[0])
+//         .catch(console.error);
+//   }
+//
+//   return {
+//     props: {
+//       pageProps,
+//       story,
+//       event,
+//       landingPage
+//     },
+//   }
+// }
 
 export default MyApp;

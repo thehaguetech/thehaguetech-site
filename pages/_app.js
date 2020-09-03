@@ -1,3 +1,5 @@
+import {type} from "ramda";
+
 require('dotenv').config();
 
 import Head from 'next/head';
@@ -6,49 +8,51 @@ import App, { Container } from 'next/app';
 const contentful = require('contentful');
 
 class MyApp extends App {
-  static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
-    let story = null, event = null, landingPage = null;
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-
-      // Init Contentful connection
-      const client = await contentful.createClient( {
-        space: SPACE_ID,
-        accessToken: ACCESS_TOKEN
-      });
-
-      // Get story based on slug
-      story = await client.getEntries({
-        content_type: 'story',
-        'fields.slug': pageProps.slug,
-        limit: 1
-      })
-        .then((entry) => entry.items[0])
-        .catch(console.error);
-
-      // Get event based on slug
-      event = await client.getEntries({
-        content_type: 'event',
-        'fields.slug': pageProps.slug,
-        limit: 1
-      })
-        .then((entry) => entry.items[0])
-        .catch(console.error);
-
-      // Get landing page based on slug
-      landingPage = await client.getEntries({
-        content_type: 'landingpage',
-        'fields.slug': pageProps.slug,
-        limit: 1
-      })
-        .then((entry) => entry.items[0])
-        .catch(console.error);
-    }
-
-    return { pageProps, story, event, landingPage }
-  }
+  // static async getInitialProps({ Component, ctx }) {
+  //   let pageProps = {};
+  //   let story = null, event = null, landingPage = null;
+  //
+  //   if (Component.getInitialProps) {
+  //     pageProps = await Component.getInitialProps(ctx);
+  //
+  //     // Init Contentful connection
+  //     const client = await contentful.createClient( {
+  //       space: SPACE_ID,
+  //       accessToken: ACCESS_TOKEN
+  //     });
+  //
+  //     if (typeof pageProps.slug !== 'undefined') {
+  //       // Get story based on slug
+  //       story = await client.getEntries({
+  //         content_type: 'story',
+  //         'fields.slug': pageProps.slug,
+  //         limit: 1
+  //       })
+  //         .then((entry) => entry.items[0])
+  //         .catch(console.error);
+  //
+  //       // Get event based on slug
+  //       event = await client.getEntries({
+  //         content_type: 'event',
+  //         'fields.slug': pageProps.slug,
+  //         limit: 1
+  //       })
+  //         .then((entry) => entry.items[0])
+  //         .catch(console.error);
+  //
+  //       // Get landing page based on slug
+  //       landingPage = await client.getEntries({
+  //         content_type: 'landingpage',
+  //         'fields.slug': pageProps.slug,
+  //         limit: 1
+  //       })
+  //         .then((entry) => entry.items[0])
+  //         .catch(console.error);
+  //     }
+  //   }
+  //
+  //   return { pageProps, story, event, landingPage }
+  // }
 
   componentDidMount() {
     if ("serviceWorker" in navigator) {
@@ -75,7 +79,7 @@ class MyApp extends App {
       meta.imageUrl = imageBaseUrl + story.fields.smallImage.fields.file.url.slice(23);
       meta.title = story.fields.title;
       if (typeof story.fields.longText !== 'undefined') {
-        meta.description = story.fields.longText.split("\n")[0]
+        meta.description = story.fields.longText.split("\n")[0];
       }
     }
 
@@ -84,7 +88,7 @@ class MyApp extends App {
       meta.imageUrl = imageBaseUrl + event.fields.smallImage.fields.file.url.slice(23);
       meta.title = event.fields.title;
       if (typeof event.fields.longText !== 'undefined') {
-        meta.description = event.fields.longText.split("\n")[0]
+        meta.description = event.fields.longText.split("\n")[0];
       }
     }
 
@@ -158,11 +162,6 @@ class MyApp extends App {
               property="twitter:card"
               content="summary"
           />
-          {/*<meta*/}
-          {/*    key="twitter:site"*/}
-          {/*    property="twitter:site"*/}
-          {/*    content="MaikouYoruno"*/}
-          {/*/>*/}
 
           <meta
             key="og:title"
@@ -365,6 +364,55 @@ class MyApp extends App {
         <Component {...pageProps} />
       </Container>
     );
+  }
+}
+
+export async function getStaticProps({ params }) {
+
+  let story = null, event = null, landingPage = null;
+
+  // Init Contentful connection
+  const client = await contentful.createClient( {
+    space: SPACE_ID,
+    accessToken: ACCESS_TOKEN
+  });
+
+  if (typeof params.slug !== 'undefined') {
+    // Get story based on slug
+    story = await client.getEntries({
+      content_type: 'story',
+      'fields.slug': params.slug,
+      limit: 1
+    })
+        .then((entry) => entry.items[0])
+        .catch(console.error);
+
+    // Get event based on slug
+    event = await client.getEntries({
+      content_type: 'event',
+      'fields.slug': params.slug,
+      limit: 1
+    })
+        .then((entry) => entry.items[0])
+        .catch(console.error);
+
+    // Get landing page based on slug
+    landingPage = await client.getEntries({
+      content_type: 'landingpage',
+      'fields.slug': params.slug,
+      limit: 1
+    })
+        .then((entry) => entry.items[0])
+        .catch(console.error);
+  }
+
+  return {
+    props: {
+      pageProps,
+      story,
+      event,
+      landingPage
+    },
   }
 }
 

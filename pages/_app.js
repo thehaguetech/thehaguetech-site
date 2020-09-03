@@ -23,6 +23,7 @@ class MyApp extends App {
 
       const splittedSlug = pageProps.slug.split('/');
 
+      // console.log(splittedSlug);
       if (splittedSlug.length > 1) {
         const date = splittedSlug[0];
         const slug = splittedSlug[1];
@@ -31,7 +32,6 @@ class MyApp extends App {
         event = await client.getEntries({
           content_type: 'event',
           'fields.slug': slug,
-          'fields.date': date,
           limit: 1
         })
           .then((entry) => entry.items[0])

@@ -23,15 +23,12 @@ class MyApp extends App {
 
       const splittedSlug = pageProps.slug.split('/');
 
-      // console.log(splittedSlug);
       if (splittedSlug.length > 1) {
-        const date = splittedSlug[0];
-        const slug = splittedSlug[1];
 
         // Get event based on slug
         event = await client.getEntries({
           content_type: 'event',
-          'fields.slug': slug,
+          'fields.slug': splittedSlug[1],
           limit: 1
         })
           .then((entry) => entry.items[0])
@@ -46,8 +43,6 @@ class MyApp extends App {
       })
         .then((entry) => entry.items[0])
         .catch(console.error);
-
-
 
       // Get landing page based on slug
       landingPage = await client.getEntries({
@@ -95,8 +90,8 @@ class MyApp extends App {
     if(event) {
       meta.imageUrl = imageBaseUrl + event.fields.smallImage.fields.file.url.slice(23);
       meta.title = event.fields.title;
-      if (typeof event.fields.longText !== 'undefined') {
-        meta.description = event.fields.longText.split("\n")[0];
+      if (typeof event.fields.introText !== 'undefined') {
+        meta.description = event.fields.introText;
       }
     }
 

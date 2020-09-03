@@ -21,6 +21,23 @@ class MyApp extends App {
         accessToken: ACCESS_TOKEN
       });
 
+      const splittedSlug = pageProps.slug.split('/');
+
+      if (splittedSlug.length > 1) {
+        const date = splittedSlug[0];
+        const slug = splittedSlug[1];
+
+        // Get event based on slug
+        event = await client.getEntries({
+          content_type: 'event',
+          'fields.slug': slug,
+          'fields.date': date,
+          limit: 1
+        })
+          .then((entry) => entry.items[0])
+          .catch(console.error);
+      }
+
       // Get story based on slug
       story = await client.getEntries({
         content_type: 'story',
@@ -30,14 +47,7 @@ class MyApp extends App {
         .then((entry) => entry.items[0])
         .catch(console.error);
 
-      // Get event based on slug
-      event = await client.getEntries({
-        content_type: 'event',
-        'fields.slug': pageProps.slug,
-        limit: 1
-      })
-        .then((entry) => entry.items[0])
-        .catch(console.error);
+
 
       // Get landing page based on slug
       landingPage = await client.getEntries({

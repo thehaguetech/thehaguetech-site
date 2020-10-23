@@ -365,7 +365,7 @@ class Pricing extends Component {
         name: 'dedicated',
         heading: 'Membership',
         extraBenefit: '+ flex dedicated',
-        price: 230,
+        price: 226,
         priceDescription: 'per month excl. 21% VAT',
         title: 'Dedicated workplace in co-working space.',
         features: [

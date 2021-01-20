@@ -21,9 +21,9 @@ class MyApp extends App {
         accessToken: ACCESS_TOKEN
       });
 
-      const splittedSlug = pageProps.slug.split('/');
+      const splittedSlug = pageProps.slug ? pageProps.slug.split('/') : null;
 
-      if (splittedSlug.length > 1) {
+      if (splittedSlug && splittedSlug.length > 1) {
 
         // Get event based on slug
         event = await client.getEntries({

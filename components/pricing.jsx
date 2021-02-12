@@ -326,7 +326,7 @@ class Pricing extends Component {
         name: 'membership',
         heading: 'Membership',
         extraBenefit: '',
-        price: '56,50',
+        price: '57,25',
         priceDescription: 'per month excl. 21% VAT',
         title: 'Become part of the community of The Hague Tech',
         features: [
@@ -344,7 +344,7 @@ class Pricing extends Component {
         name: 'coworking',
         heading: 'Membership',
         extraBenefit: '+ flex co-working',
-        price: 205,
+        price: '150,25',
         priceDescription: 'per month excl. 21% VAT',
         title: 'Flexible workplace, any day you like.',
         features: [
@@ -365,7 +365,7 @@ class Pricing extends Component {
         name: 'dedicated',
         heading: 'Membership',
         extraBenefit: '+ flex dedicated',
-        price: 226,
+        price: '171,50',
         priceDescription: 'per month excl. 21% VAT',
         title: 'Dedicated workplace in co-working space.',
         features: [
@@ -430,7 +430,7 @@ class Pricing extends Component {
         name: 'virtual-office',
         heading: 'Virtual office',
         extraBenefit: '',
-        price: '82,25',
+        price: '83,25',
         priceDescription: 'per month excl. 21% VAT',
         title: 'Membership + business address',
         features: [

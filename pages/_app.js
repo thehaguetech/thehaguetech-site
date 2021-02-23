@@ -1,3 +1,5 @@
+import {type} from "ramda";
+
 require('dotenv').config();
 
 import Head from 'next/head';
@@ -19,18 +21,23 @@ class MyApp extends App {
         accessToken: ACCESS_TOKEN
       });
 
+      const splittedSlug = pageProps.slug.split('/');
+
+      if (splittedSlug.length > 1) {
+
+        // Get event based on slug
+        event = await client.getEntries({
+          content_type: 'event',
+          'fields.slug': splittedSlug[1],
+          limit: 1
+        })
+          .then((entry) => entry.items[0])
+          .catch(console.error);
+      }
+
       // Get story based on slug
       story = await client.getEntries({
         content_type: 'story',
-        'fields.slug': pageProps.slug,
-        limit: 1
-      })
-        .then((entry) => entry.items[0])
-        .catch(console.error);
-
-      // Get event based on slug
-      event = await client.getEntries({
-        content_type: 'event',
         'fields.slug': pageProps.slug,
         limit: 1
       })
@@ -75,7 +82,7 @@ class MyApp extends App {
       meta.imageUrl = imageBaseUrl + story.fields.smallImage.fields.file.url.slice(23);
       meta.title = story.fields.title;
       if (typeof story.fields.longText !== 'undefined') {
-        meta.description = story.fields.longText.split("\n")[0]
+        meta.description = story.fields.longText.split("\n")[0];
       }
     }
 
@@ -83,8 +90,8 @@ class MyApp extends App {
     if(event) {
       meta.imageUrl = imageBaseUrl + event.fields.smallImage.fields.file.url.slice(23);
       meta.title = event.fields.title;
-      if (typeof event.fields.longText !== 'undefined') {
-        meta.description = event.fields.longText.split("\n")[0]
+      if (typeof event.fields.introText !== 'undefined') {
+        meta.description = event.fields.introText;
       }
     }
 
@@ -138,17 +145,39 @@ class MyApp extends App {
           />
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="theme-color" content="#ffffff" />
+          <meta
+              key="twitter:title"
+              property="twitter:title"
+              content={meta.title}
+          />
+          <meta
+              key="twitter:image"
+              property="twitter:image"
+              content={meta.imageUrl}
+          />
+          <meta
+              key="twitter:description"
+              property="twitter:description"
+              content={meta.description}
+          />
+          <meta
+              key="twitter:card"
+              property="twitter:card"
+              content="summary"
+          />
 
           <meta
             key="og:title"
             property="og:title"
             content={meta.title}
           />
+
           <meta
             key="og:image"
             property="og:image"
             content={meta.imageUrl}
           />
+
           <meta
             key="og:description"
             property="og:description"
@@ -340,5 +369,54 @@ class MyApp extends App {
     );
   }
 }
+
+// export async function getStaticProps({ params }) {
+//
+//   let story = null, event = null, landingPage = null;
+//
+//   // Init Contentful connection
+//   const client = await contentful.createClient( {
+//     space: SPACE_ID,
+//     accessToken: ACCESS_TOKEN
+//   });
+//
+//   if (typeof params.slug !== 'undefined') {
+//     // Get story based on slug
+//     story = await client.getEntries({
+//       content_type: 'story',
+//       'fields.slug': params.slug,
+//       limit: 1
+//     })
+//         .then((entry) => entry.items[0])
+//         .catch(console.error);
+//
+//     // Get event based on slug
+//     event = await client.getEntries({
+//       content_type: 'event',
+//       'fields.slug': params.slug,
+//       limit: 1
+//     })
+//         .then((entry) => entry.items[0])
+//         .catch(console.error);
+//
+//     // Get landing page based on slug
+//     landingPage = await client.getEntries({
+//       content_type: 'landingpage',
+//       'fields.slug': params.slug,
+//       limit: 1
+//     })
+//         .then((entry) => entry.items[0])
+//         .catch(console.error);
+//   }
+//
+//   return {
+//     props: {
+//       pageProps,
+//       story,
+//       event,
+//       landingPage
+//     },
+//   }
+// }
 
 export default MyApp;
